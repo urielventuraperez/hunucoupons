@@ -130,7 +130,7 @@ const TopNavigator = (props) => {
   };
 
   return (
-    <React.Fragment>
+    <React.Fragment className={classes.fragment}>
       <ElevationScroll {...props}>
         <AppBar
           className={clsx(classes.appBar, {
