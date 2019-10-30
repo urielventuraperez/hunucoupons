@@ -1,12 +1,3 @@
-export const BUSINESS = [{
-    id: '1',
-    name: '',
-    slogan: '',
-    logo: '',
-    phone: '',
-    celnumber: '',
-}];
-
 export const COUPONS = [{
     id: '1',
     name: 'Coupon one',
