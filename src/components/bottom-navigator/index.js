@@ -27,7 +27,7 @@ const BottomNavigator = () => {
 	return (
 		<BottomNavigation value={value} onChange={handleChange} className={classes.root}>
 			<BottomNavigationAction component={Link} to="/" label="Home" value="home" icon={<HomeIcon />} />
-			<BottomNavigationAction component={Link} to="/favorites" label="Favorites Coupons" value="favorites" icon={<FavoriteIcon />} />
+			<BottomNavigationAction component={Link} to="/favorites-coupons" label="Favorites Coupons" value="favorites" icon={<FavoriteIcon />} />
 			<BottomNavigationAction component={Link} to="/favorites-bussines" label="Favorite Bussines" value="favoritesBussines" icon={<LocationOnIcon />} />
 			<BottomNavigationAction component={Link} to="/settings" label="Folder" value="folder" icon={<SettingsIcon />} />
 		</BottomNavigation>

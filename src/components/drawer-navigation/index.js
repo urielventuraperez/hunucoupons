@@ -5,7 +5,7 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Close from '@material-ui/icons/Close';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -46,7 +46,7 @@ const DrawerNavigation = (props) => {
     >
       <div className={classes.drawerHeader}>
         <IconButton onClick={props.handleDrawerClose}>
-          {theme.direction === 'ltr' ? <Close /> : <ChevronRightIcon />}
+          {theme.direction === 'ltr' ? <Close /> : <ArrowForwardIosIcon />}
         </IconButton>
       </div>
       <List>
