@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 import configureStore, { history } from "./redux/store";
 import { Provider } from "react-redux";
-import App from "./pages/app";
+import App from "./app";
 
 const store = configureStore();
 ReactDOM.render(

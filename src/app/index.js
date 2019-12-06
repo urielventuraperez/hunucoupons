@@ -1,10 +1,11 @@
 import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import TopNavigator from "../../components/header";
-import BottomNavigator from "../../components/bottom-navigator";
+import TopNavigator from "../components/header";
+import BottomNavigator from "../components/bottom-navigator";
+import Footer from '../components/footer';
 import PropTypes from "prop-types";
 import { ConnectedRouter } from "connected-react-router";
-import Routes from "../../routes";
+import Routes from "../routes";
 
 const App = ({ history }) => {
   return (
@@ -13,6 +14,7 @@ const App = ({ history }) => {
       <TopNavigator />
       {Routes}
       <BottomNavigator />
+      <Footer />
     </ConnectedRouter>
   );
 };
