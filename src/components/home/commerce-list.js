@@ -5,13 +5,10 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles ( theme => ({
-  root: {
-    flexGrow: 1,
-  },
   container:{
       position: 'relative',
-      bottom: '80px',
-      background: theme.palette.text.secondary,
+      marginTop:'80px',
+      marginBottom:'80px',
   },
   box:{
     height: '90vh',

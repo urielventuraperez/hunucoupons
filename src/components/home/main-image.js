@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
         width: 400,
     },
     box: {
-        height: '75vh',
+        height: '85vh',
         margin: 0,
         padding: 0,
         backgroundColor: 'rgba(52, 52, 52, 0.8)',

@@ -1,6 +1,6 @@
 import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import TopNavigator from "../../components/top-navigator";
+import TopNavigator from "../../components/header";
 import BottomNavigator from "../../components/bottom-navigator";
 import PropTypes from "prop-types";
 import { ConnectedRouter } from "connected-react-router";

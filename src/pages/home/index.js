@@ -1,6 +1,6 @@
 import React from 'react';
-import FirstSection from '../../components/home/first-section'
-import SecondSection from '../../components/home/second-section'
+import FirstSection from '../../components/home/main-image'
+import SecondSection from '../../components/home/commerce-list'
 import NewCoupons from '../../components/home/new-coupons-section'
 
 const Home = () => {
