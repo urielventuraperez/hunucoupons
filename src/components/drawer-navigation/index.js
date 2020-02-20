@@ -51,7 +51,7 @@ const DrawerNavigation = (props) => {
       </div>
       <List>
         {CATEGORIES.map((category, index) => (
-          <ListItem button key={category}>
+          <ListItem button key={category.id}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={category.name} />
           </ListItem>

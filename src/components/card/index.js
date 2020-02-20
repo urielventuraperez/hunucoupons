@@ -10,6 +10,7 @@ import IconButton from "@material-ui/core/IconButton";
 import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
+import { Link } from "react-router-dom"
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -39,21 +40,25 @@ const BussinesCard = props => {
 
   return (
     <Card className={classes.card}>
-      <CardHeader title={props.isOnlyImage ? props.name : ""} />
+      {props.isOnlyImage && <CardHeader title={props.name} />}
       <CardActionArea>
         <CardMedia
+          component={ Link }
+          to="/commerce-example"
           className={classes.media}
           image={props.media}
           title={props.name}
         />
-        <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="share">
-            <ShareIcon />
-          </IconButton>
-        </CardActions>
+        {props.isOnlyImage && (
+          <CardActions disableSpacing>
+            <IconButton aria-label="add to favorites">
+              <FavoriteIcon />
+            </IconButton>
+            <IconButton aria-label="share">
+              <ShareIcon />
+            </IconButton>
+          </CardActions>
+        )}
       </CardActionArea>
     </Card>
   );

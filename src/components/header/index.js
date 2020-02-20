@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
@@ -11,6 +10,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Avatar from '@material-ui/core/Avatar';
 import Photo from '../../assets/images/avatar.jpg';
 import DrawerNavigator from '../drawer-navigation';
+import Logo from '../../assets/images/isotipo.png';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -18,10 +19,15 @@ const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1,
   },
+  logo: {
+    width: '120px',
+
+  },
   menuButton: {
     marginRight: theme.spacing(2),
   },
   appBar: {
+    background: theme.palette.background.default,
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -43,6 +49,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
+  },
+  username: {
+    color: theme.palette.text.secondary
   },
   bigAvatar: {
     margin: 8,
@@ -105,15 +114,13 @@ const TopNavigator = (props) => {
               edge="start"
               onClick={handleDrawerOpen}
               className={clsx(classes.menuButton, open && classes.hide)}
-              color="inherit"
               aria-label="open drawer"
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h5" className={classes.title} noWrap>Hunucoupons</Typography>
+            <Link to="/"><img className={classes.logo} src={Logo} alt="" /></Link>
             <div className={classes.grow} />
             <div>
-              <Typography component="span" variant="subtitle1">Username</Typography>
               <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"

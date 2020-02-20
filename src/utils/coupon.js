@@ -13,7 +13,7 @@ export const DATA_NEW_COUPON = [{
 },{
 	id:"2",
 	title:"Bud Light a $20",
-	short_description:"Para esta calor, nada mejor que unas cervezas bien heladas. Ven y disfruta con nosotros.",
+	short_description:"Para este calor, unas cervezas bien heladas. Ven y disfruta con nosotros.",
 	featured_image:"https://d3f5rf6vpkkrog.cloudfront.net/images/valoraciones/0018/2000/IMG_6194_logo.JPG?1492993425",
 	initial_price:"0",
 	end_price:"0",
@@ -37,7 +37,7 @@ export const DATA_NEW_COUPON = [{
 },{
 	id:"4",
 	title:"¡Arma tu hamburguesa!",
-	short_description:"Ven y elige todo lo que quieras ponerle a tu hamburguesa. El precio es unico y nada caro.",
+	short_description:"Ven y elige todo lo que quieras ponerle a tu hamburguesa. El precio es unico.",
 	featured_image:"https://279340-865961-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/01/receta-hamburguesa-americana.jpeg",
 	initial_price:"0",
 	end_price:"0",

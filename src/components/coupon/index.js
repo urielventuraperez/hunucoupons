@@ -13,23 +13,24 @@ import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
-import Launch from "@material-ui/icons/Launch";
 import DialogCoupon from "../../components/dialog-coupon";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   media: {
     height: 0,
     paddingTop: "56.25%" // 16:9
   },
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest
-    })
+  date: {
+    position: "absolute",
+    float: "left",
+    bottom: "0px",
+    background: theme.palette.primary.dark,
+    padding: `${theme.spacing(1)}px ${theme.spacing(3)}px`,
+    color: theme.palette.text.light
   },
-  expandOpen: {
-    transform: "rotate(180deg)"
+  iconButton: {
+    marginLeft: "auto",
   },
   avatar: {
     backgroundColor: red[500]
@@ -37,7 +38,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Coupon = props => {
-
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -48,11 +48,20 @@ const Coupon = props => {
     setOpen(false);
   };
 
-
   const classes = useStyles();
   return (
-    <Paper elevation={3}>
+    <Paper elevation={2}>
       <Card className={classes.card}>
+        <CardActionArea>
+          <CardMedia
+            className={classes.media}
+            image={props.media}
+            title={props.titleName}
+          />
+          <Typography variant="caption" className={classes.date}>
+            September 14, 2016
+          </Typography>
+        </CardActionArea>
         <CardHeader
           avatar={
             <Avatar
@@ -61,32 +70,30 @@ const Coupon = props => {
               src={props.logo}
             />
           }
-          title={props.titleName}
-          subheader="September 14, 2016"
+          title={
+            <Typography variant="subtitle2" color="primary">
+              {props.titleName}
+            </Typography>
+          }
         />
-        <CardActionArea>
-          <CardMedia
-            className={classes.media}
-            image={props.media}
-            title={props.title}
-          />
-        </CardActionArea>
         <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" component="p">
             {props.descripcion}
           </Typography>
         </CardContent>
-        <CardActions disableSpacing>
-          <IconButton aria-label="Add to favorites">
+        <CardActions disableSpacing={true}>
+          <Button size="large" onClick={handleClickOpen}>VER CUPON</Button>
+          <IconButton className={classes.iconButton} color="primary" aria-label="Add to favorites">
             <FavoriteIcon />
           </IconButton>
-          <IconButton aria-label="Share">
+          <IconButton color="secondary" aria-label="Share">
             <ShareIcon />
           </IconButton>
-          <IconButton onClick={handleClickOpen} aria-label="View">
-            <Launch />
-          </IconButton>
-          <DialogCoupon open={open} handleClose={handleClose} descripcion={props.descripcion} />
+          <DialogCoupon
+            open={open}
+            handleClose={handleClose}
+            descripcion={props.descripcion}
+          />
         </CardActions>
       </Card>
     </Paper>

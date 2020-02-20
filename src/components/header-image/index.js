@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 const HeaderImage = () => {
   const classes = useStyles();
   return (
-    <Fragment className={classes.root}>
+    <Fragment>
       <Grid
         container
         direction="column"

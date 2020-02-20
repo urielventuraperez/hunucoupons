@@ -2,20 +2,24 @@ import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TopNavigator from "../components/header";
 import BottomNavigator from "../components/bottom-navigator";
-import Footer from '../components/footer';
+import Footer from "../components/footer";
 import PropTypes from "prop-types";
 import { ConnectedRouter } from "connected-react-router";
 import Routes from "../routes";
+import { ThemeProvider } from "@material-ui/core/styles";
+import { Theme } from "../theme";
 
 const App = ({ history }) => {
   return (
-    <ConnectedRouter history={history}>
-      <CssBaseline />
-      <TopNavigator />
-      {Routes}
-      <BottomNavigator />
-      <Footer />
-    </ConnectedRouter>
+    <ThemeProvider theme={Theme}>
+      <ConnectedRouter history={history}>
+        <CssBaseline />
+        <TopNavigator />
+        {Routes}
+        <BottomNavigator />
+        <Footer />
+      </ConnectedRouter>
+    </ThemeProvider>
   );
 };
 
