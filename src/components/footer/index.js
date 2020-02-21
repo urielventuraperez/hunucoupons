@@ -29,13 +29,13 @@ function Social() {
   return (
     <Box align="center">
       <IconButton href={SOCIALMEDIA.facebook}>
-        <FacebookIcon />
+        <FacebookIcon color="secondary" />
       </IconButton>
       <IconButton href={SOCIALMEDIA.twitter}>
-        <TwitterIcon />
+        <TwitterIcon color="secondary" />
       </IconButton>
       <IconButton href={SOCIALMEDIA.instagram}>
-        <InstagramIcon />
+        <InstagramIcon color="secondary" />
       </IconButton>
     </Box>
   );
@@ -43,11 +43,9 @@ function Social() {
 
 function Copyright() {
   return (
-    <Typography variant="body2" align="center">
+    <Typography variant="body1" align="center">
       {" Copyright © "}
-      <Link color="inherit" href="#">
-        Hunucoupons
-      </Link>{" "}
+      Cuponesh {" "}
       {new Date().getFullYear()}
     </Typography>
   );
@@ -62,13 +60,17 @@ const Footer = () => {
         <Grid container spacing={4} justify="space-evenly">
           {DATAFOOTER.map(footer => (
             <Grid item xs={6} sm={3} key={footer.title}>
-              <Typography variant="h6" color="textPrimary" gutterBottom>
+              <Typography
+                variant="subtitle1"
+                color="textSecondary"
+                gutterBottom
+              >
                 {footer.title}
               </Typography>
               <ul>
                 {footer.description.map((item, i) => (
                   <li key={i}>
-                    <Link href="#" variant="subtitle1" color="textSecondary">
+                    <Link href="#" variant="body2" color="textPrimary">
                       {item}
                     </Link>
                   </li>

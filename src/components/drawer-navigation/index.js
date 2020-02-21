@@ -12,6 +12,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import { CATEGORIES } from '../../utils/categories';
+import { Typography } from '@material-ui/core';
 
 const drawerWidth = 240;
 
@@ -46,14 +47,14 @@ const DrawerNavigation = (props) => {
     >
       <div className={classes.drawerHeader}>
         <IconButton onClick={props.handleDrawerClose}>
-          {theme.direction === 'ltr' ? <Close /> : <ArrowForwardIosIcon />}
+          {theme.direction === 'ltr' ? <Close color="primary" /> : <ArrowForwardIosIcon />}
         </IconButton>
       </div>
       <List>
         {CATEGORIES.map((category, index) => (
           <ListItem button key={category.id}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={category.name} />
+            <ListItemIcon>{index % 2 === 0 ? <InboxIcon color="secondary" /> : <MailIcon color="secondary" />}</ListItemIcon>
+        <ListItemText><Typography variant="subtitle1">{category.name}</Typography></ListItemText>
           </ListItem>
         ))}
       </List>

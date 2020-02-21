@@ -6,7 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
 import Avatar from '@material-ui/core/Avatar';
 import Photo from '../../assets/images/avatar.jpg';
 import DrawerNavigator from '../drawer-navigation';
@@ -116,7 +116,7 @@ const TopNavigator = (props) => {
               className={clsx(classes.menuButton, open && classes.hide)}
               aria-label="open drawer"
             >
-              <MenuIcon />
+              <MenuRoundedIcon color="action" />
             </IconButton>
             <Link to="/"><img className={classes.logo} src={Logo} alt="" /></Link>
             <div className={classes.grow} />

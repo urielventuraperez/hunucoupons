@@ -1,15 +1,32 @@
-import React from "react";
+import React, {useEffect} from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TopNavigator from "../components/header";
 import BottomNavigator from "../components/bottom-navigator";
 import Footer from "../components/footer";
+import LoginDialog from "../components/login";
 import PropTypes from "prop-types";
 import { ConnectedRouter } from "connected-react-router";
 import Routes from "../routes";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { Theme } from "../theme";
 
+
 const App = ({ history }) => {
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = value => {
+    setOpen(false);
+  };
+
+  useEffect( () => {
+    setTimeout(()=>handleClickOpen(), 2000);
+  }, [] );
+
   return (
     <ThemeProvider theme={Theme}>
       <ConnectedRouter history={history}>
@@ -19,6 +36,9 @@ const App = ({ history }) => {
         <BottomNavigator />
         <Footer />
       </ConnectedRouter>
+
+      <LoginDialog open={open} onClose={handleClose} />
+
     </ThemeProvider>
   );
 };

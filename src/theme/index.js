@@ -1,114 +1,120 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-import pink from '@material-ui/core/colors/pink';
-import grey from '@material-ui/core/colors/grey';
+import { createMuiTheme } from "@material-ui/core/styles";
+import pink from "@material-ui/core/colors/pink";
+import grey from "@material-ui/core/colors/grey";
 
 export const Theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#fd548e',
-      dark: pink['A700']
+      main: "#fd548e",
+      dark: pink["A700"]
     },
     secondary: {
-      main: pink['A700'],
+      main: pink["A700"]
     },
     background: {
-      default: '#ffffff',
-      paper: '#ffffff'
+      default: "#ffffff",
+      paper: "#ffffff"
     },
     text: {
-      primary: grey['900'],
-      secondary: '#fd548e',
-      disabled: grey['50'],
-      light: '#ffffff',
-      hint: grey['50']
-    }
+      primary: grey["900"],
+      secondary: "#fd548e",
+      disabled: grey["50"],
+      light: "#ffffff",
+      hint: grey["50"]
+    },
+    error: {
+      main: "#B00020"
+    },
+    action: { 
+      main: "#232f34" 
+    },
   },
   typography: {
     fontFamily: [
-      'Asap',
-      'Poppins',
-      'BlinkMacSystemFont',
+      "Asap",
+      "Poppins",
+      "BlinkMacSystemFont",
       '"Segoe UI"',
-      'Roboto',
+      "Roboto",
       '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
+      "Arial",
+      "sans-serif",
       '"Apple Color Emoji"',
       '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
+      '"Segoe UI Symbol"'
+    ].join(","),
     h1: {
-      fontSize: '8rem',
+      fontSize: "8rem",
       fontWeight: 300,
-      fontFamily: 'Poppins',
-      letterSpacing: '-1.5px'
+      fontFamily: "Poppins",
+      letterSpacing: "-1.5px"
     },
     h2: {
-      fontSize: '5rem',
+      fontSize: "5rem",
       fontWeight: 300,
-      fontFamily: 'Poppins',
-      letterSpacing: '-0.5px'
+      fontFamily: "Poppins",
+      letterSpacing: "-0.5px"
     },
     h3: {
-      fontSize: '4rem',
+      fontSize: "4rem",
       fontWeight: 400,
-      fontFamily: 'Poppins',
-      letterSpacing: '0px'
+      fontFamily: "Poppins",
+      letterSpacing: "0px"
     },
     h4: {
-      fontSize: '2.8333rem',
+      fontSize: "2.8333rem",
       fontWeight: 400,
-      fontFamily: 'Poppins',
-      letterSpacing: '0.25px'
+      fontFamily: "Poppins",
+      letterSpacing: "0.25px"
     },
     h5: {
-      fontSize: '2rem',
+      fontSize: "2rem",
       fontWeight: 400,
-      fontFamily: 'Poppins',
-      letterSpacing: '0px'      
+      fontFamily: "Poppins",
+      letterSpacing: "0px"
     },
     h6: {
-      fontSize: '1.6666rem',
+      fontSize: "1.6666rem",
       fontWeight: 500,
-      fontFamily: 'Poppins',
-      letterSpacing: '0.15px'
+      fontFamily: "Poppins",
+      letterSpacing: "0.15px"
     },
     subtitle1: {
-      fontSize: '1.3333rem',
+      fontSize: "1.3333rem",
       fontWeight: 300,
-      fontFamily: 'Poppins',
-      letterSpacing: '0.15px'
+      fontFamily: "Poppins",
+      letterSpacing: "0.15px"
     },
     subtitle2: {
-      fontSize: '1.1666rem',
+      fontSize: "1.1666rem",
       fontWeight: 500,
-      fontFamily: 'Poppins',
-      letterSpacing: '0.1px',
+      fontFamily: "Poppins",
+      letterSpacing: "0.1px"
     },
     body1: {
-      fontSize: '1.05rem',
+      fontSize: "1.05rem",
       fontWeight: 400,
-      fontFamily: 'Poppins',
-      letterSpacing: '0.5px'
+      fontFamily: "Poppins",
+      letterSpacing: "0.5px"
     },
     body2: {
-      fontSize: '0.89rem',
+      fontSize: "0.89rem",
       fontWeight: 400,
-      fontFamily: 'Poppins',
-      letterSpacing: '0.25px'
+      fontFamily: "Poppins",
+      letterSpacing: "0.25px"
     },
     button: {
-      fontSize: '1.0666rem',
+      fontSize: "1.0666rem",
       fontWeight: 500,
-      fontFamily: 'Poppins',
-      letterSpacing: '1.25px',
-      textTransform: 'uppercase'
+      fontFamily: "Poppins",
+      letterSpacing: "1.25px",
+      textTransform: "uppercase"
     },
     caption: {
-      fontSize: '0.7rem',
+      fontSize: "0.7rem",
       fontWeight: 300,
-      fontFamily: 'Poppins',
-      letterSpacing: '0.5px'
+      fontFamily: "Poppins",
+      letterSpacing: "0.5px"
     }
   }
-})
+});
