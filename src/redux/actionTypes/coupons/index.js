@@ -1,0 +1,3 @@
+export const VIEW_ALL_COUPONS = 'VIEW_ALL_COUPONS';
+export const VIEW_COUPON = 'VIEW_COUPON';
+export const LIKE_BUSSINESS = 'LIKE_BUSSINESS';

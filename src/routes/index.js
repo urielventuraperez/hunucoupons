@@ -5,6 +5,7 @@ import Settings from '../pages/settings';
 import BussinesFavorites from '../pages/favorites-bussines';
 import Home from '../pages/home';
 import Commerce from '../pages/commerce';
+import NotFound from '../pages/not-found';
 
 const Routes = (
     <Switch>
@@ -13,6 +14,7 @@ const Routes = (
       <Route exact path="/settings" component={Settings} />
       <Route exact path="/favorites-bussines" component={BussinesFavorites} />
       <Route exact path="/commerce-example" component={Commerce} />
+      <Route exact path="*" component={NotFound} />
     </Switch>
 )
 
