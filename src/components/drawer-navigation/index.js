@@ -54,7 +54,7 @@ const DrawerNavigation = (props) => {
         {CATEGORIES.map((category, index) => (
           <ListItem button key={category.id}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon color="secondary" /> : <MailIcon color="secondary" />}</ListItemIcon>
-        <ListItemText><Typography variant="subtitle1">{category.name}</Typography></ListItemText>
+        <ListItemText><Typography variant="body1">{category.name}</Typography></ListItemText>
           </ListItem>
         ))}
       </List>
