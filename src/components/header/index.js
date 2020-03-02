@@ -127,7 +127,7 @@ const TopNavigator = (props) => {
                 aria-haspopup="true"
                 color="inherit"
               >
-                <Avatar alt="Remy Sharp" src={Photo} className={classes.bigAvatar} />
+                <Link to="/profile"><Avatar alt="Remy Sharp" src={Photo} className={classes.bigAvatar} /></Link>
               </IconButton>
             </div>
           </Toolbar>

@@ -25,6 +25,7 @@ const useStyles = makeStyles(theme => ({
     position: "absolute",
     float: "left",
     bottom: "0px",
+    color: theme.palette.text.light,
     background: theme.palette.primary.dark,
     padding: `${theme.spacing(1)}px ${theme.spacing(3)}px`,
   },

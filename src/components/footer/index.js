@@ -10,6 +10,7 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import { DATAFOOTER, SOCIALMEDIA } from "../../utils/dataFooter";
+import { useLocation } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   footer: {
@@ -45,8 +46,7 @@ function Copyright() {
   return (
     <Typography variant="body1" align="center">
       {" Copyright © "}
-      Cuponesh {" "}
-      {new Date().getFullYear()}
+      Cuponesh {new Date().getFullYear()}
     </Typography>
   );
 }
@@ -54,38 +54,42 @@ function Copyright() {
 const Footer = () => {
   const classes = useStyles();
 
+  let location = useLocation();
+
   return (
     <React.Fragment>
-      <Container maxWidth="md" component="footer" className={classes.footer}>
-        <Grid container spacing={4} justify="space-evenly">
-          {DATAFOOTER.map(footer => (
-            <Grid item xs={6} sm={3} key={footer.title}>
-              <Typography
-                variant="subtitle1"
-                color="textSecondary"
-                gutterBottom
-              >
-                {footer.title}
-              </Typography>
-              <ul>
-                {footer.description.map((item, i) => (
-                  <li key={i}>
-                    <Link href="#" variant="body2" color="textPrimary">
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </Grid>
-          ))}
-        </Grid>
-        <Box mt={3}>
-          <Social />
-        </Box>
-        <Box mt={3}>
-          <Copyright />
-        </Box>
-      </Container>
+      {location.pathname !== "/profile" && (
+        <Container maxWidth="md" component="footer" className={classes.footer}>
+          <Grid container spacing={4} justify="space-evenly">
+            {DATAFOOTER.map(footer => (
+              <Grid item xs={6} sm={3} key={footer.title}>
+                <Typography
+                  variant="subtitle1"
+                  color="textSecondary"
+                  gutterBottom
+                >
+                  {footer.title}
+                </Typography>
+                <ul>
+                  {footer.description.map((item, i) => (
+                    <li key={i}>
+                      <Link href="#" variant="body2" color="textPrimary">
+                        {item}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </Grid>
+            ))}
+          </Grid>
+          <Box mt={3}>
+            <Social />
+          </Box>
+          <Box mt={3}>
+            <Copyright />
+          </Box>
+        </Container>
+      )}
     </React.Fragment>
   );
 };

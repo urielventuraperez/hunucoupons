@@ -24,7 +24,7 @@ export const LightTheme = createMuiTheme({
     text: {
       secondary: grey["600"],
       disabled: grey["50"],
-      light: "#fd548e",
+      light: "#ffffff",
       hint: grey["50"]
     },
   },

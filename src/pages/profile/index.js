@@ -9,17 +9,23 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core";
+import Hunucma from "../../assets/images/hunucma.jpg";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    marginTop: theme.spacing(5),
+    marginTop: theme.spacing(3),
+    backgroundImage: `url(${Hunucma})`,
+    height: "80vh"
+  },
+  box: {
+    marginTop: theme.spacing(1)
   },
   paper: {
-    maxWidth:360,
+    maxWidth: 360
   },
   buttonGroup: {
-    width: '100%'
-  },
+    width: "100%"
+  }
 }));
 
 const Profile = () => {
@@ -38,7 +44,7 @@ const Profile = () => {
           <CardActionArea>
             <CardContent>
               <Box
-                className={classes.root}
+                className={classes.box}
                 display="flex"
                 flexDirection="column"
                 justifyContent="center"
@@ -46,14 +52,18 @@ const Profile = () => {
                 alignContent="center"
                 flex="2"
               >
-                <Avatar>H</Avatar>
+                <Box m={3}>
+                  <Avatar>H</Avatar>
+                </Box>
                 <Typography gutterBottom variant="h5" component="h2">
                   Lizard
                 </Typography>
-                <Typography variant="subtitle2" color="textSecondary" component="p">
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except
-                  Antarctica.
+                <Typography variant="body2" color="textSecondary" component="p">
+                  <Box textAlign="center" m={1}>
+                    Lizards are a widespread group of squamate reptiles, with
+                    over 6,000 species, ranging across all continents except
+                    Antarctica.
+                  </Box>
                 </Typography>
               </Box>
             </CardContent>

@@ -6,7 +6,7 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import HomeIcon from "@material-ui/icons/Home";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -18,7 +18,8 @@ const useStyles = makeStyles(theme => ({
 
 const BottomNavigator = () => {
   const classes = useStyles();
-  const [value, setValue] = React.useState("home");
+  let location = useLocation();
+  const [value, setValue] = React.useState(location.pathname);
 
   return (
     <BottomNavigation
@@ -32,28 +33,28 @@ const BottomNavigator = () => {
         component={Link}
         to="/"
         label="Inicio"
-        value="home"
+        value="/"
         icon={<HomeIcon />}
       />
       <BottomNavigationAction
         component={Link}
         to="/favorites-coupons"
         label="Mis Cupones"
-        value="favorites"
+        value="/favorites-coupons"
         icon={<FavoriteIcon />}
       />
       <BottomNavigationAction
         component={Link}
         to="/favorites-bussines"
         label="Mis lugares"
-        value="favoritesBussines"
+        value="/favorites-bussines"
         icon={<LocationOnIcon />}
       />
       <BottomNavigationAction
         component={Link}
         to="/profile"
         label="Mi Perfil"
-        value="profile"
+        value="/profile"
         icon={<SettingsIcon />}
       />
     </BottomNavigation>
