@@ -13,7 +13,7 @@ export const LightTheme = createMuiTheme({
     },
     background: {
       default: "#ffffff",
-      paper: "#ffffff"
+      paper: grey['50']
     },
     error: {
       main: "#B00020"
@@ -22,7 +22,7 @@ export const LightTheme = createMuiTheme({
       main: "#232f34" 
     },
     text: {
-      secondary: "#ffffff",
+      secondary: grey["600"],
       disabled: grey["50"],
       light: "#fd548e",
       hint: grey["50"]
