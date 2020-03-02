@@ -26,12 +26,10 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     fontWeight: "600",
-    color: theme.palette.text.secondary,
     textShadow: "0px 2px 3px rgba(0,0,0,0.4)"
   },
   subtitle: {
     fontWeight: "100",
-    color: theme.palette.text.secondary,
     textAlign: "center"
   },
   fab: {
@@ -56,7 +54,7 @@ const Commerce = () => {
         justify="center"
         alignItems="center"
       >
-        <Typography className={classes.title} variant="h2">
+        <Typography className={classes.title} color="primary" variant="h2">
           Commerce
         </Typography>
       </Grid>
@@ -66,7 +64,7 @@ const Commerce = () => {
         </Fab>
       </Box>
       <Box m={8}>
-        <Typography className={classes.subtitle} variant="h6">
+        <Typography className={classes.subtitle} color="secondary" variant="h6">
           Description
         </Typography>
       </Box>
@@ -98,7 +96,7 @@ const Commerce = () => {
           </Grid>
         </Grid>
         <Box m={8}>
-          <Typography className={classes.subtitle} variant="h6">
+          <Typography className={classes.subtitle} color="secondary" variant="h6">
             Cupones
           </Typography>
         </Box>

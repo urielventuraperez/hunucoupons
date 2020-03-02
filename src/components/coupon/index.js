@@ -27,7 +27,6 @@ const useStyles = makeStyles(theme => ({
     bottom: "0px",
     background: theme.palette.primary.dark,
     padding: `${theme.spacing(1)}px ${theme.spacing(3)}px`,
-    color: theme.palette.text.light
   },
   iconButton: {
     marginLeft: "auto",
@@ -58,7 +57,7 @@ const Coupon = props => {
             image={props.media}
             title={props.titleName}
           />
-          <Typography variant="caption" className={classes.date}>
+          <Typography variant="caption" color="textSecondary" className={classes.date}>
             September 14, 2016
           </Typography>
         </CardActionArea>
