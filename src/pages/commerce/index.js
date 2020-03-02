@@ -79,7 +79,7 @@ const Commerce = () => {
             </Paper>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Paper elevation={0} className={classes.paper}>
+            <Paper elevation={0} className={classes.paper}> 
               <PhoneIcon />
               <Typography color="textPrimary" variant="subtitle2">
                 Contacto
@@ -96,7 +96,11 @@ const Commerce = () => {
           </Grid>
         </Grid>
         <Box m={8}>
-          <Typography className={classes.subtitle} color="secondary" variant="h6">
+          <Typography
+            className={classes.subtitle}
+            color="secondary"
+            variant="h6"
+          >
             Cupones
           </Typography>
         </Box>

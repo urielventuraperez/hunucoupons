@@ -1,54 +1,53 @@
-import React, { useState } from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import { makeStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
-import Avatar from '@material-ui/core/Avatar';
-import Photo from '../../assets/images/avatar.jpg';
-import DrawerNavigator from '../drawer-navigation';
-import Logo from '../../assets/images/isotipo.png';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import useScrollTrigger from "@material-ui/core/useScrollTrigger";
+import { makeStyles } from "@material-ui/core/styles";
+import IconButton from "@material-ui/core/IconButton";
+import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
+import Avatar from "@material-ui/core/Avatar";
+import Photo from "../../assets/images/avatar.jpg";
+import DrawerNavigator from "../drawer-navigation";
+import Logo from "../../assets/images/isotipo.png";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
   grow: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   logo: {
-    width: '120px',
-
+    width: "120px"
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(2)
   },
   appBar: {
     background: theme.palette.background.default,
-    transition: theme.transitions.create(['margin', 'width'], {
+    transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
+      duration: theme.transitions.duration.leavingScreen
+    })
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
+    transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+      duration: theme.transitions.duration.enteringScreen
+    })
   },
   hide: {
-    display: 'none',
+    display: "none"
   },
   title: {
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
+    display: "none",
+    [theme.breakpoints.up("sm")]: {
+      display: "block"
+    }
   },
   username: {
     color: theme.palette.text.secondary
@@ -56,41 +55,41 @@ const useStyles = makeStyles(theme => ({
   bigAvatar: {
     margin: 8,
     width: 50,
-    height: 50,
+    height: 50
   },
   drawer: {
     width: drawerWidth,
-    flexShrink: 0,
+    flexShrink: 0
   },
   drawerPaper: {
-    width: drawerWidth,
+    width: drawerWidth
   },
   drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
     padding: theme.spacing(0, 1),
     ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
-  },
+    justifyContent: "flex-end"
+  }
 }));
 
 function ElevationScroll(props) {
   const { children } = props;
   const trigger = useScrollTrigger({
     disableHysteresis: true,
-    threshold: 0,
+    threshold: 0
   });
 
   return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0,
+    elevation: trigger ? 4 : 0
   });
 }
 
 ElevationScroll.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.element.isRequired
 };
 
-const TopNavigator = (props) => {
+const TopNavigator = props => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
@@ -107,8 +106,9 @@ const TopNavigator = (props) => {
       <ElevationScroll {...props}>
         <AppBar
           className={clsx(classes.appBar, {
-            [classes.appBarShift]: open,
-          })}>
+            [classes.appBarShift]: open
+          })}
+        >
           <Toolbar>
             <IconButton
               edge="start"
@@ -118,7 +118,9 @@ const TopNavigator = (props) => {
             >
               <MenuRoundedIcon color="action" />
             </IconButton>
-            <Link to="/"><img className={classes.logo} src={Logo} alt="" /></Link>
+            <Link to="/">
+              <img className={classes.logo} src={Logo} alt="" />
+            </Link>
             <div className={classes.grow} />
             <div>
               <IconButton
@@ -127,7 +129,13 @@ const TopNavigator = (props) => {
                 aria-haspopup="true"
                 color="inherit"
               >
-                <Link to="/profile"><Avatar alt="Remy Sharp" src={Photo} className={classes.bigAvatar} /></Link>
+                <Link to="/profile">
+                  <Avatar
+                    alt="Remy Sharp"
+                    src={Photo}
+                    className={classes.bigAvatar}
+                  />
+                </Link>
               </IconButton>
             </div>
           </Toolbar>
@@ -137,6 +145,6 @@ const TopNavigator = (props) => {
       <Toolbar />
     </React.Fragment>
   );
-}
+};
 
 export default TopNavigator;

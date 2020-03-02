@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Card from "@material-ui/core/Card";
@@ -15,6 +15,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import DialogCoupon from "../../components/dialog-coupon";
 import Button from "@material-ui/core/Button";
+import Zoom from "@material-ui/core/Zoom";
 
 const useStyles = makeStyles(theme => ({
   media: {
@@ -27,10 +28,10 @@ const useStyles = makeStyles(theme => ({
     bottom: "0px",
     color: theme.palette.text.light,
     background: theme.palette.primary.dark,
-    padding: `${theme.spacing(1)}px ${theme.spacing(3)}px`,
+    padding: `${theme.spacing(1)}px ${theme.spacing(3)}px`
   },
   iconButton: {
-    marginLeft: "auto",
+    marginLeft: "auto"
   },
   avatar: {
     backgroundColor: red[500]
@@ -39,6 +40,13 @@ const useStyles = makeStyles(theme => ({
 
 const Coupon = props => {
   const [open, setOpen] = React.useState(false);
+  const [makeZoom, setMakeZoom] = React.useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setMakeZoom(true);
+    }, 1000);
+  }, []);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -50,53 +58,66 @@ const Coupon = props => {
 
   const classes = useStyles();
   return (
-    <Paper elevation={2}>
-      <Card className={classes.card}>
-        <CardActionArea>
-          <CardMedia
-            className={classes.media}
-            image={props.media}
-            title={props.titleName}
-          />
-          <Typography variant="caption" color="textSecondary" className={classes.date}>
-            September 14, 2016
-          </Typography>
-        </CardActionArea>
-        <CardHeader
-          avatar={
-            <Avatar
-              aria-label="recipe"
-              className={classes.avatar}
-              src={props.logo}
+    <Zoom in={makeZoom} style={{ transitionDelay: makeZoom ? "500ms" : "0ms" }}>
+      <Paper elevation={2}>
+        <Card className={classes.card}>
+          <CardActionArea>
+            <CardMedia
+              className={classes.media}
+              image={props.media}
+              title={props.titleName}
             />
-          }
-          title={
-            <Typography variant="subtitle2" color="primary">
-              {props.titleName}
+            <Typography
+              variant="caption"
+              color="textSecondary"
+              className={classes.date}
+            >
+              September 14, 2016
             </Typography>
-          }
-        />
-        <CardContent>
-          <Typography variant="body2" component="p">
-            {props.descripcion}
-          </Typography>
-        </CardContent>
-        <CardActions disableSpacing={true}>
-          <Button size="large" onClick={handleClickOpen}>VER CUPON</Button>
-          <IconButton className={classes.iconButton} color="primary" aria-label="Add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton color="secondary" aria-label="Share">
-            <ShareIcon />
-          </IconButton>
-          <DialogCoupon
-            open={open}
-            handleClose={handleClose}
-            descripcion={props.descripcion}
+          </CardActionArea>
+          <CardHeader
+            avatar={
+              <Avatar
+                aria-label="recipe"
+                className={classes.avatar}
+                src={props.logo}
+              />
+            }
+            title={
+              <Typography variant="subtitle2" color="primary">
+                {props.titleName}
+              </Typography>
+            }
           />
-        </CardActions>
-      </Card>
-    </Paper>
+          <CardContent>
+            <Typography variant="body2" component="p">
+              {props.descripcion}
+            </Typography>
+          </CardContent>
+          <CardActions disableSpacing={true}>
+            <Button size="large" onClick={handleClickOpen}>
+              VER CUPON
+            </Button>
+            <IconButton
+              className={classes.iconButton}
+              color="primary"
+              aria-label="Add to favorites"
+            >
+              <FavoriteIcon />
+            </IconButton>
+            <IconButton color="secondary" aria-label="Share">
+              <ShareIcon />
+            </IconButton>
+            <DialogCoupon
+              open={open}
+              handleClose={handleClose}
+              title={props.titleName}
+              descripcion={props.descripcion}
+            />
+          </CardActions>
+        </Card>
+      </Paper>
+    </Zoom>
   );
 };
 

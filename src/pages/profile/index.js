@@ -53,16 +53,14 @@ const Profile = () => {
                 flex="2"
               >
                 <Box m={3}>
-                  <Avatar>H</Avatar>
+                  <Avatar>P</Avatar>
                 </Box>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Lizard
+                <Typography gutterBottom variant="subtitle1" component="h6">
+                  Carlos Uriel
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   <Box textAlign="center" m={1}>
-                    Lizards are a widespread group of squamate reptiles, with
-                    over 6,000 species, ranging across all continents except
-                    Antarctica.
+                    Username profile
                   </Box>
                 </Typography>
               </Box>

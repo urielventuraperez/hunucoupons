@@ -13,20 +13,20 @@ export const LightTheme = createMuiTheme({
     },
     background: {
       default: "#ffffff",
-      paper: grey['50']
+      paper: grey["50"]
     },
     error: {
       main: "#B00020"
     },
-    action: { 
-      main: "#232f34" 
+    action: {
+      main: "#232f34"
     },
     text: {
       secondary: grey["600"],
       disabled: grey["50"],
       light: "#ffffff",
       hint: grey["50"]
-    },
+    }
   },
   typography: {
     fontFamily: [
@@ -134,15 +134,15 @@ export const DarkTheme = createMuiTheme({
     error: {
       main: "#B00020"
     },
-    action: { 
-      main: "#232f34" 
+    action: {
+      main: "#232f34"
     },
     text: {
       secondary: "#ffffff",
       disabled: grey["50"],
       light: "#fd548e",
       hint: grey["50"]
-    },
+    }
   },
   typography: {
     fontFamily: [

@@ -22,7 +22,7 @@ const App = ({ history }) => {
   };
 
   useEffect(() => {
-    setTimeout(() => handleClickOpen(), 2000);
+    setTimeout(() => handleClickOpen(), 10000);
   }, []);
 
   return (
