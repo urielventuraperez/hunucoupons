@@ -44,7 +44,7 @@ const Home = () => {
           <Typography color="textPrimary" variant="h5">Nuevos cupones</Typography>
           <Button variant="contained" color="secondary">Ver más</Button>
         </Box>
-        <Grid className={classes.containerCoupons} container mt={1} spacing={8}>
+        <Grid className={classes.containerCoupons} container mt={1} spacing={4}>
           {DATA_NEW_COUPON.map(coupon => (
             <Grid item xs={12} md={4}>
               <Coupon

@@ -10,7 +10,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: "100%",
+    width: '100%',
     position: "fixed",
     bottom: 0
   },
@@ -39,21 +39,21 @@ const BottomNavigator = () => {
       <BottomNavigationAction
         component={Link}
         to="/favorites-coupons"
-        label="Mis Cupones"
+        label="Cupones"
         value="/favorites-coupons"
         icon={<FavoriteIcon />}
       />
       <BottomNavigationAction
         component={Link}
         to="/favorites-bussines"
-        label="Mis lugares"
+        label="Comercios"
         value="/favorites-bussines"
         icon={<LocationOnIcon />}
       />
       <BottomNavigationAction
         component={Link}
         to="/profile"
-        label="Mi Perfil"
+        label="Perfil"
         value="/profile"
         icon={<SettingsIcon />}
       />
