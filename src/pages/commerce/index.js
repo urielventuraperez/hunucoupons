@@ -15,18 +15,19 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1
   },
   image: {
-    height: "55vh",
+    height: "60vh",
     marginTop: "25px",
     textAlign: "center",
-    backgroundImage:
-      "url(https://images.pexels.com/photos/704982/pexels-photo-704982.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
-    backgroundSize: "cover"
+    backgroundSize: "cover",
+    backgroundColor: 'rgba(0, 0, 0, 0.35)',
+    backgroundBlendMode: 'multiply'
   },
   title: {
     fontWeight: "600",
-    textShadow: "0px 2px 3px rgba(0,0,0,0.4)"
+    textShadow: "0px 2px 3px rgba(0,0,0,0.4)",
+    color: theme.palette.text.light
   },
   subtitle: {
     fontWeight: "100",
@@ -53,8 +54,10 @@ const Commerce = () => {
         direction="column"
         justify="center"
         alignItems="center"
+        style={{ backgroundImage:
+          "url(https://images.pexels.com/photos/704982/pexels-photo-704982.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)" }}
       >
-        <Typography className={classes.title} color="primary" variant="h2">
+        <Typography className={classes.title} variant="h2">
           Commerce
         </Typography>
       </Grid>

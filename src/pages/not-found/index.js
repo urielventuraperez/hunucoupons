@@ -1,53 +1,57 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
-    minWidth: 275,
+    margin: theme.spacing(5),
+    padding: theme.spacing(3)
   },
   bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
+    display: "inline-block",
+    margin: "0 2px",
+    transform: "scale(0.8)"
   },
   pos: {
-    marginBottom: 12,
-  },
-});
+    marginBottom: 12
+  }
+}));
 
 export default function OutlinedCard() {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
-    <Card className={classes.root} variant="outlined">
-      <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Word of the Day
-        </Typography>
-        <Typography variant="h5" component="h2">
-          be{bull}nev{bull}o{bull}lent
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          adjective
-        </Typography>
-        <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
+    <Box
+      className={classes.root}
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      alignContent="center"
+    >
+      <Paper elevation={0}>
+        <CardContent>
+          <Typography variant="h2" gutterBottom>
+            404
+          </Typography>
+          <Typography className={classes.pos} color="textSecondary">
+            Página no encontrada
+          </Typography>
+          <Typography variant="body2" component="p">
+            La página que estas buscando no existe o ha ocurrido algún un error.
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button variant="contained" color="primary" size="small">
+            Volver al inicio
+          </Button>
+        </CardActions>
+      </Paper>
+    </Box>
   );
 }

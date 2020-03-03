@@ -15,6 +15,9 @@ const useStyles = makeStyles(theme => ({
     padding: 0,
     backgroundImage: `url(${Image})`,
     backgroundSize: "cover"
+  },
+  title: {
+    color: theme.palette.text.light,
   }
 }));
 
@@ -29,7 +32,7 @@ const HeaderImage = () => {
         alignItems="center"
         className={classes.box}
       >
-        <Typography variant="h4" component="h2">
+        <Typography className={classes.title} variant="h4" component="h2">
           Las mejores promociones en Hunucmá
         </Typography>
       </Grid>
