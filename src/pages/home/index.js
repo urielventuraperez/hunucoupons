@@ -41,7 +41,7 @@ const Home = () => {
       {/* New coupons section */}
       <Container>
         <Box display="flex" justifyContent="space-between">
-          <Typography color="textPrimary" variant="h4">Nuevos cupones</Typography>
+          <Typography color="textPrimary" variant="h5">Nuevos cupones</Typography>
           <Button variant="contained" color="secondary">Ver más</Button>
         </Box>
         <Grid className={classes.containerCoupons} container mt={1} spacing={8}>

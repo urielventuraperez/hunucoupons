@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import SisalImage from "../../assets/images/sisal.jpg";
+import Image from "../../assets/images/first-section.png";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     height: "85vh",
     margin: 0,
     padding: 0,
-    backgroundImage: `url(${SisalImage})`,
+    backgroundImage: `url(${Image})`,
     backgroundSize: "cover"
   }
 }));
@@ -29,8 +29,8 @@ const HeaderImage = () => {
         alignItems="center"
         className={classes.box}
       >
-        <Typography variant="h1" component="h2">
-          TITLE
+        <Typography variant="h4" component="h2">
+          Las mejores promociones en Hunucmá
         </Typography>
       </Grid>
     </Fragment>

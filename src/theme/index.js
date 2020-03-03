@@ -62,7 +62,7 @@ export const LightTheme = createMuiTheme({
     },
     h4: {
       fontSize: "2.8333rem",
-      fontWeight: 400,
+      fontWeight: 700,
       fontFamily: "Poppins",
       letterSpacing: "0.25px"
     },
