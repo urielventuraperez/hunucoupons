@@ -57,8 +57,8 @@ const Commerce = () => {
         style={{ backgroundImage:
           "url(https://images.pexels.com/photos/704982/pexels-photo-704982.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)" }}
       >
-        <Typography className={classes.title} variant="h2">
-          Commerce
+        <Typography className={classes.title} variant="h4">
+          La tienda de la esquina
         </Typography>
       </Grid>
       <Box>
