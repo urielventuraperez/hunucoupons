@@ -11,4 +11,4 @@ export const OAUTH_REDIRECT = PRODUCTION
   : "http://localhost:3000/oauth2/redirect";
 
 export const FACEBOOK_PROVIDER = `${URL_API}oauth2/authorize/facebook?redirect_uri=${OAUTH_REDIRECT}`;
-export const GOOGLE_PROVIDER = `${URL_API}oauth2/callback/google?redirect_uri=${OAUTH_REDIRECT}`;
+export const GOOGLE_PROVIDER = `${URL_API}oauth2/authorize/google?redirect_uri=${OAUTH_REDIRECT}`;
