@@ -2,10 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemAvatar";
-import ListItemText from "@material-ui/core/ListItemText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -13,8 +9,9 @@ import MailIcon from "@material-ui/icons/Mail";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import { blue } from "@material-ui/core/colors";
 import { red } from "@material-ui/core/colors";
+import Button from "@material-ui/core/Button";
+import { FACEBOOK_PROVIDER, GOOGLE_PROVIDER } from "../../environments";
 
-const socialMedia = ["Facebook", "Gmail"];
 const useStyles = makeStyles(theme => ({
   facebook: {
     color: blue[600]
@@ -30,10 +27,6 @@ const LoginDialog = props => {
 
   const handleClose = () => {
     onClose(selectedValue);
-  };
-
-  const handleListItemClick = value => {
-    onClose(value);
   };
 
   return (
@@ -55,24 +48,14 @@ const LoginDialog = props => {
           de todos los cupones.
         </Typography>
       </DialogContent>
-      <List>
-        {socialMedia.map(social => (
-          <ListItem
-            button
-            onClick={() => handleListItemClick(social)}
-            key={social}
-          >
-            <ListItemIcon>
-              {social === "Facebook" ? (
-                <FacebookIcon className={classes.facebook} />
-              ) : (
-                <MailIcon className={classes.gmail} />
-              )}
-            </ListItemIcon>
-            <ListItemText primary={social} />
-          </ListItem>
-        ))}
-      </List>
+      <Button href={FACEBOOK_PROVIDER}>
+        <FacebookIcon className={classes.facebook} />
+        Facebook
+      </Button>
+      <Button href={GOOGLE_PROVIDER}>
+        <MailIcon className={classes.gmail} />
+        Google
+      </Button>
     </Dialog>
   );
 };

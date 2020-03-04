@@ -6,6 +6,7 @@ import BussinesFavorites from "../pages/favorites-bussines";
 import Home from "../pages/home";
 import Commerce from "../pages/commerce";
 import NotFound from "../pages/not-found";
+import OAuthRedirect from "../components/oAuthRedirect"
 
 const Routes = (
   <Switch>
@@ -19,6 +20,7 @@ const Routes = (
     <Route path="*">
       <Redirect to="/not-found" />
     </Route>
+    <Route path="/oauth2/redirect" component={OAuthRedirect}></Route>
   </Switch>
 );
 
