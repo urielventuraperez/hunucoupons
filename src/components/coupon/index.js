@@ -14,6 +14,7 @@ import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import DialogCoupon from "../../components/dialog-coupon";
+import Toast from "../../components/toast";
 import Button from "@material-ui/core/Button";
 import Zoom from "@material-ui/core/Zoom";
 
@@ -39,7 +40,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Coupon = props => {
-  const [open, setOpen] = React.useState(false);
+  const [openModal, setOpenModal] = React.useState(false);
+
+  const [openSnackbar, setOpenSnackbar] = React.useState(false);
+
   const [makeZoom, setMakeZoom] = React.useState(false);
 
   useEffect(() => {
@@ -48,12 +52,20 @@ const Coupon = props => {
     }, 1000);
   }, []);
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleClickOpenModal = () => {
+    setOpenModal(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+
+  const handleClickOpenSnackbar = () => {
+    setOpenSnackbar(true);
+  };
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
   };
 
   const classes = useStyles();
@@ -95,13 +107,14 @@ const Coupon = props => {
             </Typography>
           </CardContent>
           <CardActions disableSpacing={true}>
-            <Button size="large" onClick={handleClickOpen}>
+            <Button size="large" onClick={handleClickOpenModal}>
               VER CUPON
             </Button>
             <IconButton
               className={classes.iconButton}
               color="primary"
               aria-label="Add to favorites"
+              onClick={handleClickOpenSnackbar}
             >
               <FavoriteIcon />
             </IconButton>
@@ -109,10 +122,15 @@ const Coupon = props => {
               <ShareIcon />
             </IconButton>
             <DialogCoupon
-              open={open}
-              handleClose={handleClose}
+              open={openModal}
+              handleClose={handleCloseModal}
               title={props.titleName}
               descripcion={props.descripcion}
+            />
+            <Toast
+              openSnackbar={openSnackbar}
+              handleCloseSnackbar={handleCloseSnackbar}
+              toastMessage={`${props.titleName} se añadio a tus favoritos`}
             />
           </CardActions>
         </Card>

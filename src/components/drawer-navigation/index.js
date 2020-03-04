@@ -10,9 +10,7 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
-import { CATEGORIES } from "../../utils/categories";
+import Avatar from '@material-ui/core/Avatar';
 import { Typography } from "@material-ui/core";
 import { GetCategories } from '../../redux/actions/categories';
 
@@ -36,10 +34,12 @@ const useStyles = makeStyles({
 const DrawerNavigation = props => {
   const classes = useStyles();
   const theme = useTheme();
+  
+  const { categories } = props;
 
   useEffect(()=>{
-    props.GetCategories()
-  },[]);
+    categories()
+  },[categories]);
 
   return (
     <Drawer
@@ -61,17 +61,13 @@ const DrawerNavigation = props => {
         </IconButton>
       </div>
       <List>
-        {CATEGORIES.map((category, index) => (
-          <ListItem button key={category.id}>
+        {props.viewCategories.map((category) => (
+          <ListItem button key={category.categoria_id}>
             <ListItemIcon>
-              {index % 2 === 0 ? (
-                <InboxIcon color="secondary" />
-              ) : (
-                <MailIcon color="secondary" />
-              )}
+            <Avatar alt="Remy Sharp" src={`data:image/jpeg;base64,${category.iconob64}`} />
             </ListItemIcon>
             <ListItemText>
-              <Typography variant="body1">{category.name}</Typography>
+              <Typography variant="body1">{category.nombre}</Typography>
             </ListItemText>
           </ListItem>
         ))}
@@ -90,7 +86,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    GetCategories: () => {
+    categories: () => {
       dispatch(GetCategories())
     }
   }

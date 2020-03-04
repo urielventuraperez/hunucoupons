@@ -14,6 +14,9 @@ export function GetCategories() {
           })
         }
       )
+      .catch( function (error) {
+        console.log(error)
+      })
   }
 }
 
