@@ -1,7 +1,7 @@
-const PRODUCTION = false;
+const PRODUCTION = true;
 
 export const URL_API = PRODUCTION
-  ? "localhost"
+  ? "https://movilappws.herokuapp.com/"
   : "https://movilappws.herokuapp.com/";
 
 export const ACCESS_TOKEN = 'accessToken';
