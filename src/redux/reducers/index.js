@@ -6,10 +6,10 @@ import categories from './categories';
 import favorites from './favorites';
 
 const rootReducer = (history) => combineReducers({
-    coupons: coupons,
-    bussines: bussines,
-    categories: categories,
-    favorites: favorites, 
+    coupons,
+    bussines,
+    categories,
+    favorites, 
     router: connectRouter(history),
 })
 

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from 'react-redux';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
@@ -13,6 +14,7 @@ import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import { CATEGORIES } from "../../utils/categories";
 import { Typography } from "@material-ui/core";
+import { GetCategories } from '../../redux/actions/categories';
 
 const drawerWidth = 240;
 
@@ -34,6 +36,10 @@ const useStyles = makeStyles({
 const DrawerNavigation = props => {
   const classes = useStyles();
   const theme = useTheme();
+
+  useEffect(()=>{
+    props.GetCategories()
+  },[]);
 
   return (
     <Drawer
@@ -75,4 +81,19 @@ const DrawerNavigation = props => {
   );
 };
 
-export default DrawerNavigation;
+const mapStateToProps = state => {
+  return {
+    loadCategories: state.categories.loadCategories,
+    viewCategories: state.categories.categories
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    GetCategories: () => {
+      dispatch(GetCategories())
+    }
+  }
+}
+
+export default connect( mapStateToProps, mapDispatchToProps )(DrawerNavigation);
