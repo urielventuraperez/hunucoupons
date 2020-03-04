@@ -7,6 +7,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import { Link, useLocation } from "react-router-dom";
+import Badge from '@material-ui/core/Badge';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -41,14 +42,22 @@ const BottomNavigator = () => {
         to="/favorites-coupons"
         label="Cupones"
         value="/favorites-coupons"
-        icon={<FavoriteIcon />}
+        icon={
+        <Badge badgeContent={14} color="secondary" max={10}>
+          <FavoriteIcon />
+        </Badge>
+        }
       />
       <BottomNavigationAction
         component={Link}
         to="/favorites-bussines"
         label="Comercios"
         value="/favorites-bussines"
-        icon={<LocationOnIcon />}
+        icon={
+        <Badge badgeContent={4} max={10} color="error">
+          <LocationOnIcon />
+        </Badge>
+        }
       />
       <BottomNavigationAction
         component={Link}
