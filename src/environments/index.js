@@ -1,4 +1,4 @@
-const PRODUCTION = false;
+const PRODUCTION = true;
 
 export const URL_API = PRODUCTION
   ? "https://movilappws.herokuapp.com/"
