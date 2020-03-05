@@ -15,12 +15,12 @@ const Routes = (
     <Route exact path="/profile" component={Profile} />
     <Route exact path="/favorites-bussines" component={BussinesFavorites} />
     <Route exact path="/commerce-example" component={Commerce} />
+    <Route exact path="/oauth2/redirect" component={OAuthRedirect}></Route>
     {/* Rutas para los not found */}
     <Route exact path="/not-found" component={NotFound} />
     <Route path="*">
       <Redirect to="/not-found" />
     </Route>
-    <Route path="/oauth2/redirect" component={OAuthRedirect}></Route>
   </Switch>
 );
 

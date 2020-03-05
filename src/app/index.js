@@ -10,7 +10,7 @@ import Routes from "../routes";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { LightTheme } from "../theme";
 
-const App = ({ history }) => {
+const App = ({ history }, props) => {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -42,5 +42,6 @@ const App = ({ history }) => {
 App.propTypes = {
   history: PropTypes.object
 };
+
 
 export default App;

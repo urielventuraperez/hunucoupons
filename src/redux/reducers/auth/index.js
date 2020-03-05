@@ -1,20 +1,18 @@
 import { SET_TOKEN, UNSET_TOKEN } from '../../actionTypes/auth';
-import { URL_API } from '../../../environments';
-
+import { ACCESS_TOKEN } from '../../../environments';
 
 const initialState = {
-  token: '',
-  startSession: false,
+  hasToken: localStorage.getItem(ACCESS_TOKEN) ? true : false,
 }
 
-function reducer ( state, action ){
-  switch( action.payload ){
+function reducer ( state=initialState, action ){
+  switch( action.type ){
     case SET_TOKEN:
-      return;
+      return { ...state, hasToken: true };
     case UNSET_TOKEN:
-      return;
+      return { ...state, hasToken: false };
     default:
-      return;    
+      return state;    
   }
 }
 

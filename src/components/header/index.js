@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
@@ -8,10 +8,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
 import Avatar from "@material-ui/core/Avatar";
-import Photo from "../../assets/images/avatar.jpg";
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import DrawerNavigator from "../drawer-navigation";
 import Logo from "../../assets/images/isotipo.png";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 const drawerWidth = 240;
 
@@ -130,11 +131,19 @@ const TopNavigator = props => {
                 color="inherit"
               >
                 <Link to="/profile">
-                  <Avatar
-                    alt="Remy Sharp"
-                    src={Photo}
-                    className={classes.bigAvatar}
-                  />
+                  { props.isLogged ? (
+                    <Avatar
+                      alt={props.userProfile.nombre}
+                      src={props.userProfile.imageURL}
+                      className={classes.bigAvatar}
+                    />
+                  ) : (
+                    <Avatar
+                      alt="Inicia sesión"
+                      className={classes.bigAvatar}
+                    ><AccountCircleIcon />
+                    </Avatar>
+                  )}
                 </Link>
               </IconButton>
             </div>
@@ -147,4 +156,11 @@ const TopNavigator = props => {
   );
 };
 
-export default TopNavigator;
+const mapStateToProps = state => {
+  return {
+    isLogged: state.auth.hasToken,
+    userProfile: state.user.user
+  };
+};
+
+export default connect(mapStateToProps, null)(TopNavigator);

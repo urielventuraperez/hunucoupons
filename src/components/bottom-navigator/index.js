@@ -8,6 +8,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import { Link, useLocation } from "react-router-dom";
 import Badge from '@material-ui/core/Badge';
+import { connect } from "react-redux";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,7 +18,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const BottomNavigator = () => {
+const BottomNavigator = (props) => {
   const classes = useStyles();
   let location = useLocation();
   const [value, setValue] = React.useState(location.pathname);
@@ -59,15 +60,26 @@ const BottomNavigator = () => {
         </Badge>
         }
       />
-      <BottomNavigationAction
+      {
+        props.hasToken && 
+        <BottomNavigationAction
         component={Link}
         to="/profile"
         label="Perfil"
         value="/profile"
         icon={<SettingsIcon />}
       />
+      }
+
+
     </BottomNavigation>
   );
 };
 
-export default BottomNavigator;
+const mapStateToProps = (state) => {
+  return {
+    hasToken: state.auth.hasToken
+  }
+}
+
+export default connect(mapStateToProps)(BottomNavigator);

@@ -1,36 +1,67 @@
-import React, { Component } from 'react';
-import { ACCESS_TOKEN } from '../../environments';
-import { Redirect } from 'react-router-dom'
+import React, { useEffect } from "react";
+import { ACCESS_TOKEN } from "../../environments";
+import { Redirect } from "react-router-dom";
+import { loginUser } from "../../redux/actions/auth";
+import { getUserProfile } from "../../redux/actions/user";
+import { connect } from "react-redux";
 
-class OAuth2Redirect extends Component {
-    getUrlParameter(name) {
-        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+const OAuth2Redirect = (props) => {
+  const getUrlParameter = name => {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
 
-        var results = regex.exec(this.props.location.search);
-        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-    };
+    var results = regex.exec(props.location.search);
+    return results === null
+      ? ""
+      : decodeURIComponent(results[1].replace(/\+/g, " "));
+  };
 
-    render() {        
-        const token = this.getUrlParameter('token');
-        const error = this.getUrlParameter('error');
+  const { isLogged, getUserProfile } = props;
 
-        if(token) {
-            localStorage.setItem(ACCESS_TOKEN, token);
-            return <Redirect to={{
-                pathname: "/profile",
-                state: { from: this.props.location }
-            }}/>; 
-        } else {
-            return <Redirect to={{
-                pathname: "/",
-                state: { 
-                    from: this.props.location,
-                    error: error 
-                }
-            }}/>; 
-        }
+
+
+  useEffect(()=>{
+    loginUser();
+  },[isLogged]);
+  
+  useEffect(() => {
+    const accessToken = getUrlParameter("token");
+    if (accessToken) {
+      localStorage.setItem(ACCESS_TOKEN, accessToken);
     }
+  }, [isLogged]);
+
+  useEffect(()=>{
+    getUserProfile()
+  },[getUserProfile])
+  
+  return (
+    <div>
+      {props.isLogged && (
+        <Redirect
+          to={{
+            pathname: "/",
+            state: { from: props.location }
+          }}
+        />
+      )}
+    </div>
+  );
+};
+
+const mapStateToProps = ( state ) => {
+  return {
+    isLogged: state.auth.hasToken
+  }
 }
 
-export default OAuth2Redirect;
+const mapDispatchToProps = ( dispatch ) => {
+  return {
+    loginUser: dispatch({ type: 'SET_TOKEN' }),
+    getUserProfile: () => {
+      dispatch(getUserProfile())
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(OAuth2Redirect);
