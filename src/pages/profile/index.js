@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
