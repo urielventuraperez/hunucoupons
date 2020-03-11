@@ -7,12 +7,10 @@ import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
 import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
-import Avatar from "@material-ui/core/Avatar";
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import DrawerNavigator from "../drawer-navigation";
 import Logo from "../../assets/images/isotipo.png";
+import ProfileImage from "../profile-image";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 
 const drawerWidth = 240;
 
@@ -52,11 +50,6 @@ const useStyles = makeStyles(theme => ({
   },
   username: {
     color: theme.palette.text.secondary
-  },
-  bigAvatar: {
-    margin: 8,
-    width: 50,
-    height: 50
   },
   drawer: {
     width: drawerWidth,
@@ -130,21 +123,7 @@ const TopNavigator = props => {
                 aria-haspopup="true"
                 color="inherit"
               >
-                <Link to="/profile">
-                  { props.isLogged ? (
-                    <Avatar
-                      alt={props.userProfile.nombre}
-                      src={props.userProfile.imageURL}
-                      className={classes.bigAvatar}
-                    />
-                  ) : (
-                    <Avatar
-                      alt="Inicia sesión"
-                      className={classes.bigAvatar}
-                    ><AccountCircleIcon />
-                    </Avatar>
-                  )}
-                </Link>
+                <ProfileImage />
               </IconButton>
             </div>
           </Toolbar>
@@ -156,11 +135,4 @@ const TopNavigator = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    isLogged: state.auth.hasToken,
-    userProfile: state.user.user
-  };
-};
-
-export default connect(mapStateToProps, null)(TopNavigator);
+export default TopNavigator;

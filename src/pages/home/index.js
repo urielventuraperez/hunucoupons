@@ -50,10 +50,10 @@ const Home = (props) => {
       {/* Commerce Premium */}
       <Container className={classes.container}>
         <Grid container mt={8} mb={8} spacing={3}>
-          {PREMIUM_BUSSINES.map(bussines => (
-            <Grid item xs={12} md={3}>
+          {PREMIUM_BUSSINES.map((bussines, i) => (
+            <Grid key={i} item xs={12} md={3}>
               <BussinesCard
-                key={bussines.id}
+                key={i}
                 media={bussines.logo}
                 name={bussines.name}
                 isOnlyImage={false}
@@ -74,10 +74,10 @@ const Home = (props) => {
           </Button>
         </Box>
         <Grid className={classes.containerCoupons} container mt={1} spacing={4}>
-          {DATA_NEW_COUPON.map(coupon => (
-            <Grid item xs={12} md={4}>
+          {DATA_NEW_COUPON.map((coupon, i) => (
+            <Grid key={i} item xs={12} md={4}>
               <Coupon
-                key={coupon.id}
+                key={i}
                 titleName={coupon.title}
                 descripcion={coupon.short_description}
                 media={coupon.featured_image}

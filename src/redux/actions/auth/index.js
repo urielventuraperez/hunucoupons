@@ -10,7 +10,7 @@ export function loginUser() {
 export function logoutUser() {
   return function(dispatch) {
     if(localStorage.getItem(ACCESS_TOKEN)){
-      localStorage.removeItem(ACCESS_TOKEN)
+      localStorage.clear()
       return dispatch({
         type: UNSET_TOKEN
       })

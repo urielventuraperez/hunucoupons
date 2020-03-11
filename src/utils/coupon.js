@@ -50,7 +50,7 @@ export const DATA_NEW_COUPON = [{
 	id:"5",
 	title:"¡Gran concierto!",
 	short_description:"Ven y pasa un momento divertido con toda tu familia. ¡Completamente gratis!",
-	featured_image:"https://www.diariodemexico.com/sites/default/files/field/image/concierto%20%281%29.jpg",
+	featured_image:"https://i1.wp.com/www.miguelgaldon.com/wp-content/uploads/2015/09/Retransmitir-concierto-en-directo-v%C3%ADa-streaming.jpg?fit=1000%2C608",
 	initial_price:"0",
 	end_price:"0",
 	discount:"0",

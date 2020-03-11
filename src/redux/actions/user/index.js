@@ -1,5 +1,5 @@
 import { GET_USER, LOAD_USER } from "../../actionTypes/user";
-import { URL_API, ACCESS_TOKEN } from "../../../environments";
+import { URL_API, ACCESS_TOKEN, ACCESS_USER } from "../../../environments";
 
 export function getUserProfile() {
   return function(dispatch) {
@@ -10,6 +10,7 @@ export function getUserProfile() {
     })
       .then(response => response.json())
       .then(json => {
+        localStorage.setItem(ACCESS_USER, JSON.stringify(json.data));
         return dispatch({ type: GET_USER, payload: json.data });
       })
       .catch(function(error) {

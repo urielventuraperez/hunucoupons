@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -12,6 +12,7 @@ import { makeStyles } from "@material-ui/core";
 import { connect } from "react-redux";
 import { logoutUser } from "../../redux/actions/auth";
 import { Redirect } from "react-router-dom";
+import { ACCESS_USER } from "../../environments";
 import Hunucma from "../../assets/images/hunucma.jpg";
 
 const useStyles = makeStyles(theme => ({
@@ -33,6 +34,12 @@ const useStyles = makeStyles(theme => ({
 
 const Profile = props => {
   const classes = useStyles();
+
+  const [user, setUser] = useState(
+    localStorage.getItem(ACCESS_USER)
+      ? JSON.parse(localStorage.getItem(ACCESS_USER))
+      : {}
+  );
 
   return (
     <Box
@@ -57,18 +64,18 @@ const Profile = props => {
                   flex="2"
                 >
                   <Box m={3}>
-                    <Avatar alt={props.user.email} src={props.user.imageURL} />
+                    <Avatar alt={user.email} src={user.imageURL} />
                   </Box>
                   <Typography gutterBottom variant="subtitle1" component="h6">
-                    {props.user.nombre}
+                    {user.nombre}
                   </Typography>
                   <Typography
                     variant="body2"
                     color="textSecondary"
-                    component="p"
+                    component="span"
                   >
                     <Box textAlign="center" m={1}>
-                      {props.user.email}
+                      {user.email}
                     </Box>
                   </Typography>
                 </Box>
@@ -111,7 +118,6 @@ const Profile = props => {
 const mapStateToProps = state => {
   return {
     loadUser: state.user.loadUser,
-    user: state.user.user,
     isLogged: state.auth.hasToken
   };
 };

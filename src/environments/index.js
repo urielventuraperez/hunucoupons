@@ -5,6 +5,7 @@ export const URL_API = PRODUCTION
   : "https://movilappws.herokuapp.com/";
 
 export const ACCESS_TOKEN = 'accessToken';
+export const ACCESS_USER = 'usuario';
 
 export const OAUTH_REDIRECT = PRODUCTION
   ? "https://cuponesh.herokuapp.com/oauth2/redirect"

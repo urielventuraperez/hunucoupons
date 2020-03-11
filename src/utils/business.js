@@ -9,7 +9,7 @@ export const PREMIUM_BUSSINES = [
     id: "2",
     name: "Modelorama Sucursal 1",
     logo:
-      "https://generacionxbox.com/wp-content/uploads/2016/03/Logo-consola-solo-xbox-one-150316.jpg"
+      "https://trabajosasugusto.com/wp-content/uploads/2019/01/Liverpool-750x450.png"
   },
   {
     id: "3",
