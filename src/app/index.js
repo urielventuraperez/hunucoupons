@@ -5,7 +5,7 @@ import BottomNavigator from "../components/bottom-navigator";
 import Footer from "../components/footer";
 import PropTypes from "prop-types";
 import { ConnectedRouter } from "connected-react-router";
-import Routes from "../routes";
+import RenderRoutes from "../routes";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { LightTheme } from "../theme";
 
@@ -15,7 +15,7 @@ const App = ({ history }) => {
       <ConnectedRouter history={history}>
         <CssBaseline />
         <TopNavigator />
-        {Routes}
+          {RenderRoutes}
         <BottomNavigator />
         <Footer />
       </ConnectedRouter>
@@ -26,6 +26,5 @@ const App = ({ history }) => {
 App.propTypes = {
   history: PropTypes.object
 };
-
 
 export default App;

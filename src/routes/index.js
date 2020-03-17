@@ -6,16 +6,24 @@ import BussinesFavorites from "../pages/favorites-bussines";
 import Home from "../pages/home";
 import Commerce from "../pages/commerce";
 import NotFound from "../pages/not-found";
-import OAuthRedirect from "../components/oAuthRedirect"
+import OAuthRedirect from "../components/oAuthRedirect";
+import ProtectedRoutes from "./protected";
 
-const Routes = (
+const RenderRoutes = (
   <Switch>
     <Route exact path="/" component={Home} />
-    <Route exact path="/favorites-coupons" component={Favorites} />
-    <Route exact path="/profile" component={Profile} />
-    <Route exact path="/favorites-bussines" component={BussinesFavorites} />
-    <Route exact path="/commerce-example" component={Commerce} />
     <Route exact path="/oauth2/redirect" component={OAuthRedirect}></Route>
+
+    {/* Rutas Protegidas */}
+    <ProtectedRoutes exact path="/favorites-coupons" component={Favorites} />
+    <ProtectedRoutes
+      exact
+      path="/favorites-bussines"
+      component={BussinesFavorites}
+    />
+    <ProtectedRoutes exact path="/profile" component={Profile} />
+    <ProtectedRoutes exact path="/commerce-example" component={Commerce} />
+
     {/* Rutas para los not found */}
     <Route exact path="/not-found" component={NotFound} />
     <Route path="*">
@@ -24,4 +32,4 @@ const Routes = (
   </Switch>
 );
 
-export default Routes;
+export default RenderRoutes;
