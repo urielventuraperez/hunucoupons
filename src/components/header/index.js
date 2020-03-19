@@ -10,7 +10,7 @@ import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
 import DrawerNavigator from "../drawer-navigation";
 import Logo from "../../assets/images/isotipo.png";
 import ProfileImage from "../profile-image";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -84,6 +84,7 @@ ElevationScroll.propTypes = {
 };
 
 const TopNavigator = props => {
+  let location = useLocation();
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
@@ -97,40 +98,47 @@ const TopNavigator = props => {
 
   return (
     <React.Fragment>
-      <ElevationScroll {...props}>
-        <AppBar
-          className={clsx(classes.appBar, {
-            [classes.appBarShift]: open
-          })}
-        >
-          <Toolbar>
-            <IconButton
-              edge="start"
-              onClick={handleDrawerOpen}
-              className={clsx(classes.menuButton, open && classes.hide)}
-              aria-label="open drawer"
+      {location.pathname !== "/login" && (
+        <div>
+          <ElevationScroll {...props}>
+            <AppBar
+              className={clsx(classes.appBar, {
+                [classes.appBarShift]: open
+              })}
             >
-              <MenuRoundedIcon color="action" />
-            </IconButton>
-            <Link to="/">
-              <img className={classes.logo} src={Logo} alt="" />
-            </Link>
-            <div className={classes.grow} />
-            <div>
-              <IconButton
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                color="inherit"
-              >
-                <ProfileImage />
-              </IconButton>
-            </div>
-          </Toolbar>
-          <DrawerNavigator open={open} handleDrawerClose={handleDrawerClose} />
-        </AppBar>
-      </ElevationScroll>
-      <Toolbar />
+              <Toolbar>
+                <IconButton
+                  edge="start"
+                  onClick={handleDrawerOpen}
+                  className={clsx(classes.menuButton, open && classes.hide)}
+                  aria-label="open drawer"
+                >
+                  <MenuRoundedIcon color="action" />
+                </IconButton>
+                <Link to="/">
+                  <img className={classes.logo} src={Logo} alt="" />
+                </Link>
+                <div className={classes.grow} />
+                <div>
+                  <IconButton
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    color="inherit"
+                  >
+                    <ProfileImage />
+                  </IconButton>
+                </div>
+              </Toolbar>
+              <DrawerNavigator
+                open={open}
+                handleDrawerClose={handleDrawerClose}
+              />
+            </AppBar>
+          </ElevationScroll>
+          <Toolbar />
+        </div>
+      )}
     </React.Fragment>
   );
 };

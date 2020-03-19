@@ -3,17 +3,17 @@ import { Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 const ProtectedRoutes = ({ component, isLogged, ...rest }) => {
-  let ComponentToRender = component;
+  let Component = component;
   return (
     <Route
       {...rest}
       render={props =>
         isLogged.hasToken ? (
-          <ComponentToRender {...props} />
+          <Component {...props} />
         ) : (
           <Redirect
             to={{
-              pathname: "/",
+              pathname: "/login",
               state: { from: props.location }
             }}
           />

@@ -4,6 +4,7 @@ import Favorites from "../pages/favorites-coupons";
 import Profile from "../pages/profile";
 import BussinesFavorites from "../pages/favorites-bussines";
 import Home from "../pages/home";
+import Login from "../pages/login";
 import Commerce from "../pages/commerce";
 import NotFound from "../pages/not-found";
 import OAuthRedirect from "../components/oAuthRedirect";
@@ -12,7 +13,8 @@ import ProtectedRoutes from "./protected";
 const RenderRoutes = (
   <Switch>
     <Route exact path="/" component={Home} />
-    <Route exact path="/oauth2/redirect" component={OAuthRedirect}></Route>
+    <Route exact path="/oauth2/redirect" component={OAuthRedirect}/>
+    <Route exact path="/login" component={Login} />
 
     {/* Rutas Protegidas */}
     <ProtectedRoutes exact path="/favorites-coupons" component={Favorites} />
