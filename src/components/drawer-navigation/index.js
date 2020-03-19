@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { connect } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
@@ -10,9 +10,10 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import Avatar from '@material-ui/core/Avatar';
-import { Typography } from "@material-ui/core";
-import { GetCategories } from '../../redux/actions/categories';
+import Avatar from "@material-ui/core/Avatar";
+import Link from "@material-ui/core/Link";
+import { NavLink } from "react-router-dom";
+import { GetCategories } from "../../redux/actions/categories";
 
 const drawerWidth = 240;
 
@@ -34,12 +35,19 @@ const useStyles = makeStyles({
 const DrawerNavigation = props => {
   const classes = useStyles();
   const theme = useTheme();
-  
+
   const { categories } = props;
 
-  useEffect(()=>{
-    categories()
-  },[categories]);
+  const [itemSelect, setItemSelect] = useState("");
+
+  const onSelected = category => {
+    setItemSelect(category);
+    setTimeout(()=>{props.handleDrawerClose();}, 300)
+  };
+
+  useEffect(() => {
+    categories();
+  }, [categories]);
 
   return (
     <Drawer
@@ -61,15 +69,29 @@ const DrawerNavigation = props => {
         </IconButton>
       </div>
       <List>
-        {props.viewCategories.map((category) => (
-          <ListItem button key={category.categoria_id}>
-            <ListItemIcon>
-            <Avatar alt="Remy Sharp" src={`data:image/jpeg;base64,${category.iconob64}`} />
-            </ListItemIcon>
-            <ListItemText>
-              <Typography variant="body1">{category.nombre}</Typography>
-            </ListItemText>
-          </ListItem>
+        {props.viewCategories.map(category => (
+          <Link
+            component={NavLink}
+            to={`/categoria/${category.slug_nombre}`}
+            variant="body1"
+            underline="none"
+            key={category.categoria_id}
+          >
+            <ListItem
+              onClick={() => onSelected(category.slug_nombre)}
+              selected={itemSelect === category.slug_nombre}
+              button
+            >
+              {" "}
+              <ListItemIcon>
+                <Avatar
+                  alt={`${category.nombre}`}
+                  src={`data:image/jpeg;base64,${category.iconob64}`}
+                />
+              </ListItemIcon>
+              <ListItemText>{category.nombre}</ListItemText>
+            </ListItem>{" "}
+          </Link>
         ))}
       </List>
       <Divider />
@@ -81,15 +103,15 @@ const mapStateToProps = state => {
   return {
     loadCategories: state.categories.loadCategories,
     viewCategories: state.categories.categories
-  }
-}
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
     categories: () => {
-      dispatch(GetCategories())
+      dispatch(GetCategories());
     }
-  }
-}
+  };
+};
 
-export default connect( mapStateToProps, mapDispatchToProps )(DrawerNavigation);
+export default connect(mapStateToProps, mapDispatchToProps)(DrawerNavigation);

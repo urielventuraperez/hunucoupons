@@ -5,6 +5,7 @@ import Profile from "../pages/profile";
 import BussinesFavorites from "../pages/favorites-bussines";
 import Home from "../pages/home";
 import Login from "../pages/login";
+import Category from "../pages/category";
 import Commerce from "../pages/commerce";
 import NotFound from "../pages/not-found";
 import OAuthRedirect from "../components/oAuthRedirect";
@@ -23,6 +24,7 @@ const RenderRoutes = (
       path="/favorites-bussines"
       component={BussinesFavorites}
     />
+    <ProtectedRoutes exact path="/categoria/:slug" component={Category} />
     <ProtectedRoutes exact path="/profile" component={Profile} />
     <ProtectedRoutes exact path="/commerce-example" component={Commerce} />
 

@@ -26,7 +26,7 @@ const ProfileImage = props => {
           ? JSON.parse(localStorage.getItem(ACCESS_USER))
           : {}
       );
-    }, 700);
+    }, 2000);
   }, []);
 
   return (

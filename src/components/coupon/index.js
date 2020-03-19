@@ -17,6 +17,7 @@ import DialogCoupon from "../../components/dialog-coupon";
 import Toast from "../../components/toast";
 import Button from "@material-ui/core/Button";
 import Zoom from "@material-ui/core/Zoom";
+import { connect } from "react-redux";
 
 const useStyles = makeStyles(theme => ({
   media: {
@@ -106,37 +107,45 @@ const Coupon = props => {
               {props.descripcion}
             </Typography>
           </CardContent>
-          <CardActions disableSpacing={true}>
-            <Button size="large" onClick={handleClickOpenModal}>
-              VER CUPON
-            </Button>
-            <IconButton
-              className={classes.iconButton}
-              color="primary"
-              aria-label="Add to favorites"
-              onClick={handleClickOpenSnackbar}
-            >
-              <FavoriteIcon />
-            </IconButton>
-            <IconButton color="secondary" aria-label="Share">
-              <ShareIcon />
-            </IconButton>
-            <DialogCoupon
-              open={openModal}
-              handleClose={handleCloseModal}
-              title={props.titleName}
-              descripcion={props.descripcion}
-            />
-            <Toast
-              openSnackbar={openSnackbar}
-              handleCloseSnackbar={handleCloseSnackbar}
-              toastMessage={`${props.titleName} se añadio a tus favoritos`}
-            />
-          </CardActions>
+          {props.auth.hasToken && (
+            <CardActions disableSpacing={true}>
+              <Button size="large" onClick={handleClickOpenModal}>
+                VER CUPON
+              </Button>
+              <IconButton
+                className={classes.iconButton}
+                color="primary"
+                aria-label="Add to favorites"
+                onClick={handleClickOpenSnackbar}
+              >
+                <FavoriteIcon />
+              </IconButton>
+              <IconButton color="secondary" aria-label="Share">
+                <ShareIcon />
+              </IconButton>
+              <DialogCoupon
+                open={openModal}
+                handleClose={handleCloseModal}
+                title={props.titleName}
+                descripcion={props.descripcion}
+              />
+              <Toast
+                openSnackbar={openSnackbar}
+                handleCloseSnackbar={handleCloseSnackbar}
+                toastMessage={`${props.titleName} se añadio a tus favoritos`}
+              />
+            </CardActions>
+          )}
         </Card>
       </Paper>
     </Zoom>
   );
 };
 
-export default Coupon;
+const mapStateToProps = state => {
+  return {
+    auth: state.auth
+  };
+};
+
+export default connect(mapStateToProps)(Coupon);
