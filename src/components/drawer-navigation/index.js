@@ -15,7 +15,7 @@ import Link from "@material-ui/core/Link";
 import { NavLink } from "react-router-dom";
 import { GetCategories } from "../../redux/actions/categories";
 
-const drawerWidth = 240;
+const drawerWidth = 320;
 
 const useStyles = makeStyles({
   drawer: {

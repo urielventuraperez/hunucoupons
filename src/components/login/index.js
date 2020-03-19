@@ -29,6 +29,10 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center"
   },
+  avatar: {
+    width: theme.spacing(7),
+    height: theme.spacing(7),
+  },
 }));
 
 const LoginDialog = props => {

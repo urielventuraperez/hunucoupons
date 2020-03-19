@@ -50,7 +50,9 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
-    border: 0
+    border: 0,
+    width: theme.spacing(10),
+    height: theme.spacing(10),
   },
   submit: {
     margin: theme.spacing(3, 0, 2)
