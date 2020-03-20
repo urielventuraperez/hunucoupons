@@ -85,7 +85,7 @@ const Coupon = props => {
               color="textSecondary"
               className={classes.date}
             >
-              September 14, 2016
+              Termina el {props.fechaFinal}
             </Typography>
           </CardActionArea>
           <CardHeader
