@@ -8,11 +8,13 @@ import { ConnectedRouter } from "connected-react-router";
 import RenderRoutes from "../routes";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { LightTheme } from "../theme";
+import ScrollToTop from "../routes/scrollToTop";
 
 const App = ({ history }) => {
   return (
     <ThemeProvider theme={LightTheme}>
       <ConnectedRouter history={history}>
+        <ScrollToTop />
         <CssBaseline />
         <TopNavigator />
           {RenderRoutes}
