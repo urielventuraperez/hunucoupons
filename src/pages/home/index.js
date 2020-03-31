@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
@@ -8,12 +8,13 @@ import { PREMIUM_BUSSINES } from "../../utils/business";
 import LoginDialog from "../../components/login";
 import { ACCESS_TOKEN } from "../../environments";
 import HomeCoupons from "../../components/home-coupons";
+import Image from "../../assets/images/first-section.png";
 
 const useStyles = makeStyles(theme => ({
   container: {
     marginTop: theme.spacing(5) * 2,
     marginBottom: theme.spacing(5) * 2
-  },
+  }
 }));
 
 const Home = () => {
@@ -30,15 +31,20 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if( !localStorage.getItem(ACCESS_TOKEN) ) {
+    if (!localStorage.getItem(ACCESS_TOKEN)) {
       setTimeout(() => handleClickOpen(), 10000);
-    } 
+    }
   }, []);
-
 
   return (
     <React.Fragment>
-      <HeaderImage />
+      <HeaderImage
+        isHome={'true'}
+        image={Image}
+        title={"Algo nuevo ha llegado para ti!"}
+        backgroundColor={"rgba(0, 0, 0, 0.20)"}
+        height={"70vh"}
+      />
       {/* Commerce Premium */}
       <Container className={classes.container}>
         <Grid container mt={8} mb={8} spacing={3}>
@@ -56,7 +62,7 @@ const Home = () => {
       </Container>
       {/* End Commerce Premium */}
       {/* New coupons section */}
-        <HomeCoupons />
+      <HomeCoupons />
       {/* End new coupons section */}
       <LoginDialog open={open} onClose={handleClose} />
     </React.Fragment>

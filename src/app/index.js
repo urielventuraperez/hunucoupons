@@ -1,6 +1,6 @@
 import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import TopNavigator from "../components/header";
+import TopNavigator from "../components/navbar";
 import BottomNavigator from "../components/bottom-navigator";
 import Footer from "../components/footer";
 import PropTypes from "prop-types";
