@@ -1,25 +1,21 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
-import Grid from "@material-ui/core/Grid";
-import { Typography } from "@material-ui/core";
 import HeaderImage from "../../components/header-image";
 import categoria from "../../assets/images/categoria.jpg";
+import GridCoupons from "../../components/grid-coupons";
 
-const useStyles = makeStyles(theme => ({}));
-
-const Category = () => {
-  const classes = useStyles();
+const Category = (props) => {
+  const categorySlug = props.match.params.slug
   return (
     <div>
       <HeaderImage
         image={categoria}
-        title={"Categoria"}
+        title={categorySlug}
         height={"75vh"}
         backgroundColor={"rgba(0, 0, 0, 0.20)"}
       />
       <Box mt={5} mb={5}>
-        {"Hola mundo"}
+        <GridCoupons slug={categorySlug} isCategory={props.isCategory} />
       </Box>
     </div>
   );

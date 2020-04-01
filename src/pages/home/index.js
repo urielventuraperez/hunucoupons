@@ -7,7 +7,7 @@ import BussinesCard from "../../components/card";
 import { PREMIUM_BUSSINES } from "../../utils/business";
 import LoginDialog from "../../components/login";
 import { ACCESS_TOKEN } from "../../environments";
-import HomeCoupons from "../../components/home-coupons";
+import GridCoupons from "../../components/grid-coupons";
 import Image from "../../assets/images/first-section.png";
 
 const useStyles = makeStyles(theme => ({
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Home = () => {
+const Home = (props) => {
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
@@ -62,7 +62,7 @@ const Home = () => {
       </Container>
       {/* End Commerce Premium */}
       {/* New coupons section */}
-      <HomeCoupons />
+      <GridCoupons />
       {/* End new coupons section */}
       <LoginDialog open={open} onClose={handleClose} />
     </React.Fragment>

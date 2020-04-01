@@ -17,7 +17,6 @@ import DialogCoupon from "../../components/dialog-coupon";
 import Toast from "../../components/toast";
 import Button from "@material-ui/core/Button";
 import Zoom from "@material-ui/core/Zoom";
-import { connect } from "react-redux";
 
 const useStyles = makeStyles(theme => ({
   media: {
@@ -50,7 +49,7 @@ const Coupon = props => {
   useEffect(() => {
     setTimeout(() => {
       setMakeZoom(true);
-    }, 1000);
+    }, 500);
   }, []);
 
   const handleClickOpenModal = () => {
@@ -71,7 +70,7 @@ const Coupon = props => {
 
   const classes = useStyles();
   return (
-    <Zoom in={makeZoom} style={{ transitionDelay: makeZoom ? "500ms" : "0ms" }}>
+    <Zoom in={makeZoom} style={{ transitionDelay: makeZoom ? "50ms" : "0ms" }}>
       <Paper elevation={2}>
         <Card className={classes.card}>
           <CardActionArea>
@@ -107,7 +106,7 @@ const Coupon = props => {
               {props.descripcion}
             </Typography>
           </CardContent>
-          {props.auth.hasToken && (
+          {props.token && (
             <CardActions disableSpacing={true}>
               <Button size="large" onClick={handleClickOpenModal}>
                 VER CUPON
@@ -142,10 +141,4 @@ const Coupon = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    auth: state.auth
-  };
-};
-
-export default connect(mapStateToProps)(Coupon);
+export default Coupon;

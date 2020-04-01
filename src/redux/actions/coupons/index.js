@@ -1,7 +1,7 @@
 import { VIEW_ALL_COUPONS, LOAD_COUPONS } from "../../actionTypes/coupons";
 import { URL_API } from "../../../environments";
 
-export function GetHomeCoupons() {
+export function GetCoupons() {
   return function(dispatch) {
     dispatch({ type: LOAD_COUPONS });
     return fetch(`${URL_API}app/cupones/fechaReciente`)
@@ -17,7 +17,5 @@ export function GetHomeCoupons() {
       });
   };
 }
-
-export function GetCoupons() {}
 
 export function GetCurrentCoupon() {}

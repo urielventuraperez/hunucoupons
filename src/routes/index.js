@@ -13,7 +13,7 @@ import ProtectedRoutes from "./protected";
 
 const RenderRoutes = (
   <Switch>
-    <Route exact path="/" component={Home} />
+    <Route exact path="/" component={(props) => <Home {...props} isCategory={false} />} />
     <Route exact path="/oauth2/redirect" component={OAuthRedirect}/>
     <Route exact path="/login" component={Login} />
 
@@ -24,7 +24,7 @@ const RenderRoutes = (
       path="/favorites-bussines"
       component={BussinesFavorites}
     />
-    <ProtectedRoutes exact path="/categoria/:slug" component={Category} />
+    <ProtectedRoutes exact path="/categoria/:slug" component={(props) => <Category {...props} isCategory={true} />} />
     <ProtectedRoutes exact path="/profile" component={Profile} />
     <ProtectedRoutes exact path="/commerce-example" component={Commerce} />
 

@@ -24,7 +24,8 @@ const useStyles = makeStyles(theme => ({
   title: {
     fontWeight: "600",
     textShadow: "0px 2px 3px rgba(0,0,0,0.4)",
-    color: theme.palette.text.light
+    color: theme.palette.text.light,
+    textTransform: 'uppercase'
   },
 }));
 
