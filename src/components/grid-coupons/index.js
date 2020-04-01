@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Coupon from "../coupon";
 import LinearProgress from "@material-ui/core/LinearProgress";
@@ -8,9 +8,6 @@ import Empty from "../empty";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import IconoCuponesh from "../../assets/images/icono-cuponesh.png";
-import { connect } from "react-redux";
-import { GetCategory } from "../../redux/actions/categories";
-import { GetCoupons } from "../../redux/actions/coupons";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,24 +24,9 @@ const useStyles = makeStyles(theme => ({
 
 const GridCoupons = props => {
   const classes = useStyles();
-  const [mounted, setMounted] = useState(false);
-  const { getCoupons, isCategory, slug } = props;
-
-  useEffect(() => {
-    setMounted(true);
-    if (mounted) {
-      getCoupons(slug, "0", isCategory);
-    }
-    return () => setMounted(false);
-  }, [getCoupons, slug, isCategory, mounted]);
-
-  if (!mounted) {
-    return null;
-  }
-
   return (
     <div className={classes.root}>
-      {!isCategory && (
+      {!props.isCategory && (
         <Box
           className={classes.content}
           display="flex"
@@ -104,20 +86,4 @@ const GridCoupons = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    loadCoupons: state.coupons.loadCoupons,
-    coupons: state.coupons.coupons,
-    auth: state.auth.hasToken
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    getCoupons: (slug, page, isCategory) => {
-      isCategory ? dispatch(GetCategory(slug, page)) : dispatch(GetCoupons());
-    }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(GridCoupons);
+export default GridCoupons;

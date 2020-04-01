@@ -9,16 +9,26 @@ const useStyles = makeStyles( theme => ({
   }
 }));
 
-const ChipLegend = () => {
-
+const ChipLegend = (props) => {
   const classes = useStyles();
+  
+  const labelCoupons = (coupons) => {
+    switch (coupons) {
+      case 0:
+      return 'Sin ningún cupón';
+      case 1:
+      return 'Cupón'
+      default:
+        return 'Cupones';
+    }
+  }
 
   return(
     <Chip
     className={classes.chip}
     color={'primary'}
-    avatar={<Avatar>16</Avatar>}
-    label="Cupones"
+    avatar={<Avatar>{props.totalCoupons}</Avatar>}
+    label={labelCoupons(props.totalCoupons)}
     variant="outlined"
   />
   )

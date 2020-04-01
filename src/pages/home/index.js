@@ -9,6 +9,8 @@ import LoginDialog from "../../components/login";
 import { ACCESS_TOKEN } from "../../environments";
 import GridCoupons from "../../components/grid-coupons";
 import Image from "../../assets/images/first-section.png";
+import { connect } from "react-redux";
+import { GetCoupons } from "../../redux/actions/coupons";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -17,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Home = (props) => {
+const Home = props => {
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
@@ -36,10 +38,16 @@ const Home = (props) => {
     }
   }, []);
 
+  const { getCoupons } = props;
+
+    useEffect(() => {
+      getCoupons();
+  }, [getCoupons]);
+
   return (
     <React.Fragment>
       <HeaderImage
-        isHome={'true'}
+        isHome={"true"}
         image={Image}
         title={"Algo nuevo ha llegado para ti!"}
         backgroundColor={"rgba(0, 0, 0, 0.20)"}
@@ -62,11 +70,33 @@ const Home = (props) => {
       </Container>
       {/* End Commerce Premium */}
       {/* New coupons section */}
-      <GridCoupons />
+      <GridCoupons
+        loadCoupons={props.loadCoupons}
+        coupons={props.coupons}
+        auth={props.auth}
+      />
       {/* End new coupons section */}
       <LoginDialog open={open} onClose={handleClose} />
     </React.Fragment>
   );
 };
 
-export default Home;
+const mapStateToProps = state => {
+  return {
+    loadCoupons: state.coupons.loadCoupons,
+    coupons: state.coupons.coupons,
+    auth: state.auth.hasToken
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getCoupons: () => {
+      dispatch(GetCoupons());
+      // (slug, page, isCategory) => {
+      // isCategory ? dispatch(GetCategory(slug, page)) :
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
