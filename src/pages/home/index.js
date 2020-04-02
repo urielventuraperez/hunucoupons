@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
@@ -22,7 +22,9 @@ const useStyles = makeStyles(theme => ({
 const Home = props => {
   const classes = useStyles();
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+
+  const { getCoupons } = props;
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -38,10 +40,8 @@ const Home = props => {
     }
   }, []);
 
-  const { getCoupons } = props;
-
-    useEffect(() => {
-      getCoupons();
+  useEffect(() => {
+    getCoupons();
   }, [getCoupons]);
 
   return (
@@ -52,6 +52,7 @@ const Home = props => {
         title={"Algo nuevo ha llegado para ti!"}
         backgroundColor={"rgba(0, 0, 0, 0.20)"}
         height={"70vh"}
+        showChip={props.showChip}
       />
       {/* Commerce Premium */}
       <Container className={classes.container}>

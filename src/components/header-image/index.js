@@ -48,7 +48,7 @@ const HeaderImage = (props) => {
         {props.title}
       </Typography>
     { props.isStore && <AddFavorite /> }
-    { !props.isHome && <ChipLegend totalCoupons={props.totalCoupons} /> }
+    { props.showChip && <ChipLegend totalCoupons={props.totalCoupons} /> }
     
     </Grid>
   );

@@ -5,7 +5,6 @@ import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
@@ -13,8 +12,8 @@ import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
-import DialogCoupon from "../../components/dialog-coupon";
-import Toast from "../../components/toast";
+import DialogCoupon from "../dialog-coupon";
+import Toast from "../toast";
 import Button from "@material-ui/core/Button";
 import Zoom from "@material-ui/core/Zoom";
 
@@ -101,11 +100,6 @@ const Coupon = props => {
               </Typography>
             }
           />
-          <CardContent>
-            <Typography variant="body2" component="p">
-              {props.descripcion}
-            </Typography>
-          </CardContent>
           {props.token && (
             <CardActions disableSpacing={true}>
               <Button size="large" onClick={handleClickOpenModal}>

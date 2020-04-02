@@ -19,32 +19,26 @@ const useStyles = makeStyles(theme => ({
 const Category = props => {
   const classes = useStyles();
   const categorySlug = props.match.params.slug;
-  const { getCoupons, isCategory } = props;
-
-  /*const [open, setOpen] = useState(true);
-
-  const handleClose = () => {
-    setOpen(false);
-  };*/
+  const { getCoupons } = props;
 
   useEffect(() => {
-    getCoupons(categorySlug, "0", isCategory);
-  }, [getCoupons, categorySlug, isCategory]);
+    getCoupons(categorySlug, "0");
+  }, [getCoupons, categorySlug]);
 
   return (
     <div>
       {props.loadCategory && (
         <Backdrop className={classes.backdrop} open={true}>
-        <CircularProgress color="inherit" />
-      </Backdrop>
+          <CircularProgress color="inherit" />
+        </Backdrop>
       )}
-
       <HeaderImage
         image={categoria}
         title={categorySlug}
         height={"75vh"}
         backgroundColor={"rgba(0, 0, 0, 0.20)"}
         totalCoupons={props.totalCoupons}
+        showChip={props.showChip}
       />
       <Box mt={5} mb={5}>
         <GridCoupons

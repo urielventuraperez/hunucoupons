@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Coupon from "../coupon";
+import Coupon from "../small-coupon";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(3)
   },
   content: {
-    padding: theme.spacing(4)
+    padding: theme.spacing(2)
   }
 }));
 

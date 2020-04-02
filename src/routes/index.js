@@ -6,6 +6,7 @@ import BussinesFavorites from "../pages/favorites-bussines";
 import Home from "../pages/home";
 import Login from "../pages/login";
 import Category from "../pages/category";
+import SingleCoupon from "../pages/single-coupon";
 import Commerce from "../pages/commerce";
 import NotFound from "../pages/not-found";
 import OAuthRedirect from "../components/oAuthRedirect";
@@ -13,8 +14,12 @@ import ProtectedRoutes from "./protected";
 
 const RenderRoutes = (
   <Switch>
-    <Route exact path="/" component={(props) => <Home {...props} isCategory={false} />} />
-    <Route exact path="/oauth2/redirect" component={OAuthRedirect}/>
+    <Route
+      exact
+      path="/"
+      component={props => <Home {...props} showChip={false} />}
+    />
+    <Route exact path="/oauth2/redirect" component={OAuthRedirect} />
     <Route exact path="/login" component={Login} />
 
     {/* Rutas Protegidas */}
@@ -24,9 +29,14 @@ const RenderRoutes = (
       path="/favorites-bussines"
       component={BussinesFavorites}
     />
-    <ProtectedRoutes exact path="/categoria/:slug" component={(props) => <Category {...props} isCategory={true} />} />
+    <ProtectedRoutes
+      exact
+      path="/categoria/:slug"
+      component={props => <Category {...props} showChip={true} isCategory={true} />}
+    />
     <ProtectedRoutes exact path="/profile" component={Profile} />
     <ProtectedRoutes exact path="/commerce-example" component={Commerce} />
+    <ProtectedRoutes exact path="/cupon/single" component={ props => <SingleCoupon {...props} showChip={false} showFavorite={true} />} />
 
     {/* Rutas para los not found */}
     <Route exact path="/not-found" component={NotFound} />

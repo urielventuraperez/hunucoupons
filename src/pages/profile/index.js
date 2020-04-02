@@ -13,12 +13,12 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../redux/actions/auth";
 import { Redirect } from "react-router-dom";
 import { ACCESS_USER } from "../../environments";
-import Hunucma from "../../assets/images/hunucma.jpg";
+import Hunucma1 from "../../assets/images/hunucma1.jpg";
 
 const useStyles = makeStyles(theme => ({
   root: {
     marginTop: theme.spacing(3),
-    backgroundImage: `url(${Hunucma})`,
+    backgroundImage: `url(${Hunucma1})`,
     height: "80vh"
   },
   box: {
