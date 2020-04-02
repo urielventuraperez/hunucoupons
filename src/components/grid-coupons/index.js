@@ -35,7 +35,7 @@ const GridCoupons = props => {
           <Typography color="textPrimary" variant="h5">
             Nuevos cupones
           </Typography>
-          <Button variant="contained" color="secondary">
+          <Button href="/cupon/single" variant="contained" color="secondary">
             Ver más
           </Button>
         </Box>
