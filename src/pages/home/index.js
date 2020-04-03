@@ -10,6 +10,7 @@ import { ACCESS_TOKEN } from "../../environments";
 import GridCoupons from "../../components/grid-coupons";
 import Image from "../../assets/images/first-section.png";
 import { connect } from "react-redux";
+import Contact from "../../components/contact";
 import { GetCoupons } from "../../redux/actions/coupons";
 
 const useStyles = makeStyles(theme => ({
@@ -23,8 +24,6 @@ const Home = props => {
   const classes = useStyles();
 
   const [open, setOpen] = useState(false);
-
-  const { getCoupons } = props;
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -40,8 +39,14 @@ const Home = props => {
     }
   }, []);
 
+  const {getCoupons} = props;
+
   useEffect(() => {
-    getCoupons();
+    let unsubscribed = true;
+    if(unsubscribed) {
+      getCoupons();
+    }
+    return () => {unsubscribed = false};
   }, [getCoupons]);
 
   return (
@@ -78,6 +83,7 @@ const Home = props => {
       />
       {/* End new coupons section */}
       <LoginDialog open={open} onClose={handleClose} />
+      <Contact />
     </React.Fragment>
   );
 };

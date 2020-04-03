@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -70,8 +69,7 @@ const Coupon = props => {
   const classes = useStyles();
   return (
     <Zoom in={makeZoom} style={{ transitionDelay: makeZoom ? "50ms" : "0ms" }}>
-      <Paper elevation={2}>
-        <Card className={classes.card}>
+        <Paper elevation={6} className={classes.card}>
           <CardActionArea>
             <CardMedia
               className={classes.media}
@@ -95,15 +93,20 @@ const Coupon = props => {
               />
             }
             title={
-              <Typography variant="subtitle2" color="primary">
+              <Typography variant="subtitle1" color="textPrimary">
                 {props.titleName}
               </Typography>
             }
           />
           {props.token && (
             <CardActions disableSpacing={true}>
-              <Button size="large" onClick={handleClickOpenModal}>
-                VER CUPON
+              <Button
+                variant="outlined"
+                disableElevation
+                color="secondary"
+                onClick={handleClickOpenModal}
+              >
+                VER
               </Button>
               <IconButton
                 className={classes.iconButton}
@@ -129,7 +132,6 @@ const Coupon = props => {
               />
             </CardActions>
           )}
-        </Card>
       </Paper>
     </Zoom>
   );

@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import AddFavorite from "../add-favorite";
 import Button from '@material-ui/core/Button';
-import DeleteIcon from '@material-ui/icons/Delete';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 const useStyles = makeStyles(theme => ({
   transparency: {
@@ -73,9 +73,9 @@ const FullCoupon = (props) => {
         variant="contained"
         color="secondary"
         className={classes.button}
-        endIcon={<DeleteIcon/>}
+        endIcon={<ArrowForwardIosIcon />}
       >
-        Visitar tienda
+        Visitar comercio
       </Button>
       { props.showFavorite && <AddFavorite /> }
     </Grid>

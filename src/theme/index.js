@@ -6,6 +6,7 @@ export const LightTheme = createMuiTheme({
   palette: {
     primary: {
       main: "#fd548e",
+      light: grey["400"],
       dark: pink["A700"]
     },
     secondary: {
@@ -16,7 +17,8 @@ export const LightTheme = createMuiTheme({
       paper: grey["50"]
     },
     error: {
-      main: "#B00020"
+      main: "#B00020",
+      dark: grey["800"],
     },
     action: {
       main: "#232f34"
@@ -79,14 +81,14 @@ export const LightTheme = createMuiTheme({
       letterSpacing: "0.15px"
     },
     subtitle1: {
-      fontSize: "1.3333rem",
-      fontWeight: 300,
+      fontSize: "1.2333rem",
+      fontWeight: 500,
       fontFamily: "Poppins",
       letterSpacing: "0.15px"
     },
     subtitle2: {
       fontSize: "1.1666rem",
-      fontWeight: 500,
+      fontWeight: 100,
       fontFamily: "Poppins",
       letterSpacing: "0.1px"
     },

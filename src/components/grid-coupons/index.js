@@ -19,6 +19,11 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     padding: theme.spacing(2)
+  },
+  newCoupons: {
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1.5rem"
+    }
   }
 }));
 
@@ -32,7 +37,11 @@ const GridCoupons = props => {
           display="flex"
           justifyContent="space-between"
         >
-          <Typography color="textPrimary" variant="h5">
+          <Typography
+            color="textPrimary"
+            className={classes.newCoupons}
+            variant="h5"
+          >
             Nuevos cupones
           </Typography>
           <Button href="/cupon/single" variant="contained" color="secondary">
