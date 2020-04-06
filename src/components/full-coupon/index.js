@@ -54,20 +54,20 @@ const FullCoupon = (props) => {
       alignItems="flex-start"
       style={{
         backgroundImage:
-          `url(${props.image})`
+          `url(data:image/jpg;base64,${props.image})`
       }}
     >
       <Typography className={classes.title} variant="h4">
-        {'50% de descuento'}
+        {props.descuento}{'%'} {'de descuento'}
       </Typography>
       <Typography className={classes.title} variant="h5">
         {props.title}
       </Typography>
       <Typography className={classes.subtitle} variant="subtitle1">
-        {'Descripcion del cupon'}
+        {props.description}
       </Typography>
       <Typography className={classes.subtitle} variant="caption">
-        {'Valido del 1 de abril al 20 de abril'}
+        {'Valido del'} {props.fechaInicial} {'al'} {props.fechaFinal}  
       </Typography>
       <Button
         variant="contained"

@@ -44,7 +44,7 @@ const GridCoupons = props => {
           >
             Nuevos cupones
           </Typography>
-          <Button href="/cupon/single" variant="contained" color="secondary">
+          <Button variant="contained" color="secondary">
             Ver más
           </Button>
         </Box>
@@ -67,6 +67,7 @@ const GridCoupons = props => {
                       fechaFinal={coupon.fecha_final}
                       key={i}
                       titleName={coupon.nombre}
+                      slug={coupon.slug_nombre}
                       descripcion={coupon.descripcion}
                       media={`data:image/png;base64,${coupon.foto_principalb64}`}
                       logo={IconoCuponesh}

@@ -13,14 +13,14 @@ import { connect } from "react-redux";
 import Contact from "../../components/contact";
 import { GetCoupons } from "../../redux/actions/coupons";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     marginTop: theme.spacing(5) * 2,
-    marginBottom: theme.spacing(5) * 2
-  }
+    marginBottom: theme.spacing(5) * 2,
+  },
 }));
 
-const Home = props => {
+const Home = (props) => {
   const classes = useStyles();
 
   const [open, setOpen] = useState(false);
@@ -39,14 +39,10 @@ const Home = props => {
     }
   }, []);
 
-  const {getCoupons} = props;
+  const { getCoupons } = props;
 
   useEffect(() => {
-    let unsubscribed = true;
-    if(unsubscribed) {
-      getCoupons();
-    }
-    return () => {unsubscribed = false};
+    getCoupons();
   }, [getCoupons]);
 
   return (
@@ -88,21 +84,21 @@ const Home = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     loadCoupons: state.coupons.loadCoupons,
     coupons: state.coupons.coupons,
-    auth: state.auth.hasToken
+    auth: state.auth.hasToken,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     getCoupons: () => {
       dispatch(GetCoupons());
       // (slug, page, isCategory) => {
       // isCategory ? dispatch(GetCategory(slug, page)) :
-    }
+    },
   };
 };
 

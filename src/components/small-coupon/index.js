@@ -14,6 +14,7 @@ import ShareIcon from "@material-ui/icons/Share";
 import DialogCoupon from "../dialog-coupon";
 import Toast from "../toast";
 import Button from "@material-ui/core/Button";
+import { NavLink } from "react-router-dom";
 import Zoom from "@material-ui/core/Zoom";
 
 const useStyles = makeStyles(theme => ({
@@ -38,7 +39,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Coupon = props => {
-  const [openModal, setOpenModal] = React.useState(false);
 
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
 
@@ -49,14 +49,6 @@ const Coupon = props => {
       setMakeZoom(true);
     }, 500);
   }, []);
-
-  const handleClickOpenModal = () => {
-    setOpenModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setOpenModal(false);
-  };
 
   const handleClickOpenSnackbar = () => {
     setOpenSnackbar(true);
@@ -104,7 +96,8 @@ const Coupon = props => {
                 variant="outlined"
                 disableElevation
                 color="secondary"
-                onClick={handleClickOpenModal}
+                component={NavLink}
+                to={`/cupon/${props.slug}`}
               >
                 VER
               </Button>
@@ -119,12 +112,6 @@ const Coupon = props => {
               <IconButton color="secondary" aria-label="Share">
                 <ShareIcon />
               </IconButton>
-              <DialogCoupon
-                open={openModal}
-                handleClose={handleCloseModal}
-                title={props.titleName}
-                descripcion={props.descripcion}
-              />
               <Toast
                 openSnackbar={openSnackbar}
                 handleCloseSnackbar={handleCloseSnackbar}

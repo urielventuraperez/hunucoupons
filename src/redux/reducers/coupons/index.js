@@ -1,8 +1,14 @@
-import { VIEW_ALL_COUPONS, LOAD_COUPONS, VIEW_COUPONS } from "../../actionTypes/coupons";
+import {
+  VIEW_ALL_COUPONS,
+  LOAD_COUPONS,
+  VIEW_COUPONS,
+  VIEW_COUPON,
+} from "../../actionTypes/coupons";
 
 const initialState = {
   loadCoupons: false,
   coupons: [],
+  coupon: {}
 };
 
 function reducer(state = initialState, action) {
@@ -18,6 +24,11 @@ function reducer(state = initialState, action) {
       return Object.assign(
         { ...state, loadCoupons: false },
         { coupons: action.payload }
+      );
+    case VIEW_COUPON:
+      return Object.assign(
+        { ...state, loadCoupons: false },
+        { coupon: action.payload }
       );
     default:
       return state;
