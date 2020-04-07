@@ -36,7 +36,7 @@ const SingleCoupon = (props) => {
         fechaInicial={props.coupon.fecha_inicial}
         fechaFinal={props.coupon.fecha_final}
         descuento={props.coupon.descuento}
-        height={"70vh"}
+        height={"80vh"}
         backgroundColor={"rgba(0, 0, 0, 0.65)"}
         showChip={props.showChip}
         showFavorite={props.showFavorite}

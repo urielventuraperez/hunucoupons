@@ -6,6 +6,7 @@ import categories from './categories';
 import favorites from './favorites';
 import auth from './auth';
 import user from './user';
+import theme from './theme';
 
 const rootReducer = (history) => combineReducers({
     coupons,
@@ -14,6 +15,7 @@ const rootReducer = (history) => combineReducers({
     favorites,
     auth,
     user,
+    theme,
     router: connectRouter(history),
 })
 

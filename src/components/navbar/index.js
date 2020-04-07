@@ -31,6 +31,9 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.leavingScreen
     })
   },
+  icon: {
+    color: theme.palette.text.primary
+  },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
@@ -113,7 +116,7 @@ const TopNavigator = props => {
                   className={clsx(classes.menuButton, open && classes.hide)}
                   aria-label="open drawer"
                 >
-                  <MenuRoundedIcon color="action" />
+                  <MenuRoundedIcon className={classes.icon} />
                 </IconButton>
                 <Link to="/">
                   <img className={classes.logo} src={Logo} alt="" />

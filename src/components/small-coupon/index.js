@@ -11,7 +11,6 @@ import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
-import DialogCoupon from "../dialog-coupon";
 import Toast from "../toast";
 import Button from "@material-ui/core/Button";
 import { NavLink } from "react-router-dom";
@@ -93,8 +92,6 @@ const Coupon = props => {
           {props.token && (
             <CardActions disableSpacing={true}>
               <Button
-                variant="outlined"
-                disableElevation
                 color="secondary"
                 component={NavLink}
                 to={`/cupon/${props.slug}`}

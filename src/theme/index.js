@@ -14,7 +14,7 @@ export const LightTheme = createMuiTheme({
     },
     background: {
       default: "#ffffff",
-      paper: grey["50"]
+      paper: "#f5f5f5",
     },
     error: {
       main: "#B00020",
@@ -140,10 +140,11 @@ export const DarkTheme = createMuiTheme({
       main: "#232f34"
     },
     text: {
-      secondary: "#ffffff",
-      disabled: grey["50"],
-      light: "#fd548e",
-      hint: grey["50"]
+      primary: grey["100"],
+      secondary: grey["200"],
+      disabled: grey["300"],
+      light: grey["50"],
+      hint: grey["500"]
     }
   },
   typography: {

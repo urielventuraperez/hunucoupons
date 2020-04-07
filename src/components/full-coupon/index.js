@@ -15,7 +15,6 @@ const useStyles = makeStyles(theme => ({
   },
   image: {
     marginTop: "25px",
-    textAlign: "center",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",

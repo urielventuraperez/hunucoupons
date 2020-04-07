@@ -6,6 +6,7 @@ export const URL_API = PRODUCTION
 
 export const ACCESS_TOKEN = 'accessToken';
 export const ACCESS_USER = 'usuario';
+export const DARK_MODE = 'darkMode';
 
 export const OAUTH_REDIRECT = PRODUCTION
   ? "https://cuponesh.herokuapp.com/oauth2/redirect"

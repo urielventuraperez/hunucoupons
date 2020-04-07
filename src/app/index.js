@@ -7,26 +7,36 @@ import PropTypes from "prop-types";
 import { ConnectedRouter } from "connected-react-router";
 import RenderRoutes from "../routes";
 import { ThemeProvider } from "@material-ui/core/styles";
-import { LightTheme } from "../theme";
+import { LightTheme, DarkTheme } from "../theme";
 import ScrollToTop from "../routes/scrollToTop";
+import { connect } from "react-redux";
 
-const App = ({ history }) => {
+const App = ({ history, isDarkTheme }) => {
+  const Theme = isDarkTheme ? DarkTheme : LightTheme;
+
   return (
-    <ThemeProvider theme={LightTheme}>
-      <ConnectedRouter history={history}>
+    <ConnectedRouter history={history}>
+      <ThemeProvider theme={Theme}>
         <ScrollToTop />
         <CssBaseline />
         <TopNavigator />
-          {RenderRoutes}
+        {RenderRoutes}
         <BottomNavigator />
         <Footer />
-      </ConnectedRouter>
-    </ThemeProvider>
+      </ThemeProvider>
+    </ConnectedRouter>
   );
 };
 
 App.propTypes = {
-  history: PropTypes.object
+  history: PropTypes.object,
+  isDarkTheme: PropTypes.bool,
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    isDarkTheme: state.theme.darkTheme,
+  };
+};
+
+export default connect(mapStateToProps)(App);

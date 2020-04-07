@@ -8,31 +8,34 @@ import Avatar from "@material-ui/core/Avatar";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
 import { makeStyles } from "@material-ui/core";
 import { connect } from "react-redux";
 import { logoutUser } from "../../redux/actions/auth";
+import { changeThemeMode } from "../../redux/actions/theme";
 import { Redirect } from "react-router-dom";
 import { ACCESS_USER } from "../../environments";
 import Hunucma1 from "../../assets/images/hunucma1.jpg";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: theme.spacing(3),
     backgroundImage: `url(${Hunucma1})`,
-    height: "80vh"
+    height: "80vh",
   },
   box: {
-    marginTop: theme.spacing(1)
+    marginTop: theme.spacing(1),
   },
   paper: {
-    maxWidth: 360
+    maxWidth: 360,
   },
   buttonGroup: {
-    width: "100%"
-  }
+    width: "100%",
+  },
 }));
 
-const Profile = props => {
+const Profile = (props) => {
   const classes = useStyles();
 
   const [user, setUser] = useState(
@@ -82,6 +85,26 @@ const Profile = props => {
               </CardContent>
             </CardActionArea>
             <CardActions>
+            <Box
+                className={classes.buttonGroup}
+                display="flex"
+                flexDirection="row"
+                justifyContent="center"
+                alignItems="center"
+                alignContent="center"
+              >
+                <FormControlLabel
+                  control={
+                    <Switch
+                      onChange={props.changeTheme}
+                      checked={props.isDarkTheme ? true : false}
+                    />
+                  }
+                  label="Modo oscuro"
+                />
+              </Box>
+            </CardActions>
+            <CardActions>
               <Box
                 className={classes.buttonGroup}
                 display="flex"
@@ -107,7 +130,7 @@ const Profile = props => {
         <Redirect
           to={{
             pathname: "/",
-            state: { from: props.location }
+            state: { from: props.location },
           }}
         />
       )}
@@ -115,18 +138,22 @@ const Profile = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     loadUser: state.user.loadUser,
-    isLogged: state.auth.hasToken
+    isLogged: state.auth.hasToken,
+    isDarkTheme: state.theme.darkTheme,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     logoutUser: () => {
       dispatch(logoutUser());
-    }
+    },
+    changeTheme: () => {
+      dispatch(changeThemeMode());
+    },
   };
 };
 

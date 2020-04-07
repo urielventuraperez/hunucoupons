@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { ACCESS_TOKEN } from "../../environments";
+import { ACCESS_TOKEN, DARK_MODE } from "../../environments";
 import { Redirect } from "react-router-dom";
 import { loginUser } from "../../redux/actions/auth";
 import { getUserProfile } from "../../redux/actions/user";
@@ -28,6 +28,7 @@ const OAuth2Redirect = (props) => {
     const accessToken = getUrlParameter("token");
     if (accessToken) {
       localStorage.setItem(ACCESS_TOKEN, accessToken);
+      localStorage.setItem(DARK_MODE, false);
     }
   }, [isLogged]);
 
