@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import FullCoupon from "../../components/full-coupon";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";

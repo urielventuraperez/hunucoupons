@@ -70,6 +70,7 @@ const GridCoupons = (props) => {
                       slug={coupon.slug_nombre}
                       descripcion={coupon.descripcion}
                       media={`data:image/png;base64,${coupon.foto_principalb64}`}
+                      slugEmpresa={coupon.empresa.slug_nombre}
                       logo={
                         coupon.empresa.logob64
                           ? `data:image/png;base64,${coupon.empresa.logob64}`
