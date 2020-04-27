@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import FullCoupon from "../../components/full-coupon";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -32,6 +32,7 @@ const SingleCoupon = (props) => {
       <FullCoupon
         image={props.coupon.foto_principalb64}
         title={props.coupon.nombre}
+        slugComercio={props.bussines.slug_nombre}
         description={props.coupon.descripcion}
         fechaInicial={props.coupon.fecha_inicial}
         fechaFinal={props.coupon.fecha_final}
@@ -48,6 +49,7 @@ const SingleCoupon = (props) => {
 const mapStateToProps = (state) => {
   return {
     coupon: state.coupons.coupon,
+    bussines: state.coupons.bussines,
     loadCoupon: state.coupons.loadCoupons,
   };
 };

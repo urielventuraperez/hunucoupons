@@ -3,44 +3,45 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import AddFavorite from "../add-favorite";
-import Button from '@material-ui/core/Button';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import Button from "@material-ui/core/Button";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import { NavLink } from "react-router-dom";
+import CouponBackground from "../../assets/images/coupon_background.jpg";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   transparency: {
-    backgroundColor: props => props.backgroundColor,
+    backgroundColor: (props) => props.backgroundColor,
   },
   height: {
-    height: props => props.height,
+    height: (props) => props.height,
   },
   image: {
     marginTop: "25px",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "cover",
-    backgroundBlendMode: 'multiply'
+    backgroundBlendMode: "multiply",
   },
   title: {
     fontWeight: "600",
     textShadow: "0px 2px 3px rgba(0,0,0,0.4)",
     color: theme.palette.text.light,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
     textAlign: "left",
     padding: theme.spacing(0),
-    marginLeft: '1.3rem'
+    marginLeft: "1.3rem",
   },
   subtitle: {
     textShadow: "0px 2px 3px rgba(0,0,0,0.9)",
     color: theme.palette.text.light,
     padding: theme.spacing(0),
-    marginLeft: '1.3rem'
+    marginLeft: "1.3rem",
   },
   button: {
     marginTop: theme.spacing(4),
-    margin: theme.spacing(3)
-  }
+    margin: theme.spacing(3),
+  },
 }));
-
 
 const FullCoupon = (props) => {
   const classes = useStyles(props);
@@ -52,12 +53,14 @@ const FullCoupon = (props) => {
       justify="flex-end"
       alignItems="flex-start"
       style={{
-        backgroundImage:
-          `url(data:image/jpg;base64,${props.image})`
+        backgroundImage: props.image
+          ? `url(data:image/jpg;base64,${props.image})`
+          : `url(${CouponBackground})`,
       }}
     >
       <Typography className={classes.title} variant="h4">
-        {props.descuento}{'%'} {'de descuento'}
+        {props.descuento}
+        {"%"} {"de descuento"}
       </Typography>
       <Typography className={classes.title} variant="h5">
         {props.title}
@@ -66,9 +69,11 @@ const FullCoupon = (props) => {
         {props.description}
       </Typography>
       <Typography className={classes.subtitle} variant="caption">
-        {'Valido del'} {props.fechaInicial} {'al'} {props.fechaFinal}  
+        {"Valido del"} {props.fechaInicial} {"al"} {props.fechaFinal}
       </Typography>
       <Button
+        component={NavLink}
+        to={`/comercio/${props.slugComercio}`}
         variant="contained"
         color="secondary"
         className={classes.button}
@@ -76,7 +81,7 @@ const FullCoupon = (props) => {
       >
         Visitar comercio
       </Button>
-      { props.showFavorite && <AddFavorite /> }
+      {props.showFavorite && <AddFavorite />}
     </Grid>
   );
 };

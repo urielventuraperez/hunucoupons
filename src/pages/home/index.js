@@ -11,7 +11,7 @@ import GridCoupons from "../../components/grid-coupons";
 import Image from "../../assets/images/first-section.png";
 import { connect } from "react-redux";
 import Contact from "../../components/contact";
-import { GetCoupons } from "../../redux/actions/coupons";
+import { GetHomeCoupons } from "../../redux/actions/coupons";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -39,11 +39,14 @@ const Home = (props) => {
     }
   }, []);
 
-  const { getCoupons } = props;
+  const { getCoupons, coupons } = props;
 
   useEffect(() => {
-    getCoupons();
-  }, [getCoupons]);
+    if(coupons && coupons.length){
+    } else {
+      getCoupons();
+    }
+  }, [getCoupons, coupons]);
 
   return (
     <React.Fragment>
@@ -87,7 +90,7 @@ const Home = (props) => {
 const mapStateToProps = (state) => {
   return {
     loadCoupons: state.coupons.loadCoupons,
-    coupons: state.coupons.coupons,
+    coupons: state.coupons.homeCoupons,
     auth: state.auth.hasToken,
   };
 };
@@ -95,9 +98,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getCoupons: () => {
-      dispatch(GetCoupons());
-      // (slug, page, isCategory) => {
-      // isCategory ? dispatch(GetCategory(slug, page)) :
+      dispatch(GetHomeCoupons());
     },
   };
 };

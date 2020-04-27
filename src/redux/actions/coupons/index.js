@@ -1,5 +1,22 @@
-import { VIEW_ALL_COUPONS, LOAD_COUPONS, VIEW_COUPON } from "../../actionTypes/coupons";
+import { VIEW_ALL_COUPONS, LOAD_COUPONS, VIEW_COUPON, VIEW_HOME_COUPONS, BUSSINES_COUPON } from "../../actionTypes/coupons";
 import { URL_API, ACCESS_TOKEN } from "../../../environments";
+
+export function GetHomeCoupons() {
+  return function(dispatch) {
+    dispatch({ type: LOAD_COUPONS });
+    return fetch(`${URL_API}app/cupones/fechaReciente`)
+      .then(response => response.json())
+      .then(json => {
+        return dispatch({
+          type: VIEW_HOME_COUPONS,
+          payload: json.data
+        });
+      })
+      .catch(function(e) {
+        console.log(`error: ${e}`);
+      });
+  };
+}
 
 export function GetCoupons() {
   return function(dispatch) {
@@ -29,10 +46,14 @@ export function GetSingleCoupon(slugCoupon) {
     .then( response=>response.json() )
     .then(json=> {
       if(json.status === 'success'){
-        return dispatch({
+        dispatch({
           type: VIEW_COUPON,
           payload: json.data['0']
-        })
+        });
+        dispatch({
+          type: BUSSINES_COUPON,
+          payload: json.data['0'].empresa
+        });
       }
     })
     .catch(function(error) {

@@ -35,7 +35,7 @@ const RenderRoutes = (
       component={props => <Category {...props} showChip={true} isCategory={true} />}
     />
     <ProtectedRoutes exact path="/profile" component={Profile} />
-    <ProtectedRoutes exact path="/commerce-example" component={Commerce} />
+    <ProtectedRoutes exact path="/comercio/:slugComercio" component={Commerce} />
     <ProtectedRoutes exact path="/cupon/:slug" component={ props => <SingleCoupon {...props} showChip={false} showFavorite={true} />} />
 
     {/* Rutas para los not found */}
