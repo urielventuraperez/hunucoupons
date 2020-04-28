@@ -4,7 +4,7 @@ import {
   VIEW_COUPONS,
   VIEW_COUPON,
   VIEW_HOME_COUPONS,
-  BUSSINES_COUPON
+  BUSSINES_COUPON,
 } from "../../actionTypes/coupons";
 
 const initialState = {
@@ -21,7 +21,7 @@ function reducer(state = initialState, action) {
       return { ...state, loadCoupons: !state.loadCoupons };
     case VIEW_HOME_COUPONS:
       return Object.assign(
-        {...state, loadCoupons: false},
+        { ...state, loadCoupons: false },
         { homeCoupons: action.payload }
       );
     case VIEW_ALL_COUPONS:
@@ -40,9 +40,7 @@ function reducer(state = initialState, action) {
         { coupon: action.payload }
       );
     case BUSSINES_COUPON:
-      return Object.assign(
-        {...state},{ bussines: action.payload }
-      );
+      return Object.assign({ ...state }, { bussines: action.payload });
     default:
       return state;
   }

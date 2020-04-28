@@ -49,7 +49,7 @@ const Commerce = (props) => {
 
   useEffect(() => {
     getBusiness(businessName);
-  }, []);
+  }, [getBusiness, businessName]);
 
   const classes = useStyles();
   return (
@@ -71,7 +71,7 @@ const Commerce = (props) => {
           <Grid item xs={12} md={3}>
             <Paper elevation={0} className={classes.paper}>
               <AccessTimeIcon />
-              <Typography color="textPrimary" variant="subtitle2">
+              <Typography color="textPrimary" variant="subtitle1">
                 Horario
               </Typography>
               <Typography color="textPrimary" variant="subtitle2">
@@ -82,7 +82,7 @@ const Commerce = (props) => {
           <Grid item xs={12} md={3}>
             <Paper elevation={0} className={classes.paper}>
               <PhoneIcon />
-              <Typography color="textPrimary" variant="subtitle2">
+              <Typography color="textPrimary" variant="subtitle1">
                 Contacto
               </Typography>
               <Typography color="textPrimary" variant="subtitle2">
@@ -93,7 +93,7 @@ const Commerce = (props) => {
           <Grid item xs={12} md={3}>
             <Paper elevation={0} className={classes.paper}>
               <RoomIcon />
-              <Typography color="textPrimary" variant="subtitle2">
+              <Typography color="textPrimary" variant="subtitle1">
                 Ubicación
               </Typography>
               <Typography color="textPrimary" variant="subtitle2">
