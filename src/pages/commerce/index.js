@@ -56,7 +56,7 @@ const Commerce = (props) => {
     <div>
       <HeaderImage
         title={business.nombre}
-        image={ business.sloganb64 ? `data:image/jpg;base64,${business.sloganb64}` : `${CouponBackground}`}
+        image={ business.ruta_logo ? `${business.ruta_logo}` : `${CouponBackground}`}
         height={"55vh"}
         backgroundColor={"rgba(0, 0, 0, 0.20)"}
         isStore={true}

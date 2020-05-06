@@ -62,18 +62,18 @@ const GridCoupons = (props) => {
             {props.coupons.length > 0 ? (
               <Grid container spacing={2}>
                 {props.coupons.map((coupon, i) => (
-                  <Grid key={i} item sm={6} md={4} xs={12} >
+                  <Grid key={i} item sm={6} md={4} xs={12}>
                     <Coupon
                       fechaFinal={coupon.fecha_final}
                       key={i}
                       titleName={coupon.nombre}
                       slug={coupon.slug_nombre}
                       descripcion={coupon.descripcion}
-                      media={`data:image/png;base64,${coupon.foto_principalb64}`}
+                      media={coupon.ruta_foto_cupon_principal}
                       slugEmpresa={coupon.empresa.slug_nombre}
                       logo={
-                        coupon.empresa.logob64
-                          ? `data:image/png;base64,${coupon.empresa.logob64}`
+                        coupon.empresa.ruta_logo
+                          ? coupon.empresa.ruta_logo
                           : IconoCuponesh
                       }
                       token={props.auth ? true : false}

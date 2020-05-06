@@ -54,7 +54,7 @@ const FullCoupon = (props) => {
       alignItems="flex-start"
       style={{
         backgroundImage: props.image
-          ? `url(data:image/jpg;base64,${props.image})`
+          ? `url(${props.image})`
           : `url(${CouponBackground})`,
       }}
     >

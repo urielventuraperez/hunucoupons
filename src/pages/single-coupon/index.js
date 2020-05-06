@@ -5,6 +5,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { connect } from "react-redux";
 import { GetSingleCoupon } from "../../redux/actions/coupons";
 import { makeStyles } from "@material-ui/core";
+import Seo from "../../components/seo";
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -24,13 +25,15 @@ const SingleCoupon = (props) => {
 
   return (
     <div>
+      }
+      <Seo title={props.coupon.nombre} />
       {props.loadCoupon && (
         <Backdrop className={classes.backdrop} open={true}>
           <CircularProgress color="inherit" />
         </Backdrop>
       )}
       <FullCoupon
-        image={props.coupon.foto_principalb64}
+        image={props.coupon.ruta_foto_cupon_principal}
         title={props.coupon.nombre}
         slugComercio={props.bussines.slug_nombre}
         description={props.coupon.descripcion}
