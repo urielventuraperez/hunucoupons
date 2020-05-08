@@ -1,4 +1,6 @@
-const PRODUCTION = true;
+const PRODUCTION = false;
+
+export const APP_ROUTE = !PRODUCTION ? 'http://localhost:3000' : 'https://cuponesh.herokuapp.com/';
 
 export const URL_API = PRODUCTION
   ? "https://movilappws.herokuapp.com/"

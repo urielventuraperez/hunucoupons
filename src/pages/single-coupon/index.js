@@ -26,7 +26,12 @@ const SingleCoupon = (props) => {
   return (
     <div>
       }
-      <Seo title={props.coupon.nombre} />
+      <Seo
+        title={props.coupon.nombre}
+        discount={props.coupon.descuento}
+        image={props.coupon.ruta_foto_cupon_principal}
+        slug = {props.coupon.slug_nombre}
+      />
       {props.loadCoupon && (
         <Backdrop className={classes.backdrop} open={true}>
           <CircularProgress color="inherit" />

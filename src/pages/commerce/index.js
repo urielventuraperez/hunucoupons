@@ -56,7 +56,9 @@ const Commerce = (props) => {
     <div>
       <HeaderImage
         title={business.nombre}
-        image={ business.ruta_logo ? `${business.ruta_logo}` : `${CouponBackground}`}
+        image={
+          business.ruta_logo ? `${business.ruta_logo}` : `${CouponBackground}`
+        }
         height={"55vh"}
         backgroundColor={"rgba(0, 0, 0, 0.20)"}
         isStore={true}
@@ -118,7 +120,7 @@ const Commerce = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    business: state.business.business
+    business: state.business.business,
   };
 };
 const mapDispatchToProps = (dispatch) => {
