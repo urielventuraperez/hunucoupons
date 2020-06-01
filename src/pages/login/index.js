@@ -89,14 +89,14 @@ export default function SignInSide() {
             >
               <Button
                 variant="contained"
-                disabled
                 color="primary"
                 startIcon={<FacebookIcon />}
+                href={FACEBOOK_PROVIDER}
               >
                 Facebook
               </Button>
               <Button
-                variant="contained"
+                variant="outlined"
                 color="primary"
                 startIcon={<DraftsIcon />}
                 href={GOOGLE_PROVIDER}

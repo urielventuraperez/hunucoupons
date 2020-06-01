@@ -21,7 +21,8 @@ const useStyles = makeStyles(theme => ({
     color: blue[600]
   },
   gmail: {
-    color: red[600]
+    color: red[600],
+    borderColor: red[600]
   },
   paper: {
     margin: theme.spacing(4, 2),
@@ -68,19 +69,17 @@ const LoginDialog = props => {
       <Box mt={3} mb={3}>
             <ButtonGroup
               variant="text"
-              color="primary"
-              aria-label="text primary button group"
             >
               <Button
                 variant="contained"
-                disabled
                 color="primary"
                 startIcon={<FacebookIcon />}
+                href={FACEBOOK_PROVIDER}
               >
                 Facebook
               </Button>
               <Button
-                variant="contained"
+                variant="outlined"
                 color="primary"
                 startIcon={<DraftsIcon />}
                 href={GOOGLE_PROVIDER}

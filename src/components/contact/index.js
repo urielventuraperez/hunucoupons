@@ -8,24 +8,24 @@ import ContactInfo from "../../components/contact-info";
 import ContactForm from "../../components/contact-form";
 import { makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     backgroundColor: theme.palette.background.default,
     margin: theme.spacing(5) * 2.6,
     [theme.breakpoints.down("sm")]: {
-      margin: theme.spacing(0)
-    }
+      margin: theme.spacing(0),
+    },
   },
   box: {
     padding: theme.spacing(3),
     [theme.breakpoints.down("sm")]: {
-      padding: theme.spacing(2)
-    }
+      padding: theme.spacing(2),
+    },
   },
   location: {
     backgroundColor: theme.palette.error.dark,
-    color: theme.palette.text.light
-  }
+    color: theme.palette.text.light,
+  },
 }));
 
 const Form = () => {
@@ -43,11 +43,17 @@ const Form = () => {
             <ContactMailRoundedIcon fontSize="large" />
           </Box>
           <Box>
+            <Typography variant="subtitle2">
+            Juntos podemos hacer cosas increíbles
+            </Typography>
+            <Typography variant="subtitle2">
+            Anunciate con nosotros.
+            </Typography>
             <ContactForm />
           </Box>
         </Box>
         <Box className={`${classes.box} ${classes.location}`} flexGrow={2}>
-            <ContactInfo />
+          <ContactInfo />
         </Box>
       </Grid>
     </Paper>
