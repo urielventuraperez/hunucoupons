@@ -123,7 +123,7 @@ const ContactForm = () => {
               maxLength: 25,
               minLength: 10,
               pattern: {
-                value: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/,
+                value: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s/0-9]*$/,
               },
             })}
             error={errors.nTelefono ? true : false}

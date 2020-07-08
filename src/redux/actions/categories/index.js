@@ -26,10 +26,10 @@ export function GetCategories() {
   };
 }
 
-export function GetCategory(category, page) {
+export function GetCategory(categoryId, page) {
   return function(dispatch) {
     dispatch({ type: LOAD_CATEGORY });
-    return fetch(`${URL_API}app/cupones/${category}/?page=${page}`, {
+    return fetch(`${URL_API}app/comercio/categoria/?categoria=${categoryId}&pagina=${page}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`
       }
