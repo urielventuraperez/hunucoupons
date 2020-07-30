@@ -2,6 +2,7 @@ import React from "react";
 import Snackbar from "@material-ui/core/Snackbar";
 
 const Toast = props => {
+
   return (
     <Snackbar
     anchorOrigin={{
@@ -9,7 +10,7 @@ const Toast = props => {
       horizontal: 'right',
     }}
       open={props.openSnackbar}
-      autoHideDuration={6000}
+      autoHideDuration={8000}
       onClose={props.handleCloseSnackbar}
       message={props.toastMessage}
     />

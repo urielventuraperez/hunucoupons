@@ -70,13 +70,14 @@ const GridCoupons = (props) => {
                       slug={coupon.slug_nombre}
                       descripcion={coupon.descripcion}
                       media={coupon.ruta_foto_cupon_principal}
-                      slugEmpresa={coupon.empresa.slug_nombre}
+                      slugEmpresa={coupon.empresa.slug_nombre ? coupon.empresa.slug_nombre : ''}
                       logo={
                         coupon.empresa.ruta_logo
                           ? coupon.empresa.ruta_logo
                           : IconoCuponesh
                       }
                       token={props.auth ? true : false}
+                      favorite={coupon.campoAdicional.favoritoActivo}
                     />
                   </Grid>
                 ))}

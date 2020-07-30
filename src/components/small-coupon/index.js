@@ -39,22 +39,31 @@ const useStyles = makeStyles((theme) => ({
 
 const Coupon = (props) => {
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
-
+  const [ favorite, setFavorite ] = React.useState(false);
+ 
   const [makeZoom, setMakeZoom] = React.useState(false);
 
   useEffect(() => {
+    setFavorite(props.favorite);
     setTimeout(() => {
       setMakeZoom(true);
     }, 500);
   }, []);
 
-  const handleClickOpenSnackbar = () => {
+  const addToFavorite = () => {
+    setFavorite(!favorite);
     setOpenSnackbar(true);
   };
 
   const handleCloseSnackbar = () => {
     setOpenSnackbar(false);
   };
+
+  const toastMessage = (commerce) => {
+    let message;
+    !favorite ? message = `${commerce} se añadio a tus favoritos` : message = `${commerce} se elimino de tus favoritos`;
+    return message; 
+  }
 
   const classes = useStyles();
   return (
@@ -101,9 +110,9 @@ const Coupon = (props) => {
             </Button>
             <IconButton
               className={classes.iconButton}
-              color="primary"
-              aria-label="Add to favorites"
-              onClick={handleClickOpenSnackbar}
+              color={ favorite ? "default" : "primary"}
+              aria-label="Agrega a tus favoritos"
+              onClick={addToFavorite}
             >
               <FavoriteIcon />
             </IconButton>
@@ -113,7 +122,7 @@ const Coupon = (props) => {
             <Toast
               openSnackbar={openSnackbar}
               handleCloseSnackbar={handleCloseSnackbar}
-              toastMessage={`${props.titleName} se añadio a tus favoritos`}
+              toastMessage={toastMessage(props.titleName)}
             />
           </CardActions>
         )}
