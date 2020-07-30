@@ -4,7 +4,6 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import HeaderImage from "../../components/header-image";
 import BussinesCard from "../../components/card";
-import { PREMIUM_BUSSINES } from "../../utils/business";
 import LoginDialog from "../../components/login";
 import { ACCESS_TOKEN } from "../../environments";
 import GridCoupons from "../../components/grid-coupons";
@@ -12,6 +11,7 @@ import Image from "../../assets/images/first-section.png";
 import { connect } from "react-redux";
 import Contact from "../../components/contact";
 import { GetHomeCoupons } from "../../redux/actions/coupons";
+import { getPremiumBusiness } from "../../redux/actions/bussiness";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -39,14 +39,15 @@ const Home = (props) => {
     }
   }, []);
 
-  const { getCoupons, coupons } = props;
+  const { getCoupons, coupons, getPremiumBusiness, business } = props;
 
   useEffect(() => {
     if(coupons && coupons.length){
     } else {
       getCoupons();
+      getPremiumBusiness();
     }
-  }, [getCoupons, coupons]);
+  }, [getCoupons, coupons, getPremiumBusiness, business]);
 
   return (
     <React.Fragment>
@@ -60,13 +61,14 @@ const Home = (props) => {
       />
       {/* Commerce Premium */}
       <Container className={classes.container}>
-        <Grid container mt={8} mb={8} spacing={3}>
-          {PREMIUM_BUSSINES.map((bussines, i) => (
-            <Grid key={i} item xs={12} md={3}>
+        <Grid container mt={8} mb={8} spacing={1}>
+          {business.map((x, i) => (
+            <Grid key={i} item xs={3} md={3}>
               <BussinesCard
                 key={i}
-                media={bussines.logo}
-                name={bussines.name}
+                slug={x.slug_nombre}
+                media={x.ruta_slogan}
+                name={x.nombre}
                 isOnlyImage={false}
               />
             </Grid>
@@ -92,6 +94,7 @@ const mapStateToProps = (state) => {
     loadCoupons: state.coupons.loadCoupons,
     coupons: state.coupons.homeCoupons,
     auth: state.auth.hasToken,
+    business: state.business.premiumBusiness,
   };
 };
 
@@ -100,6 +103,9 @@ const mapDispatchToProps = (dispatch) => {
     getCoupons: () => {
       dispatch(GetHomeCoupons());
     },
+    getPremiumBusiness: () => {
+      dispatch(getPremiumBusiness());
+    }
   };
 };
 

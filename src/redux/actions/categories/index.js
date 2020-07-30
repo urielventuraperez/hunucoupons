@@ -26,7 +26,7 @@ export function GetCategories() {
   };
 }
 
-export function GetCategory(categoryId, page) {
+export function GetBusinessByCategory(categoryId, page) {
   return function(dispatch) {
     dispatch({ type: LOAD_CATEGORY });
     return fetch(`${URL_API}app/comercio/categoria/?categoria=${categoryId}&pagina=${page}`, {

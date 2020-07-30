@@ -44,7 +44,7 @@ const BussinesCard = props => {
       <CardActionArea>
         <CardMedia
           component={ Link }
-          to="/commerce-example"
+          to={`/comercio/${props.slug}`}
           className={classes.media}
           image={props.media}
           title={props.name}

@@ -6,7 +6,7 @@ import HeaderImage from "../../components/header-image";
 import categoria from "../../assets/images/categoria.jpg";
 // import GridCoupons from "../../components/grid-coupons";
 import GridBusiness from "../../components/grid-business";
-import { GetCategory } from "../../redux/actions/categories";
+import { GetBusinessByCategory } from "../../redux/actions/categories";
 import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -96,7 +96,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getCoupons: (slug, page) => {
-      dispatch(GetCategory(slug, page));
+      dispatch(GetBusinessByCategory(slug, page));
     },
   };
 };
