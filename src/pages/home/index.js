@@ -105,7 +105,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     getPremiumBusiness: () => {
       dispatch(getPremiumBusiness());
-    }
+    },
   };
 };
 

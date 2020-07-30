@@ -15,6 +15,8 @@ import Toast from "../toast";
 import Button from "@material-ui/core/Button";
 import { NavLink } from "react-router-dom";
 import Zoom from "@material-ui/core/Zoom";
+import { connect } from 'react-redux';
+import { updateMyTotalFav } from "../../redux/actions/favorites";
 
 const useStyles = makeStyles((theme) => ({
   media: {
@@ -48,11 +50,12 @@ const Coupon = (props) => {
     setTimeout(() => {
       setMakeZoom(true);
     }, 500);
-  }, []);
+  }, [props.favorite]);
 
   const addToFavorite = () => {
     setFavorite(!favorite);
     setOpenSnackbar(true);
+    props.updateTotalFav(favorite);
   };
 
   const handleCloseSnackbar = () => {
@@ -131,4 +134,12 @@ const Coupon = (props) => {
   );
 };
 
-export default Coupon;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateTotalFav: (isMyFav) => {
+      dispatch(updateMyTotalFav(isMyFav));
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Coupon);

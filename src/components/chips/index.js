@@ -15,11 +15,11 @@ const ChipLegend = (props) => {
   const labelCoupons = (coupons) => {
     switch (coupons) {
       case 0:
-      return 'Sin ningún cupón';
+      return 'Sin ningún comercio';
       case 1:
-      return 'Cupón'
+      return 'Comercio'
       default:
-        return 'Cupones';
+        return 'Comercios';
     }
   }
 

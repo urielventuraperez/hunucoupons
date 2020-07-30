@@ -48,7 +48,7 @@ const BottomNavigator = props => {
             label="Cupones"
             value="/favorites-coupons"
             icon={
-              <Badge badgeContent={14} color="secondary" max={50}>
+              <Badge badgeContent={props.totalMyFav} color="secondary" max={50}>
                 <FavoriteIcon />
               </Badge>
             }

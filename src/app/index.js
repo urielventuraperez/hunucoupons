@@ -11,7 +11,7 @@ import { LightTheme, DarkTheme } from "../theme";
 import ScrollToTop from "../routes/scrollToTop";
 import { connect } from "react-redux";
 
-const App = ({ history, isDarkTheme }) => {
+const App = ({ history, isDarkTheme, totalMyFav }) => {
   const Theme = isDarkTheme ? DarkTheme : LightTheme;
 
   return (
@@ -21,7 +21,7 @@ const App = ({ history, isDarkTheme }) => {
         <CssBaseline />
         <TopNavigator />
         {RenderRoutes}
-        <BottomNavigator />
+        <BottomNavigator totalMyFav={totalMyFav} />
         <Footer />
       </ThemeProvider>
     </ConnectedRouter>
@@ -31,11 +31,13 @@ const App = ({ history, isDarkTheme }) => {
 App.propTypes = {
   history: PropTypes.object,
   isDarkTheme: PropTypes.bool,
+  totalMyFav: PropTypes.number
 };
 
 const mapStateToProps = (state) => {
   return {
     isDarkTheme: state.theme.darkTheme,
+    totalMyFav: state.favorites.myTotalFavorites,
   };
 };
 

@@ -1,1 +1,2 @@
-export const MY_FAVORITES = 'MY_FAVORITES';
+export const ADD_MY_FAVORITES = 'ADD_MY_FAVORITES';
+export const SUPR_MY_FAVORITES = 'SUPR_MY_FAVORITES';
