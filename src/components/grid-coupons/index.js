@@ -77,7 +77,7 @@ const GridCoupons = (props) => {
                           : IconoCuponesh
                       }
                       token={props.auth ? true : false}
-                      favorite={coupon.campoAdicional.favoritoActivo}
+                      myFav={coupon.campoAdicional.favoritoActivo}
                     />
                   </Grid>
                 ))}

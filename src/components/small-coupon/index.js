@@ -40,31 +40,33 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Coupon = (props) => {
+  let isMyFav;
+  props.myFav === 'true' ? isMyFav = true : isMyFav = false;
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
-  const [ favorite, setFavorite ] = React.useState(false);
+  const [ fav, setFavorite ] = React.useState(isMyFav);
  
   const [makeZoom, setMakeZoom] = React.useState(false);
 
   useEffect(() => {
-    setFavorite(props.favorite);
+    setFavorite(fav);
     setTimeout(() => {
       setMakeZoom(true);
     }, 500);
-  }, [props.favorite]);
+  }, [fav]);
 
   const addToFavorite = () => {
-    setFavorite(!favorite);
     setOpenSnackbar(true);
-    props.updateTotalFav(favorite);
+    props.updateTotalFav(props.slug);
+    setFavorite(!fav);
   };
 
   const handleCloseSnackbar = () => {
     setOpenSnackbar(false);
   };
 
-  const toastMessage = (commerce) => {
+  const toastMessage = (commerce, isMyFav) => {
     let message;
-    !favorite ? message = `${commerce} se añadio a tus favoritos` : message = `${commerce} se elimino de tus favoritos`;
+    isMyFav === 'false' ? message = `${commerce} se añadio a tus favoritos` : message = `${commerce} se elimino de tus favoritos`;
     return message; 
   }
 
@@ -113,7 +115,7 @@ const Coupon = (props) => {
             </Button>
             <IconButton
               className={classes.iconButton}
-              color={ favorite ? "default" : "primary"}
+              color={ fav ? "primary" : "default"}
               aria-label="Agrega a tus favoritos"
               onClick={addToFavorite}
             >
@@ -125,7 +127,7 @@ const Coupon = (props) => {
             <Toast
               openSnackbar={openSnackbar}
               handleCloseSnackbar={handleCloseSnackbar}
-              toastMessage={toastMessage(props.titleName)}
+              toastMessage={toastMessage(props.titleName, props.myFav)}
             />
           </CardActions>
         )}
@@ -136,10 +138,11 @@ const Coupon = (props) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateTotalFav: (isMyFav) => {
-      dispatch(updateMyTotalFav(isMyFav));
+    updateTotalFav: (slugCoupon) => {
+      dispatch(updateMyTotalFav(slugCoupon));
     }
   }
 }
 
 export default connect(null, mapDispatchToProps)(Coupon);
+

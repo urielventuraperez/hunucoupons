@@ -9,6 +9,7 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import { Link, useLocation } from "react-router-dom";
 import Badge from "@material-ui/core/Badge";
 import { connect } from "react-redux";
+import { getMyTotalFavCoupons } from "../../redux/actions/favorites";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -83,4 +84,11 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(BottomNavigator);
+const mapDispatchToProps = dispatch => {
+  return {
+    myTotalFav: dispatch({type: 'MY_TOTAL_FAVORITES'})
+    // myTotalFav: dispatch(getMyTotalFavCoupons())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BottomNavigator);
