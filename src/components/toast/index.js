@@ -10,7 +10,7 @@ const Toast = props => {
       horizontal: 'right',
     }}
       open={props.openSnackbar}
-      autoHideDuration={8000}
+      autoHideDuration={1500}
       onClose={props.handleCloseSnackbar}
       message={props.toastMessage}
     />

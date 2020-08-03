@@ -65,8 +65,9 @@ const Coupon = (props) => {
   };
 
   const toastMessage = (commerce, isMyFav) => {
+    console.log(isMyFav);
     let message;
-    isMyFav === 'false' ? message = `${commerce} se añadio a tus favoritos` : message = `${commerce} se elimino de tus favoritos`;
+    isMyFav ? message = `${commerce} se añadio a tus favoritos` : message = `${commerce} se elimino de tus favoritos`;
     return message; 
   }
 
@@ -127,7 +128,7 @@ const Coupon = (props) => {
             <Toast
               openSnackbar={openSnackbar}
               handleCloseSnackbar={handleCloseSnackbar}
-              toastMessage={toastMessage(props.titleName, props.myFav)}
+              toastMessage={toastMessage(props.titleName, fav)}
             />
           </CardActions>
         )}
