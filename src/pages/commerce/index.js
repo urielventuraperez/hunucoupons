@@ -2,13 +2,14 @@ import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
+import GridCoupons from "../../components/grid-coupons";
 import { Typography } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import PhoneIcon from "@material-ui/icons/Phone";
 import RoomIcon from "@material-ui/icons/Room";
 import HeaderImage from "../../components/header-image";
-import { getBusiness } from "../../redux/actions/bussiness";
+import { getBusiness, getCoupons } from "../../redux/actions/bussiness";
 import { connect } from "react-redux";
 import CouponBackground from "../../assets/images/coupon_background.jpg";
 
@@ -45,11 +46,12 @@ const useStyles = makeStyles((theme) => ({
 
 const Commerce = (props) => {
   const businessName = props.match.params.slugComercio;
-  const { getBusiness, business } = props;
+  const { getBusiness, business, getCoupons } = props;
 
   useEffect(() => {
     getBusiness(businessName);
-  }, [getBusiness, businessName]);
+    getCoupons(businessName);
+  }, [getBusiness, getCoupons, businessName]);
 
   const classes = useStyles();
   return (
@@ -112,6 +114,11 @@ const Commerce = (props) => {
           >
             Cupones
           </Typography>
+          <GridCoupons
+        loadCoupons={props.loadCoupons}
+        coupons={props.coupons}
+        auth={props.auth}
+      />
         </Box>
       </Box>
     </div>
@@ -121,6 +128,8 @@ const Commerce = (props) => {
 const mapStateToProps = (state) => {
   return {
     business: state.business.business,
+    coupons: state.business.coupons,
+    auth: state.auth.hasToken,
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -128,6 +137,9 @@ const mapDispatchToProps = (dispatch) => {
     getBusiness: (business) => {
       dispatch(getBusiness(business));
     },
+    getCoupons: (business) => {
+      dispatch(getCoupons(business));
+    }
   };
 };
 
