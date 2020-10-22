@@ -4,7 +4,11 @@ import { URL_API, ACCESS_TOKEN } from "../../../environments";
 export function GetHomeCoupons() {
   return function(dispatch) {
     dispatch({ type: LOAD_COUPONS });
-    return fetch(`${URL_API}app/cupones/fechaReciente`)
+    return fetch(`${URL_API}app/cupones/fechaReciente`, {
+      headers: {
+        Authorization: `Bearer ${window.localStorage.getItem('accessToken')}`
+      }
+    })
       .then(response => response.json())
       .then(json => {
         return dispatch({
@@ -21,7 +25,11 @@ export function GetHomeCoupons() {
 export function GetCoupons() {
   return function(dispatch) {
     dispatch({ type: LOAD_COUPONS });
-    return fetch(`${URL_API}app/cupones/fechaReciente`)
+    return fetch(`${URL_API}app/cupones/fechaReciente`, {
+      headers: {
+        Authentication: `Bearer ${window.localStorage.getItem('accessToken')}`
+      }
+    })
       .then(response => response.json())
       .then(json => {
         return dispatch({
