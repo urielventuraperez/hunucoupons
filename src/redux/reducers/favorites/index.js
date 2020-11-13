@@ -15,7 +15,7 @@ export default function reducer(state=initialState, action) {
     case SUPR_MY_FAVORITES:
       return {...state, myTotalFavorites: state.myTotalFavorites-1}
     case MY_TOTAL_FAVORITES:
-      return { ...state, myTotalFavorites: 10 }
+      return { ...state, myTotalFavorites: action.payload }
     case MY_FAVORITES:
       return {...state, loadFavorites: false, myFavorites: action.payload}
     default:

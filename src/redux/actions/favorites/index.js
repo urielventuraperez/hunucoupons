@@ -36,7 +36,7 @@ export function getMyTotalFavCoupons() {
     })
       .then(response => response.json())
       .then(json => {
-        return dispatch({ type: MY_TOTAL_FAVORITES, payload: json.data.numFavoritos });
+        return dispatch({ type: MY_TOTAL_FAVORITES, payload: parseInt(json.data.numFavoritos) });
       })
       .catch(function(error) {
         console.log(error);
