@@ -5,7 +5,6 @@ const SwitchDarkMode = props => {
   const [theme, setTheme] = useState(true);
 
   const handleChangeMode = () => {
-    console.log(props);
     setTheme(!theme);
     theme
       ? window.localStorage.setItem("theme", "LightTheme")

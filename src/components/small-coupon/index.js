@@ -65,7 +65,6 @@ const Coupon = (props) => {
   };
 
   const toastMessage = (commerce, isMyFav) => {
-    console.log(isMyFav);
     let message;
     isMyFav ? message = `${commerce} se añadio a tus favoritos` : message = `${commerce} se elimino de tus favoritos`;
     return message; 

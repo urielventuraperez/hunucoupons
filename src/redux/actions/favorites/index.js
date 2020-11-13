@@ -36,7 +36,6 @@ export function getMyTotalFavCoupons() {
     })
       .then(response => response.json())
       .then(json => {
-        console.log(json.data);
         return dispatch({ type: MY_TOTAL_FAVORITES, payload: json.data.numFavoritos });
       })
       .catch(function(error) {
