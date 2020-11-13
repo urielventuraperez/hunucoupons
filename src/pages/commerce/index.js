@@ -118,6 +118,7 @@ const Commerce = (props) => {
         loadCoupons={props.loadCoupons}
         coupons={props.coupons}
         auth={props.auth}
+        title=''
       />
         </Box>
       </Box>

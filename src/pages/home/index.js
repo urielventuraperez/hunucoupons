@@ -81,6 +81,7 @@ const Home = (props) => {
         loadCoupons={props.loadCoupons}
         coupons={props.coupons}
         auth={props.auth}
+        title='Nuevos cupones'
       />
       {/* End new coupons section */}
       <LoginDialog open={open} onClose={handleClose} />

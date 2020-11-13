@@ -42,7 +42,7 @@ const GridCoupons = (props) => {
             className={classes.newCoupons}
             variant="h5"
           >
-            Nuevos cupones
+            {props.title}
           </Typography>
           <Button variant="contained" color="secondary">
             Ver más
