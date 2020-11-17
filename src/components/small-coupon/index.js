@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
+import Link from '@material-ui/core/Link';
 import CardHeader from "@material-ui/core/CardHeader";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardActions from "@material-ui/core/CardActions";
+import Tooltip from '@material-ui/core/Tooltip';
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
@@ -19,6 +21,11 @@ import { connect } from 'react-redux';
 import { updateMyTotalFav } from "../../redux/actions/favorites";
 
 const useStyles = makeStyles((theme) => ({
+  card: {
+    "&:hover, &:focus": {
+      boxShadow: "0 4px 18px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.22)", 
+    },
+  },
   media: {
     height: 0,
     paddingTop: "56.25%", // 16:9
@@ -75,11 +82,13 @@ const Coupon = (props) => {
     <Zoom in={makeZoom} style={{ transitionDelay: makeZoom ? "50ms" : "0ms" }}>
       <Paper elevation={6} className={classes.card}>
         <CardActionArea>
+        <Link href={`/cupon/${props.slug}`}>
           <CardMedia
             className={classes.media}
             image={props.media}
-            title={props.titleName}
+            title={`${props.titleName} - ${props.empresa}`}
           />
+          </Link>
           <Typography
             variant="caption"
             color="textSecondary"
@@ -106,6 +115,7 @@ const Coupon = (props) => {
         />
         {props.token && (
           <CardActions disableSpacing={true}>
+            <Tooltip title="Ver el cupón">
             <Button
               color="secondary"
               component={NavLink}
@@ -113,6 +123,8 @@ const Coupon = (props) => {
             >
               VER
             </Button>
+            </Tooltip>
+            <Tooltip title="Mis favoritos">
             <IconButton
               className={classes.iconButton}
               color={ fav ? "primary" : "default"}
@@ -121,9 +133,12 @@ const Coupon = (props) => {
             >
               <FavoriteIcon />
             </IconButton>
+            </Tooltip>
+            <Tooltip title="Comparte en tus redes sociales">
             <IconButton color="secondary" aria-label="Share">
               <ShareIcon />
             </IconButton>
+            </Tooltip>
             <Toast
               openSnackbar={openSnackbar}
               handleCloseSnackbar={handleCloseSnackbar}

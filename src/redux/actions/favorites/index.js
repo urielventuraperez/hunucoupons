@@ -29,7 +29,7 @@ export function updateMyTotalFav(slug_coupon) {
 
 export function getMyTotalFavCoupons() {
   return function(dispatch) {
-    dispatch({ type: MY_FAVORITES });
+    dispatch({ type: LOAD_MY_FAVORITES });
     return fetch(`${URL_API}user/me`, {
       method:'GET',
       headers: { 'Authorization': `Bearer ${localStorage.getItem(ACCESS_TOKEN)}` }

@@ -7,19 +7,22 @@ import { viewMyFavorites } from "../../redux/actions/favorites";
 
 const Favorites = (props) => {
 
-  const {getMyFavorites} = props;
+  const {getMyFavorites, myFavorites, loadFavorites, auth} = props;
   useEffect(()=>{
-    getMyFavorites();
+    if(myFavorites && myFavorites.length){
+    } else {
+      getMyFavorites();
+    }
   }, [getMyFavorites])
 
     return(
         <Container>
         <Box my={2}>
       {/* New coupons section */}
-      <GridCoupons
-        loadCoupons={props.loadFavorites}
-        coupons={props.myFavorites}
-        auth={props.auth}
+    <GridCoupons
+        loadCoupons={loadFavorites}
+        coupons={myFavorites}
+        auth={auth}
         title='Mis cupones favoritos'
       />
       {/* End new coupons section */}

@@ -71,6 +71,7 @@ const GridCoupons = (props) => {
                       descripcion={coupon.descripcion}
                       media={coupon.ruta_foto_cupon_principal}
                       slugEmpresa={coupon.empresa.slug_nombre ? coupon.empresa.slug_nombre : ''}
+                      empresa={coupon.empresa.nombre ? coupon.empresa.nombre : ''}
                       logo={
                         coupon.empresa.ruta_logo
                           ? coupon.empresa.ruta_logo
