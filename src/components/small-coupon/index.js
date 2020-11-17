@@ -54,6 +54,14 @@ const Coupon = (props) => {
  
   const [makeZoom, setMakeZoom] = React.useState(false);
 
+  const formatDate = (date) => {
+    let newDate = new Date (date);
+    let event = new Date(Date.UTC(newDate.getFullYear(), newDate.getMonth(), newDate.getUTCDate(), newDate.getUTCHours(), 0, 0));
+    let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    
+    return event.toLocaleDateString('es-MX', options);
+  }
+
   useEffect(() => {
     setFavorite(fav);
     setTimeout(() => {
@@ -94,7 +102,7 @@ const Coupon = (props) => {
             color="textSecondary"
             className={classes.date}
           >
-            Termina el {props.fechaFinal}
+            Hasta el {formatDate(props.fechaFinal)}
           </Typography>
         </CardActionArea>
         <CardHeader
@@ -132,11 +140,6 @@ const Coupon = (props) => {
               onClick={addToFavorite}
             >
               <FavoriteIcon />
-            </IconButton>
-            </Tooltip>
-            <Tooltip title="Comparte en tus redes sociales">
-            <IconButton color="secondary" aria-label="Share">
-              <ShareIcon />
             </IconButton>
             </Tooltip>
             <Toast

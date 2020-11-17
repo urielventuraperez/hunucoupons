@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { APP_ROUTE } from "../../environments";
+import { useLocation } from "react-router-dom";
 
 const Seo = (props) => {
   const { title, discount, image, slug } = props;
