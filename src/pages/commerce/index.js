@@ -4,6 +4,7 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import GridCoupons from "../../components/grid-coupons";
 import { Typography } from "@material-ui/core";
+import Link from '@material-ui/core/Link';
 import Paper from "@material-ui/core/Paper";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import PhoneIcon from "@material-ui/icons/Phone";
@@ -42,6 +43,9 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     color: theme.palette.text.secondary,
   },
+  coupons: {
+    marginTop: '48px'
+  }
 }));
 
 const Commerce = (props) => {
@@ -90,7 +94,14 @@ const Commerce = (props) => {
                 Contacto
               </Typography>
               <Typography color="textPrimary" variant="subtitle2">
-                {business.n_celular}
+              <Link href={`https://wa.me/${business.n_celular}`} target="_blank">
+                Whatsapp: {business.n_celular}
+              </Link>
+              </Typography>
+              <Typography color="textPrimary" variant="subtitle2">
+              <Link href={`tel:${business.n_telefono}`} target="_blank">
+                Télefono: {business.n_telefono}
+              </Link>
               </Typography>
             </Paper>
           </Grid>
@@ -106,8 +117,9 @@ const Commerce = (props) => {
             </Paper>
           </Grid>
         </Grid>
-        <Box m={8}>
-          <Typography
+        <Grid>
+        <Grid className={classes.coupons}>
+        <Typography
             className={classes.subtitle}
             color="secondary"
             variant="h6"
@@ -120,7 +132,8 @@ const Commerce = (props) => {
         auth={props.auth}
         title=''
       />
-        </Box>
+      </Grid>
+        </Grid>
       </Box>
     </div>
   );

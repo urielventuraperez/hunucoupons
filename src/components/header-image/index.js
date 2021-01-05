@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import AddFavorite from "../add-favorite";
+// import AddFavorite from "../add-favorite";
 import ChipLegend from "../chips";
 
 const useStyles = makeStyles(theme => ({
@@ -47,7 +47,7 @@ const HeaderImage = (props) => {
       <Typography className={classes.title} variant="h4">
         {props.title}
       </Typography>
-    { props.isStore && <AddFavorite /> }
+    { /* props.isStore && <AddFavorite /> */ }
     { props.showChip && <ChipLegend totalCoupons={props.totalCoupons} /> }
     
     </Grid>

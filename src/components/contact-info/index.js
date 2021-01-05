@@ -27,13 +27,13 @@ const ContactInfo = () => {
           <ListItemIcon>
             <RoomIcon className={classes.icon} />
           </ListItemIcon>
-          <ListItemText primary="Dirección" secondary="Calle 30" />
+          <ListItemText primary="Dirección" secondary="Calle 30 SN, Centro, 97350 Hunucmá, Yuc. 97350 Hunucmá, México" />
         </ListItem>
         <ListItem>
           <ListItemIcon>
             <PhoneAndroidIcon className={classes.icon} />
           </ListItemIcon>
-          <ListItemText primary="Teléfono" secondary="9999-999-999" />
+          <ListItemText primary="Teléfono" secondary="988 957 0992" />
         </ListItem>
         <ListItem>
           <ListItemIcon>

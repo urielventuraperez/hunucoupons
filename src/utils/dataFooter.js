@@ -29,7 +29,7 @@ export const DATAFOOTER = [
 ];
 
 export const SOCIALMEDIA = {
-    facebook:"#",
+    facebook:"https://www.facebook.com/Cuponesh",
     twitter:"#",
-    instagram:"#"
+    instagram:"https://www.instagram.com/p/Cl0p5qJsceS/?igshid=1wlab1jovj36b"
 }

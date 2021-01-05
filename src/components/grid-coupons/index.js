@@ -6,7 +6,6 @@ import Grid from "@material-ui/core/Grid";
 import { Typography } from "@material-ui/core";
 import Empty from "../empty";
 import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
 import IconoCuponesh from "../../assets/images/icono-cuponesh.png";
 
 const useStyles = makeStyles((theme) => ({
@@ -44,9 +43,6 @@ const GridCoupons = (props) => {
           >
             {props.title}
           </Typography>
-          <Button variant="contained" color="secondary">
-            Ver más
-          </Button>
         </Box>
       )}
       <Box className={classes.content}>

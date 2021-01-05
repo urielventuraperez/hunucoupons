@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import Box from "@material-ui/core/Box";
 import FormGroup from "@material-ui/core/FormGroup";
@@ -42,18 +42,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ContactForm = () => {
-  const { register, handleSubmit, errors } = useForm({ mode: "onChange" });
+  const { register, handleSubmit, errors, reset } = useForm({ mode: "onChange" });
 
   const classes = useStyles();
-  const [loading, setLoading] = React.useState(false);
-  const [success, setSuccess] = React.useState(false);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
   const buttonClassname = clsx({
     [classes.buttonSuccess]: success,
   });
 
   const handleSendForm = (bodyPost) => {
     if (!loading) {
-      console.log(errors);
       setSuccess(false);
       setLoading(true);
       fetch(`${URL_API}app/notificaciones/comentarios`, {
@@ -76,6 +75,7 @@ const ContactForm = () => {
           }
         });
     }
+    reset(bodyPost);
   };
 
   const tooltipText = "¡Envianos tu mensaje!";

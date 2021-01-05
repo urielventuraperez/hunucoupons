@@ -12,7 +12,6 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
 import Toast from "../toast";
 import Button from "@material-ui/core/Button";
 import { NavLink } from "react-router-dom";
@@ -81,7 +80,7 @@ const Coupon = (props) => {
 
   const toastMessage = (commerce, isMyFav) => {
     let message;
-    isMyFav ? message = `${commerce} se añadio a tus favoritos` : message = `${commerce} se elimino de tus favoritos`;
+    isMyFav ? message = `${commerce} se ha añadido a tus favoritos` : message = `${commerce} se ha eliminado de tus favoritos`;
     return message; 
   }
 
@@ -107,6 +106,7 @@ const Coupon = (props) => {
         </CardActionArea>
         <CardHeader
           avatar={
+            <Tooltip title={props.empresa}>
             <Avatar
               component={NavLink}
               to={`/comercio/${props.slugEmpresa}`}
@@ -114,6 +114,7 @@ const Coupon = (props) => {
               className={classes.avatar}
               src={props.logo}
             />
+            </Tooltip>
           }
           title={
             <Typography variant="subtitle1" color="textPrimary">

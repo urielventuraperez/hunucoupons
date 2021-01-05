@@ -24,6 +24,7 @@ const SocialIcons = () => {
   const facebookUrl = SOCIALMEDIA.facebook;
   const twitterUrl = SOCIALMEDIA.twitter;
   const instagramUrl = SOCIALMEDIA.instagram;
+  
   const classes = useStyles();
 
   return (
@@ -35,13 +36,6 @@ const SocialIcons = () => {
         <IconButton href={facebookUrl}>
           <Avatar>
             <FacebookIcon className={classes.icon} />
-          </Avatar>
-        </IconButton>
-      </Tooltip>
-      <Tooltip title={"Visitanos en Twitter"}>
-        <IconButton href={twitterUrl}>
-          <Avatar>
-            <TwitterIcon className={classes.icon} />
           </Avatar>
         </IconButton>
       </Tooltip>
