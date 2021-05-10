@@ -40,7 +40,7 @@ const Footer = () => {
     <React.Fragment>
       {(location.pathname !== "/profile" && location.pathname !== '/login') && (
         <Container maxWidth="md" className={classes.footer}>
-          <Grid container spacing={4} justify="space-evenly">
+          {/*<Grid container spacing={4} justify="space-evenly">
             {DATAFOOTER.map(footer => (
               <Grid item xs={6} sm={3} key={footer.title}>
                 <Typography
@@ -61,7 +61,7 @@ const Footer = () => {
                 </ul>
               </Grid>
             ))}
-          </Grid>
+          </Grid> */}
           <Box mt={3}>
             <Copyright />
           </Box>

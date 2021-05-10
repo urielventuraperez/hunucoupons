@@ -1,12 +1,12 @@
-const PRODUCTION = true;
+const PRODUCTION = false;
 
 export const APP_ROUTE = PRODUCTION
   ? "https://cuponesh.herokuapp.com/"
   : "http://localhost:3000";
 
 export const URL_API = PRODUCTION
-  ? "https://movilappws.herokuapp.com/"
-  : "https://movilappws.herokuapp.com/";
+  ? "https://ws.cuponesh.com.mx/movilapp/"
+  : "https://ws.cuponesh.com.mx/movilapp/";
 
 export const ACCESS_TOKEN = "accessToken";
 export const ACCESS_USER = "usuario";

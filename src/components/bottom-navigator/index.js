@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
@@ -7,6 +7,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { Link, useLocation } from "react-router-dom";
 import Badge from "@material-ui/core/Badge";
+import Box from '@material-ui/core/Box';
 import { connect } from "react-redux";
 import { getMyTotalFavCoupons } from "../../redux/actions/favorites";
 
@@ -15,7 +16,9 @@ const useStyles = makeStyles(theme => ({
     zIndex: '1',
     width: "100%",
     position: "fixed",
-    bottom: 0
+    bottom: 0,
+    backgroundColor: theme.palette.background.default,
+    boxShadow: "0 14px 28px rgba(0,0,0,0.5), 0 10px 10px rgba(0,0,0,0.5)"
   }
 }));
 
@@ -31,7 +34,7 @@ const BottomNavigator = props => {
   }, [myTotalFav])
   
   return (
-    <Fragment>
+    <Box>
       {" "}
       {props.hasToken && (
         <BottomNavigation
@@ -46,6 +49,7 @@ const BottomNavigator = props => {
             to="/"
             label="Inicio"
             value="/"
+            className={classes.item}
             icon={<HomeIcon />}
           />
           <BottomNavigationAction
@@ -53,6 +57,7 @@ const BottomNavigator = props => {
             to="/favorites-coupons"
             label="Cupones"
             value="/favorites-coupons"
+            className={classes.item}
             icon={
               <Badge badgeContent={props.totalMyFav} color="secondary" max={50}>
                 <FavoriteIcon />
@@ -73,11 +78,12 @@ const BottomNavigator = props => {
             to="/profile"
             label="Perfil"
             value="/profile"
+            className={classes.item}
             icon={<SettingsIcon />}
           />
         </BottomNavigation>
       )}
-    </Fragment>
+    </Box>
   );
 };
 

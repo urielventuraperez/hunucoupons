@@ -17,20 +17,28 @@ import { GetCategories } from "../../redux/actions/categories";
 
 const drawerWidth = 320;
 
-const useStyles = makeStyles({
+const useStyles = makeStyles( theme => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0
   },
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
+    backgroundColor: theme.palette.background.default
   },
   drawerHeader: {
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end"
+  },
+  icon: {
+    width: 30,
+    height: 30
+  },
+  item: {
+    color: theme.palette.text.primary
   }
-});
+}));
 
 const DrawerNavigation = props => {
   const classes = useStyles();
@@ -86,10 +94,11 @@ const DrawerNavigation = props => {
               <ListItemIcon>
                 <Avatar
                   alt={`${category.nombre}`}
+                  className={`${classes.item} ${classes.icon}`}
                   src={`data:image/jpeg;base64,${category.iconob64}`}
                 />
               </ListItemIcon>
-              <ListItemText>{category.nombre}</ListItemText>
+              <ListItemText className={classes.item}>{category.nombre}</ListItemText>
             </ListItem>{" "}
           </Link>
         ))}

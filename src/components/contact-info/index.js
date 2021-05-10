@@ -27,19 +27,25 @@ const ContactInfo = () => {
           <ListItemIcon>
             <RoomIcon className={classes.icon} />
           </ListItemIcon>
-          <ListItemText primary="Dirección" secondary="Calle 30 SN, Centro, 97350 Hunucmá, Yuc. 97350 Hunucmá, México" />
+          <ListItemText 
+          primary="Dirección"
+          secondary={<Typography component="p" variant="body2">Calle 30 SN, Centro, 97350 Hunucmá, Yuc. 97350 Hunucmá, México</Typography>} />
         </ListItem>
         <ListItem>
           <ListItemIcon>
             <PhoneAndroidIcon className={classes.icon} />
           </ListItemIcon>
-          <ListItemText primary="Teléfono" secondary="988 957 0992" />
+          <ListItemText 
+          primary="Teléfono" 
+          secondary={<Typography component="p" variant="body2">988 957 0992</Typography>} />
         </ListItem>
         <ListItem>
           <ListItemIcon>
             <MailOutlineIcon className={classes.icon} />
           </ListItemIcon>
-          <ListItemText primary="Email" secondary="info@cuponesh.com.mx" />
+          <ListItemText 
+          primary="Email" 
+          secondary={<Typography component="p" variant="body2">info@cuponesh.com.mx</Typography>} />
         </ListItem>
       </List>
       <SocialIcons />

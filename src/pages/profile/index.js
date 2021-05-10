@@ -15,6 +15,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../redux/actions/auth";
 import { changeThemeMode } from "../../redux/actions/theme";
 import { Redirect } from "react-router-dom";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { ACCESS_USER } from "../../environments";
 import Hunucma1 from "../../assets/images/hunucma1.jpg";
 
@@ -22,11 +23,23 @@ const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: theme.spacing(3),
     backgroundImage: `url(${Hunucma1})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
     height: "80vh",
   },
   box: {
     marginTop: theme.spacing(1),
   },
+  card: {
+    backgroundColor: theme.palette.background.default
+  },
+  user: {
+    color: theme.palette.primary.main
+  },
+  avatar: {
+    width: 80,
+    height: 80
+  },  
   paper: {
     maxWidth: 360,
   },
@@ -54,7 +67,7 @@ const Profile = (props) => {
     >
       {props.isLogged ? (
         <Paper className={classes.paper} elevation={5}>
-          <Card>
+          <Card className={classes.card}>
             <CardActionArea>
               <CardContent>
                 <Box
@@ -67,9 +80,9 @@ const Profile = (props) => {
                   flex="2"
                 >
                   <Box m={3}>
-                    <Avatar alt={user.email} src={user.imageURL} />
+                    <Avatar className={classes.avatar} alt={user.email} src={user.imageURL} />
                   </Box>
-                  <Typography gutterBottom variant="subtitle1" component="h6">
+                  <Typography className={classes.user} gutterBottom variant="subtitle1" component="h6">
                     {user.nombre}
                   </Typography>
                   <Typography
@@ -118,8 +131,9 @@ const Profile = (props) => {
                     props.logoutUser();
                   }}
                   size="small"
-                  color="primary"
+                  color="secondary"
                 >
+                  <ExitToAppIcon />
                   Cerrar sesión
                 </Button>
               </Box>

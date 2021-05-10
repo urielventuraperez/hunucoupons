@@ -2,7 +2,6 @@ import React from "react";
 import Snackbar from "@material-ui/core/Snackbar";
 
 const Toast = props => {
-
   return (
     <Snackbar
     anchorOrigin={{

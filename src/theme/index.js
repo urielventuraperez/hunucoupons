@@ -6,11 +6,11 @@ export const LightTheme = createMuiTheme({
   palette: {
     primary: {
       main: "#fd548e",
-      light: grey["400"],
+      light: "#BEA5AA",
       dark: pink["A700"]
     },
     secondary: {
-      main: pink["A700"]
+      main: "#2F4858"
     },
     background: {
       default: "#ffffff",
@@ -127,7 +127,8 @@ export const DarkTheme = createMuiTheme({
       dark: pink["A700"]
     },
     secondary: {
-      main: pink["A700"]
+      main: pink["A700"],
+      light: "#39557A"
     },
     background: {
       default: "#303030",
@@ -141,7 +142,7 @@ export const DarkTheme = createMuiTheme({
     },
     text: {
       primary: grey["100"],
-      secondary: grey["200"],
+      secondary: "#e1e1e1",
       disabled: grey["300"],
       light: grey["50"],
       hint: grey["500"]

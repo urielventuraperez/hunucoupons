@@ -16,7 +16,7 @@ export function getBusiness(business) {
     })
       .then((response) => response.json())
       .then((json) => {
-        return dispatch({ type: VIEW_BUSINESS, payload: json.data[0] });
+        return dispatch({ type: VIEW_BUSINESS, payload: json.data });
       });
   };
 }

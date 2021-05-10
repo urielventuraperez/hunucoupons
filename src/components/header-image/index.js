@@ -13,7 +13,6 @@ const useStyles = makeStyles(theme => ({
     height: props => props.height,
   },
   image: {
-    
     marginTop: "25px",
     textAlign: "center",
     backgroundRepeat: "no-repeat",
