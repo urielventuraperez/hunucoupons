@@ -11,6 +11,7 @@ import PhoneIcon from "@material-ui/icons/Phone";
 import RoomIcon from "@material-ui/icons/Room";
 import HeaderImage from "../../components/header-image";
 import { getBusiness, getCoupons } from "../../redux/actions/bussiness";
+import Carrousel from "../../components/carrousel";
 import { connect } from "react-redux";
 import CouponBackground from "../../assets/images/coupon_background.jpg";
 
@@ -42,6 +43,11 @@ const useStyles = makeStyles((theme) => ({
     border: `1px solid ${theme.palette.text.disabled}`,
     textAlign: "center",
     color: theme.palette.text.secondary,
+  },
+  products: {
+    marginTop: theme.spacing(10),
+    display: 'flex',
+    justifyContent: 'center'
   },
   coupons: {
     marginTop: '48px'
@@ -118,7 +124,10 @@ const Commerce = (props) => {
           </Grid>
         </Grid>
         <Grid>
-        <Grid className={classes.coupons}>
+        <Grid className={classes.products}>
+          <Carrousel />
+        </Grid>
+        <Grid className={classes.coupons} products={business.listaProducto} >
         <Typography
             className={classes.subtitle}
             color="secondary"

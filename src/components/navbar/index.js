@@ -12,7 +12,7 @@ import Logo from "../../assets/images/isotipo.png";
 import ProfileImage from "../profile-image";
 import { Link, useLocation } from "react-router-dom";
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const useStyles = makeStyles(theme => ({
   grow: {
