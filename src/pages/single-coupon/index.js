@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import { GetSingleCoupon } from "../../redux/actions/coupons";
 import { makeStyles } from "@material-ui/core";
 import Seo from "../../components/seo";
-import BackButton from "../../components/back-button";
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {

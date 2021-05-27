@@ -3,7 +3,6 @@ import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import FacebookIcon from "@material-ui/icons/Facebook";
-import TwitterIcon from "@material-ui/icons/Twitter";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import { SOCIALMEDIA } from "../../utils/dataFooter";
 import Typography from "@material-ui/core/Typography";
@@ -22,7 +21,6 @@ const useStyles = makeStyles(theme => ({
 
 const SocialIcons = () => {
   const facebookUrl = SOCIALMEDIA.facebook;
-  const twitterUrl = SOCIALMEDIA.twitter;
   const instagramUrl = SOCIALMEDIA.instagram;
   
   const classes = useStyles();

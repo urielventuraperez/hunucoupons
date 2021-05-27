@@ -168,6 +168,7 @@ const Coupon = (props) => {
           <CardActions disableSpacing={true}>
             <Tooltip title="Ver el cupón">
               <Button
+                disableElevation
                 color="secondary"
                 component={NavLink}
                 to={`/cupon/${props.slug}`}

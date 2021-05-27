@@ -58,7 +58,7 @@ const HeaderImage = (props) => {
         </Typography>
       )}
       {props.action &&
-        <Button color="primary" variant="contained">
+        <Button href={props.redirect} color="primary" variant="contained">
           {props.action}
         </Button>
       }

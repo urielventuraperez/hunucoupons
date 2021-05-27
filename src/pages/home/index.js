@@ -60,6 +60,7 @@ const Home = (props) => {
         backgroundColor={"rgba(0, 0, 0, 0.20)"}
         height={"70vh"}
         showChip={props.showChip}
+        redirect="#contact"
       />
       {/* Commerce Premium */}
       <Container className={classes.container}>

@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 const Form = () => {
   const classes = useStyles();
   return (
-    <Paper elevation={1} className={classes.container}>
+    <Paper id="contact"  elevation={1} className={classes.container}>
       <Grid container direction="row" justify="center" alignItems="stretch">
         <Box className={classes.box} flexGrow={2}>
           <Box
