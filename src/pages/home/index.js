@@ -7,7 +7,7 @@ import BussinesCard from "../../components/card";
 import LoginDialog from "../../components/login";
 import { ACCESS_TOKEN } from "../../environments";
 import GridCoupons from "../../components/grid-coupons";
-import Image from "../../assets/images/first-section.png";
+import Image from "../../assets/images/first-section.jpg";
 import { connect } from "react-redux";
 import Contact from "../../components/contact";
 import { GetHomeCoupons } from "../../redux/actions/coupons";
@@ -54,7 +54,9 @@ const Home = (props) => {
       <HeaderImage
         isHome={"true"}
         image={Image}
-        title={"Algo nuevo ha llegado para ti!"}
+        title={"Algo nuevo ha llegado para ti"}
+        subtitle={"¿Quiéres saber mas?"}
+        action={"Contáctanos"}
         backgroundColor={"rgba(0, 0, 0, 0.20)"}
         height={"70vh"}
         showChip={props.showChip}

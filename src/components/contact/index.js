@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   location: {
-    backgroundColor: theme.palette.secondary.light,
+    backgroundColor: theme.palette.secondary.main,
     color: theme.palette.text.light,
   },
 }));
@@ -40,7 +40,7 @@ const Form = () => {
             justifyContent="space-between"
           >
             <Typography variant="subtitle1">Déjanos un mensaje</Typography>
-            <ContactMailRoundedIcon color="secondary" fontSize="large" />
+            <ContactMailRoundedIcon color="primary" fontSize="large" />
           </Box>
           <Box>
             <Typography variant="subtitle2">

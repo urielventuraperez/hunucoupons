@@ -6,11 +6,13 @@ export const LightTheme = createMuiTheme({
   palette: {
     primary: {
       main: "#fd548e",
-      light: "#BEA5AA",
+      light: "#ffcdd2",
       dark: pink["A700"]
     },
     secondary: {
-      main: "#2F4858"
+      main: "#2F4858",
+      light: "#d7e2ea",
+      dark: "#21333e"
     },
     background: {
       default: "#ffffff",
@@ -82,7 +84,7 @@ export const LightTheme = createMuiTheme({
     },
     subtitle1: {
       fontSize: "1.2333rem",
-      fontWeight: 500,
+      fontWeight: 300,
       fontFamily: "Poppins",
       letterSpacing: "0.15px"
     },
@@ -100,7 +102,7 @@ export const LightTheme = createMuiTheme({
     },
     body2: {
       fontSize: "0.89rem",
-      fontWeight: 400,
+      fontWeight: 200,
       fontFamily: "Poppins",
       letterSpacing: "0.25px"
     },
@@ -117,7 +119,7 @@ export const LightTheme = createMuiTheme({
       fontFamily: "Poppins",
       letterSpacing: "0.5px"
     }
-  }
+  },
 });
 
 export const DarkTheme = createMuiTheme({
@@ -211,13 +213,13 @@ export const DarkTheme = createMuiTheme({
       letterSpacing: "0.1px"
     },
     body1: {
-      fontSize: "1.05rem",
+      fontSize: "1.1rem",
       fontWeight: 400,
       fontFamily: "Poppins",
       letterSpacing: "0.5px"
     },
     body2: {
-      fontSize: "0.89rem",
+      fontSize: "0.95rem",
       fontWeight: 400,
       fontFamily: "Poppins",
       letterSpacing: "0.25px"

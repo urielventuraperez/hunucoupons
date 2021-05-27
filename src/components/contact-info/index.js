@@ -21,14 +21,14 @@ const ContactInfo = () => {
   const classes = useStyles();
   return (
     <Box>
-      <Typography variant="subtitle2">Información de contacto</Typography>
+      <Typography variant="subtitle1">Información de contacto</Typography>
       <List disablePadding>
         <ListItem>
           <ListItemIcon>
             <RoomIcon className={classes.icon} />
           </ListItemIcon>
           <ListItemText 
-          primary="Dirección"
+          primary={<Typography component="p" variant="body2">Dirección</Typography>}
           secondary={<Typography component="p" variant="body2">Calle 30 SN, Centro, 97350 Hunucmá, Yuc. 97350 Hunucmá, México</Typography>} />
         </ListItem>
         <ListItem>
@@ -36,7 +36,7 @@ const ContactInfo = () => {
             <PhoneAndroidIcon className={classes.icon} />
           </ListItemIcon>
           <ListItemText 
-          primary="Teléfono" 
+          primary={<Typography component="p" variant="body2">Teléfono</Typography>}
           secondary={<Typography component="p" variant="body2">988 957 0992</Typography>} />
         </ListItem>
         <ListItem>
@@ -44,7 +44,7 @@ const ContactInfo = () => {
             <MailOutlineIcon className={classes.icon} />
           </ListItemIcon>
           <ListItemText 
-          primary="Email" 
+          primary={<Typography component="p" variant="body2">Email</Typography>}
           secondary={<Typography component="p" variant="body2">info@cuponesh.com.mx</Typography>} />
         </ListItem>
       </List>

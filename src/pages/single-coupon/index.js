@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { GetSingleCoupon } from "../../redux/actions/coupons";
 import { makeStyles } from "@material-ui/core";
 import Seo from "../../components/seo";
+import BackButton from "../../components/back-button";
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -25,7 +26,6 @@ const SingleCoupon = (props) => {
 
   return (
     <div>
-      }
       <Seo
         title={props.coupon.nombre}
         discount={props.coupon.descuento}
@@ -46,7 +46,7 @@ const SingleCoupon = (props) => {
         fechaFinal={props.coupon.fecha_final}
         descuento={props.coupon.descuento}
         height={"80vh"}
-        backgroundColor={"rgba(0, 0, 0, 0.65)"}
+        backgroundColor={"rgba(0, 0, 0, 0.35)"}
         showChip={props.showChip}
         showFavorite={props.showFavorite}
       />

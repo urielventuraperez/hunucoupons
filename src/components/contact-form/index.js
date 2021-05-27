@@ -163,7 +163,7 @@ const ContactForm = () => {
               disabled={success && true}
               onClick={handleSubmit(handleSendForm)}
               className={buttonClassname}
-              color="secondary"
+              color="primary"
             >
               {!success ? <SendIcon /> : <CheckIcon />}
             </Fab>

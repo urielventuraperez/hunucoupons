@@ -14,12 +14,23 @@ import { getMyTotalFavCoupons } from "../../redux/actions/favorites";
 const useStyles = makeStyles(theme => ({
   root: {
     zIndex: '1',
-    width: "100%",
+    width: "70%",
     position: "fixed",
-    bottom: 0,
+    bottom: 15,
     backgroundColor: theme.palette.background.default,
-    boxShadow: "0 14px 28px rgba(0,0,0,0.5), 0 10px 10px rgba(0,0,0,0.5)"
-  }
+    boxShadow: "0 1px 5px rgb(0 0 0 / 15%), 0 0px 0px rgb(0 0 0 / 20%)",
+    borderRadius: 50,
+  },
+  item: {
+    color: theme.palette.secondary.light,
+    maxWidth: 'initial',
+    '&$selected': {
+      borderRadius: 50,
+      color: theme.palette.primary.dark,
+      backgroundColor: theme.palette.secondary.light,
+    },
+  },
+  selected:{}
 }));
 
 const BottomNavigator = props => {
@@ -34,8 +45,7 @@ const BottomNavigator = props => {
   }, [myTotalFav])
   
   return (
-    <Box>
-      {" "}
+    <Box display="flex" justifyContent="center">
       {props.hasToken && (
         <BottomNavigation
           value={value}
@@ -49,20 +59,26 @@ const BottomNavigator = props => {
             to="/"
             label="Inicio"
             value="/"
-            className={classes.item}
             icon={<HomeIcon />}
+            classes={{
+              root: classes.item,
+              selected: classes.selected
+            }}
           />
           <BottomNavigationAction
             component={Link}
             to="/favorites-coupons"
-            label="Cupones"
+            label="Favoritos"
             value="/favorites-coupons"
-            className={classes.item}
             icon={
-              <Badge badgeContent={props.totalMyFav} color="secondary" max={50}>
+              <Badge badgeContent={props.totalMyFav} color="primary" max={50}>
                 <FavoriteIcon />
               </Badge>
             }
+            classes={{
+              root: classes.item,
+              selected: classes.selected
+            }}
           />
           {/* 
           <BottomNavigationAction
@@ -78,8 +94,11 @@ const BottomNavigator = props => {
             to="/profile"
             label="Perfil"
             value="/profile"
-            className={classes.item}
             icon={<SettingsIcon />}
+            classes={{
+              root: classes.item,
+              selected: classes.selected
+            }}
           />
         </BottomNavigation>
       )}

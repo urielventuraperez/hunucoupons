@@ -14,33 +14,36 @@ import Avatar from "@material-ui/core/Avatar";
 import Link from "@material-ui/core/Link";
 import { NavLink } from "react-router-dom";
 import { GetCategories } from "../../redux/actions/categories";
+import { Typography } from "@material-ui/core";
 
 const drawerWidth = 320;
 
-const useStyles = makeStyles( theme => ({
+const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
-    flexShrink: 0
+    flexShrink: 0,
   },
   drawerPaper: {
     width: drawerWidth,
-    backgroundColor: theme.palette.background.default
+    backgroundColor: theme.palette.background.default,
+    boxShadow: "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)",
   },
   drawerHeader: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
   },
   icon: {
     width: 30,
-    height: 30
+    height: 30,
   },
   item: {
-    color: theme.palette.text.primary
-  }
+    color: theme.palette.secondary.main,
+    fontSize: 15,
+  },
 }));
 
-const DrawerNavigation = props => {
+const DrawerNavigation = (props) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -48,9 +51,11 @@ const DrawerNavigation = props => {
 
   const [itemSelect, setItemSelect] = useState("");
 
-  const onSelected = category => {
+  const onSelected = (category) => {
     setItemSelect(category);
-    setTimeout(()=>{props.handleDrawerClose();}, 300)
+    setTimeout(() => {
+      props.handleDrawerClose();
+    }, 300);
   };
 
   useEffect(() => {
@@ -64,20 +69,20 @@ const DrawerNavigation = props => {
       anchor="left"
       open={props.open}
       classes={{
-        paper: classes.drawerPaper
+        paper: classes.drawerPaper,
       }}
     >
       <div className={classes.drawerHeader}>
         <IconButton onClick={props.handleDrawerClose}>
           {theme.direction === "ltr" ? (
-            <Close color="primary" />
+            <Close color="secondary" />
           ) : (
             <ArrowForwardIosIcon />
           )}
         </IconButton>
       </div>
       <List>
-        {props.viewCategories.map(category => (
+        {props.viewCategories.map((category) => (
           <Link
             component={NavLink}
             to={`/categoria/${category.slug_nombre}`}
@@ -98,7 +103,11 @@ const DrawerNavigation = props => {
                   src={`data:image/jpeg;base64,${category.iconob64}`}
                 />
               </ListItemIcon>
-              <ListItemText className={classes.item}>{category.nombre}</ListItemText>
+              <ListItemText
+                primary={
+                  <Typography variant="body1" className={classes.item}>{category.nombre}</Typography>
+                }
+              />
             </ListItem>{" "}
           </Link>
         ))}
@@ -108,18 +117,18 @@ const DrawerNavigation = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     loadCategories: state.categories.loadCategories,
-    viewCategories: state.categories.categories
+    viewCategories: state.categories.categories,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     categories: () => {
       dispatch(GetCategories());
-    }
+    },
   };
 };
 

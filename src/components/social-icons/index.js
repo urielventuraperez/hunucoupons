@@ -15,8 +15,8 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: "1rem"
   },
   icon: {
-    color: theme.palette.background.default,
-    backgroundColor: theme.palette.primary.light
+    color: theme.palette.text.light,
+    backgroundColor: theme.palette.secondary.dark
   }
 }));
 
@@ -29,18 +29,18 @@ const SocialIcons = () => {
 
   return (
     <Box>
-      <Typography variant="subtitle2">
+      <Typography variant="subtitle1">
         Síguenos en nuestras redes sociales
       </Typography>
       <Tooltip title={"Visitanos en Facebook"}>
-        <IconButton href={facebookUrl}>
+        <IconButton target="_blank" href={facebookUrl}>
           <Avatar className={classes.icon}>
             <FacebookIcon />
           </Avatar>
         </IconButton>
       </Tooltip>
       <Tooltip title={"Visitanos en Instagram"}>
-        <IconButton href={instagramUrl}>
+        <IconButton target="_blank" href={instagramUrl}>
           <Avatar className={classes.icon}>
             <InstagramIcon />
           </Avatar>
