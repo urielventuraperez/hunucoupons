@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Fab from "@material-ui/core/Fab";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import Tooltip from "@material-ui/core/Tooltip";
+import CustomTooltip from "../../components/custom-tooltip";
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -17,7 +17,7 @@ const AddFavorite = () => {
   const classes = useStyles();
 
   return (
-    <Tooltip title="Seguir" aria-label="add">
+    <CustomTooltip title="Seguir" aria-label="add">
       <Fab
         variant={'round'}
         size={"medium"}
@@ -27,7 +27,7 @@ const AddFavorite = () => {
       >
         <FavoriteIcon className={classes.extendedIcon} />
       </Fab>
-    </Tooltip>
+    </CustomTooltip>
   );
 };
 

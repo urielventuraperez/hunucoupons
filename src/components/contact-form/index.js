@@ -8,7 +8,7 @@ import SendIcon from "@material-ui/icons/Send";
 import CheckIcon from "@material-ui/icons/Check";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { makeStyles } from "@material-ui/core";
-import Tooltip from "@material-ui/core/Tooltip";
+import CustomTooltip from "../../components/custom-tooltip";
 import { useForm } from "react-hook-form";
 import { URL_API } from "../../environments";
 
@@ -158,7 +158,7 @@ const ContactForm = () => {
       </Box>
       <Box display="flex" justifyContent="flex-end">
         <div className={classes.wrapper}>
-          <Tooltip title={tooltipText}>
+          <CustomTooltip title={tooltipText}>
             <Fab
               disabled={success && true}
               onClick={handleSubmit(handleSendForm)}
@@ -167,7 +167,7 @@ const ContactForm = () => {
             >
               {!success ? <SendIcon /> : <CheckIcon />}
             </Fab>
-          </Tooltip>
+          </CustomTooltip>
           {loading && (
             <CircularProgress
               color="primary"

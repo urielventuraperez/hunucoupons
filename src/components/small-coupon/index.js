@@ -6,7 +6,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardActions from "@material-ui/core/CardActions";
-import Tooltip from "@material-ui/core/Tooltip";
+import CustomTooltip from "../../components/custom-tooltip";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
@@ -17,6 +17,7 @@ import Button from "@material-ui/core/Button";
 import { NavLink } from "react-router-dom";
 import Zoom from "@material-ui/core/Zoom";
 import { connect } from "react-redux";
+import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import { updateMyTotalFav } from "../../redux/actions/favorites";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     "&:hover, &:focus": {
       boxShadow: "0 4px 18px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.22)",
     },
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.palette.background.paper,
     borderRadius: 0,
   },
   media: {
@@ -38,6 +39,12 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.light,
     background: theme.palette.primary.dark,
     padding: `${theme.spacing(1)}px ${theme.spacing(3)}px`,
+  },
+  button: {
+    textTransform: 'capitalize',
+    padding: '0.3rem 1.4rem',
+    fontSize: '0.9rem',
+    margin: theme.spacing(2)
   },
   iconButton: {
     float: "right",
@@ -58,6 +65,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Coupon = (props) => {
   let isMyFav;
+
   props.myFav === "true" ? (isMyFav = true) : (isMyFav = false);
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
   const [fav, setFavorite] = React.useState(isMyFav);
@@ -123,15 +131,8 @@ const Coupon = (props) => {
               title={`${props.titleName} - ${props.empresa}`}
             />
           </Link>
-          {/*<Typography
-            variant="caption"
-            color="textSecondary"
-            className={classes.date}
-          >
-            Hasta el {formatDate(props.fechaFinal)}
-          </Typography>*/}
         </CardActionArea>
-        <Tooltip title="Mis favoritos">
+        <CustomTooltip title="Mis favoritos">
             <IconButton
               className={classes.iconButton}
               color={fav ? "primary" : "default"}
@@ -140,10 +141,10 @@ const Coupon = (props) => {
             >
               <FavoriteIcon />
             </IconButton>
-          </Tooltip>
+          </CustomTooltip>
         <CardHeader
           avatar={
-            <Tooltip title={props.empresa}>
+            <CustomTooltip title={props.empresa}>
               <Avatar
                 component={NavLink}
                 to={`/comercio/${props.slugEmpresa}`}
@@ -151,7 +152,7 @@ const Coupon = (props) => {
                 className={classes.avatar}
                 src={props.logo}
               />
-            </Tooltip>
+            </CustomTooltip>
           }
           title={
             <Typography variant="subtitle1" color="textPrimary">
@@ -166,16 +167,30 @@ const Coupon = (props) => {
         />
         {props.token && (
           <CardActions disableSpacing={true}>
-            <Tooltip title="Ver el cupón">
+            <CustomTooltip title="Ver el cupón">
               <Button
+                color="primary"
+                variant="contained"
                 disableElevation
-                color="secondary"
                 component={NavLink}
                 to={`/cupon/${props.slug}`}
+                className={classes.button}
               >
-                VER
+                Ver
               </Button>
-            </Tooltip>
+            </CustomTooltip>
+            <CustomTooltip title="Solicitar más información">
+              <Button
+                color="primary"
+                disableElevation
+                className={classes.button}
+                startIcon={<WhatsAppIcon />}
+                href={`https://wa.me/9994492079/?text=Hola ${props.empresa}, en CUPONESH observé el cupon ${props.titleName} y estoy interesado en saber más, gracias.`}
+                target="_blank"
+              >
+                Contactar
+              </Button>
+            </CustomTooltip>
             <Toast
               openSnackbar={openSnackbar}
               handleCloseSnackbar={handleCloseSnackbar}

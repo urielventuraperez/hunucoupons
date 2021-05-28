@@ -39,7 +39,7 @@ const Form = () => {
             flexDirection="row"
             justifyContent="space-between"
           >
-            <Typography variant="subtitle1">Déjanos un mensaje</Typography>
+            <Typography variant="h6">Déjanos un mensaje</Typography>
             <ContactMailRoundedIcon color="primary" fontSize="large" />
           </Box>
           <Box>

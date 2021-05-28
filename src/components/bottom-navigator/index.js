@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 50,
   },
   item: {
-    color: theme.palette.secondary.light,
+    color: theme.palette.text.disabled,
     maxWidth: 'initial',
     '&$selected': {
       borderRadius: 50,

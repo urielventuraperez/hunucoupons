@@ -29,6 +29,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "rgba(0, 0, 0, 0.35)",
     backgroundBlendMode: "multiply",
   },
+  icon: {
+    fontSize: '3rem'
+  },
   title: {
     fontWeight: "600",
     textShadow: "0px 2px 3px rgba(0,0,0,0.4)",
@@ -39,10 +42,11 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(4),
     border: `1px solid ${theme.palette.text.disabled}`,
     textAlign: "center",
-    color: theme.palette.text.secondary,
+    color: theme.palette.secondary.main,
+    backgroundColor: theme.palette.secondary.light
   },
   products: {
     marginTop: theme.spacing(10),
@@ -72,11 +76,11 @@ const Commerce = (props) => {
           business.ruta_logo ? `${business.ruta_logo}` : `${CouponBackground}`
         }
         height={"55vh"}
-        backgroundColor={"rgba(0, 0, 0, 0.20)"}
+        backgroundColor={"rgba(0, 0, 0, 0.50)"}
         isStore={true}
       />
       <Box m={8}>
-        <Typography className={classes.subtitle} color="secondary" variant="h6">
+        <Typography color="secondary" variant="h6">
           Description
         </Typography>
       </Box>
@@ -84,7 +88,7 @@ const Commerce = (props) => {
         <Grid container justify="space-around">
           <Grid item xs={12} md={3}>
             <Paper elevation={0} className={classes.paper}>
-              <AccessTimeIcon />
+              <AccessTimeIcon className={classes.icon} />
               <Typography color="textPrimary" variant="subtitle1">
                 Horario
               </Typography>
@@ -95,17 +99,17 @@ const Commerce = (props) => {
           </Grid>
           <Grid item xs={12} md={3}>
             <Paper elevation={0} className={classes.paper}>
-              <PhoneIcon />
+              <PhoneIcon className={classes.icon} />
               <Typography color="textPrimary" variant="subtitle1">
                 Contacto
               </Typography>
               <Typography color="textPrimary" variant="subtitle2">
-              <Link href={`https://wa.me/${business.n_celular}`} target="_blank">
+              <Link color="inherit" href={`https://wa.me/${business.n_celular}`} target="_blank">
                 Whatsapp: {business.n_celular}
               </Link>
               </Typography>
               <Typography color="textPrimary" variant="subtitle2">
-              <Link href={`tel:${business.n_telefono}`} target="_blank">
+              <Link color="inherit" href={`tel:${business.n_telefono}`} target="_blank">
                 Télefono: {business.n_telefono}
               </Link>
               </Typography>
@@ -113,7 +117,7 @@ const Commerce = (props) => {
           </Grid>
           <Grid item xs={12} md={3}>
             <Paper elevation={0} className={classes.paper}>
-              <RoomIcon />
+              <RoomIcon className={classes.icon} />
               <Typography color="textPrimary" variant="subtitle1">
                 Ubicación
               </Typography>

@@ -15,8 +15,8 @@ export const LightTheme = createMuiTheme({
       dark: "#21333e"
     },
     background: {
-      default: "#ffffff",
-      paper: "#f5f5f5",
+      default: "#fdfdff",
+      paper: "#ffffff"
     },
     error: {
       main: "#B00020",
@@ -27,7 +27,7 @@ export const LightTheme = createMuiTheme({
     },
     text: {
       secondary: grey["600"],
-      disabled: grey["50"],
+      disabled: grey["300"],
       light: "#ffffff",
       hint: grey["50"]
     }
@@ -77,14 +77,14 @@ export const LightTheme = createMuiTheme({
       letterSpacing: "0px"
     },
     h6: {
-      fontSize: "1.6666rem",
+      fontSize: "1.4666rem",
       fontWeight: 500,
       fontFamily: "Poppins",
       letterSpacing: "0.15px"
     },
     subtitle1: {
       fontSize: "1.2333rem",
-      fontWeight: 300,
+      fontWeight: 400,
       fontFamily: "Poppins",
       letterSpacing: "0.15px"
     },
@@ -130,11 +130,11 @@ export const DarkTheme = createMuiTheme({
     },
     secondary: {
       main: pink["A700"],
-      light: "#39557A"
+      light: grey["400"]
     },
     background: {
-      default: "#303030",
-      paper: "#424242"
+      default: grey["900"],
+      paper: grey["800"]
     },
     error: {
       main: "#B00020"
