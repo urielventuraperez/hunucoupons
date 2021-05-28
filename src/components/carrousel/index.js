@@ -60,11 +60,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Carrousel = () => {
+const Carrousel = ({products}) => {
+
   const classes = useStyles();
   const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
-  const maxSteps = tutorialSteps.length;
+  const maxSteps = products.length;
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -79,9 +80,10 @@ const Carrousel = () => {
   };
 
   return (
-    <div className={classes.root}>
+      maxSteps > 0 && 
+      <div className={classes.root}>
       <Paper square elevation={0} className={classes.header}>
-        <Typography>{tutorialSteps[activeStep].label}</Typography>
+        <Typography>{products[activeStep].descripcion}</Typography>
       </Paper>
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -89,10 +91,10 @@ const Carrousel = () => {
         onChangeIndex={handleStepChange}
         enableMouseEvents
       >
-        {tutorialSteps.map((step, index) => (
-          <div key={step.label}>
+        {products.map((step, index) => (
+          <div key={index}>
             {Math.abs(activeStep - index) <= 2 ? (
-              <img className={classes.img} src={step.imgPath} alt={step.label} />
+              <img className={classes.img} src={step.ruta_img_produc} alt={step.producto} />
             ) : null}
           </div>
         ))}

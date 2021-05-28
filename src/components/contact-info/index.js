@@ -41,7 +41,7 @@ const ContactInfo = () => {
           </ListItemIcon>
           <ListItemText 
           primary={<Typography component="p" variant="body2">Whatsapp</Typography>}
-          secondary={<Link className={classes.link} color="inherit" href="https://wa.me/9889570992"><Typography component="p" variant="body2">988 957 0992</Typography></Link>} />
+          secondary={<Typography variant="body2"><Link color="inherit" href="https://wa.me/9889570992">988 957 0992</Link></Typography>} />
         </ListItem>
         <ListItem>
           <ListItemIcon>
@@ -49,7 +49,7 @@ const ContactInfo = () => {
           </ListItemIcon>
           <ListItemText 
           primary={<Typography component="p" variant="body2">Email</Typography>}
-          secondary={<Link className={classes.link} color="inherit" href="mailto:info@cuponesh.com.mx"><Typography component="p" variant="body2">info@cuponesh.com.mx</Typography></Link>} />
+          secondary={<Typography variant="body2"><Link color="inherit" href="mailto:info@cuponesh.com.mx">info@cuponesh.com.mx</Link></Typography>} />
         </ListItem>
       </List>
       <SocialIcons />
