@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
 import { useLocation } from "react-router-dom";
+import { Link as NavLink } from "react-router-dom"
 
 const useStyles = makeStyles(theme => ({
   footer: {
@@ -28,7 +29,7 @@ function Copyright() {
       Cuponesh {new Date().getFullYear()}
     </Typography>
     <Typography variant="subtitle2" align="center">
-      <Link href="#" color="inherit">
+      <Link component={NavLink} to="aviso-de-privacidad" color="inherit">
         Aviso de privacidad
       </Link>
     </Typography>

@@ -71,8 +71,8 @@ export const LightTheme = createMuiTheme({
       letterSpacing: "0.25px"
     },
     h5: {
-      fontSize: "2rem",
-      fontWeight: 400,
+      fontSize: "1.7rem",
+      fontWeight: 500,
       fontFamily: "Poppins",
       letterSpacing: "0px"
     },
@@ -95,8 +95,8 @@ export const LightTheme = createMuiTheme({
       letterSpacing: "0.1px"
     },
     body1: {
-      fontSize: "1.05rem",
-      fontWeight: 400,
+      fontSize: "1rem",
+      fontWeight: 300,
       fontFamily: "Poppins",
       letterSpacing: "0.5px"
     },

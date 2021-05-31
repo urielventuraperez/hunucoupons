@@ -5,6 +5,7 @@ import Profile from "../pages/profile";
 import BussinesFavorites from "../pages/favorites-bussines";
 import Home from "../pages/home";
 import Login from "../pages/login";
+import PrivacyPolicy from '../pages/privacy-policy';
 import Category from "../pages/category";
 import SingleCoupon from "../pages/single-coupon";
 import Commerce from "../pages/commerce";
@@ -21,6 +22,7 @@ const RenderRoutes = (
     />
     <Route exact path="/oauth2/redirect" component={OAuthRedirect} />
     <Route exact path="/login" component={Login} />
+    <Route exact path="/aviso-de-privacidad" component={PrivacyPolicy} />
 
     {/* Rutas Protegidas */}
     <ProtectedRoutes exact path="/favorites-coupons" component={Favorites} />
