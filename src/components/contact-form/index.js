@@ -68,6 +68,13 @@ const ContactForm = () => {
           if (json.status === "success") {
             setSuccess(true);
             setLoading(false);
+            reset({
+              nombre: '',
+              email: '',
+              nTelefono: '',
+              comercio: '',
+              mensaje: ''
+            });
           } else {
             setSuccess(false);
             setLoading(false);
@@ -75,7 +82,6 @@ const ContactForm = () => {
           }
         });
     }
-    reset(bodyPost);
   };
 
   const tooltipText = "¡Envianos tu mensaje!";
