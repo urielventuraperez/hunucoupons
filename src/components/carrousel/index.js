@@ -19,8 +19,7 @@ const useStyles = makeStyles((theme) => ({
   header: {
     display: 'flex',
     alignItems: 'center',
-    height: 50,
-    paddingLeft: theme.spacing(4),
+    justifyContent: 'center',
     backgroundColor: theme.palette.background.default,
   },
   img: {
@@ -55,7 +54,7 @@ const Carrousel = ({products}) => {
       maxSteps > 0 && 
       <div className={classes.root}>
       <Paper square elevation={0} className={classes.header}>
-        <Typography>{products[activeStep].descripcion}</Typography>
+        <Typography variant="h5">{products[activeStep].descripcion}</Typography>
       </Paper>
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}

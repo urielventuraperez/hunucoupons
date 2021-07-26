@@ -1,107 +1,106 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardMedia from "@material-ui/core/CardMedia";
-// import Avatar from "@material-ui/core/Avatar";
-// import IconButton from "@material-ui/core/IconButton";
+import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-import { red } from "@material-ui/core/colors";
-// import Button from "@material-ui/core/Button";
-import { NavLink } from "react-router-dom";
-import Zoom from "@material-ui/core/Zoom";
+import Grid from "@material-ui/core/Grid";
+import SkeletonComponent from "../skeletonComponent";
+import Empty from "../empty";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import Grow from "@material-ui/core/Grow";
+import CardMedia from "@material-ui/core/CardMedia";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
+  content: {
+    padding: theme.spacing(2),
+  },
+  containerCoupons: {
+    marginTop: 120,
+    marginBottom: theme.spacing(3),
+  },
   media: {
     height: 0,
     paddingTop: "56.25%", // 16:9
   },
-  date: {
-    position: "absolute",
-    float: "left",
-    bottom: "0px",
-    color: theme.palette.text.light,
-    background: theme.palette.primary.dark,
-    padding: `${theme.spacing(1)}px ${theme.spacing(3)}px`,
-  },
-  iconButton: {
-    marginLeft: "auto",
-  },
-  avatar: {
-    backgroundColor: red[500],
+  newCoupons: {
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1.5rem",
+    },
+    marginBottom: 40,
   },
 }));
 
-const Business = (props) => {
-  // const [openSnackbar, setOpenSnackbar] = React.useState(false);
+const BussinesCard = ({ title, isLoadBusiness, business }) => {
+  const classes = useStyles();
 
-  const [makeZoom, setMakeZoom] = React.useState(false);
+  const [makeGrow, setMakeGrow] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setTimeout(() => {
-      setMakeZoom(true);
+      setMakeGrow(true);
     }, 500);
   }, []);
 
-  /* const handleClickOpenSnackbar = () => {
-    setOpenSnackbar(true);
-  };
-
-  const handleCloseSnackbar = () => {
-    setOpenSnackbar(false);
-  }; */
-
-  const classes = useStyles();
   return (
-    <Zoom in={makeZoom} style={{ transitionDelay: makeZoom ? "50ms" : "0ms" }}>
-      <Paper elevation={6} className={classes.card}>
-        <CardActionArea>
-          <CardMedia
-            className={classes.media}
-            image={props.logo}
-            title={props.titleName}
-            component={NavLink}
-            to={`/comercio/${props.slugEmpresa}`}
-          />
-        </CardActionArea>
-        <CardHeader
-          title={
-            <Typography variant="subtitle1" color="textPrimary">
-              {props.titleName}
-            </Typography>
-          }
-        />
-        {/**{props.token && (
-           <CardActions disableSpacing={true}>
-            <Button
-              color="secondary"
-              component={NavLink}
-              to={`/cupon/${props.slug}`}
-            >
-              VER
-            </Button>
-            <IconButton
-              className={classes.iconButton}
-              color="primary"
-              aria-label="Add to favorites"
-              onClick={handleClickOpenSnackbar}
-            >
-              <FavoriteIcon />
-            </IconButton>
-            <IconButton color="secondary" aria-label="Share">
-              <ShareIcon />
-            </IconButton>
-            <Toast
-              openSnackbar={openSnackbar}
-              handleCloseSnackbar={handleCloseSnackbar}
-              toastMessage={`${props.titleName} se añadio a tus favoritos`}
-            /> 
-          </CardActions>
-        )}**/}
-      </Paper>
-    </Zoom>
+    <div className={classes.root}>
+      <Box className={classes.content}>
+        {isLoadBusiness ? (
+          <SkeletonComponent />
+        ) : (
+          <Grid
+            className={classes.containerCoupons}
+            container
+            mt={1}
+            spacing={0}
+          >
+            <Box display="flex" justifyContent="space-between">
+              <Typography
+                color="textPrimary"
+                className={classes.newCoupons}
+                variant="h5"
+              >
+                {title}
+              </Typography>
+            </Box>
+            {business.length > 0 ? (
+              <Grid container spacing={2}>
+                {business.map((b, i) => (
+                  <Grid key={i} item sm={3} xs={12} md={3}>
+                    <Grow in={makeGrow} style={{ transitionDelay: makeGrow ? "50ms" : "0ms" }}>
+                    <Card>
+                      <CardActionArea>
+                        <CardMedia
+                          component={Link}
+                          to={`/comercio/${b.slug_nombre}`}
+                          className={classes.media}
+                          image={b.ruta_logo}
+                          title={b.name}
+                        />
+                      </CardActionArea>
+                    </Card>
+                    </Grow>
+                  </Grid>
+                ))}
+              </Grid>
+            ) : (
+              <Grid
+                container
+                direction="row"
+                justify="center"
+                alignItems="center"
+              >
+                <Empty
+                  title={"Lo sentimos"}
+                  subtitle={"No hemos encontrado ningún comercio"}
+                />
+              </Grid>
+            )}
+          </Grid>
+        )}
+      </Box>
+    </div>
   );
 };
 
-export default Business;
+export default BussinesCard;

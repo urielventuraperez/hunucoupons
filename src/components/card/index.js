@@ -1,71 +1,88 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
+import SkeletonComponent from "../skeletonComponent";
+import Empty from "../empty";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
-import CardActions from "@material-ui/core/CardActions";
-import IconButton from "@material-ui/core/IconButton";
-import { red } from "@material-ui/core/colors";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
-const useStyles = makeStyles(theme => ({
-  card: {
-    maxWidth: 345,
-  },
+const useStyles = makeStyles((theme) => ({
   media: {
     height: 0,
-    paddingTop: "56.25%" // 16:9
+    paddingTop: "56.25%", // 16:9
   },
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest
-    })
-  },
-  expandOpen: {
-    transform: "rotate(180deg)"
-  },
-  avatar: {
-    backgroundColor: red[500]
-  }
 }));
 
-const BussinesCard = props => {
+const BussinesCard = ({title, isLoadBusiness, business}) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.card}>
-      {props.isOnlyImage && <CardHeader title={props.name} />}
-      <CardActionArea>
-        <CardMedia
-          component={ Link }
-          to={`/comercio/${props.slug}`}
-          className={classes.media}
-          image={props.media}
-          title={props.name}
-        />
-        {props.isOnlyImage && (
-          <CardActions disableSpacing>
-            <IconButton aria-label="add to favorites">
-              <FavoriteIcon />
-            </IconButton>
-            <IconButton aria-label="share">
-              <ShareIcon />
-            </IconButton>
-          </CardActions>
+    <div className={classes.root}>
+      {!isLoadBusiness && (
+        <Box
+          className={classes.content}
+          display="flex"
+          justifyContent="space-between"
+        >
+          <Typography
+            color="textPrimary"
+            className={classes.newCoupons}
+            variant="h5"
+          >
+            {title}
+          </Typography>
+        </Box>
+      )}
+      <Box className={classes.content}>
+        {isLoadBusiness ? (
+          <SkeletonComponent />
+        ) : (
+          <Grid
+            className={classes.containerCoupons}
+            container
+            mt={1}
+            spacing={0}
+          >
+            {business.length > 0 ? (
+              <Grid container spacing={2}>
+                {business.map((b, i) => (
+                  <Grid key={i} item sm={6} md={4} xs={12}>
+                    <Card>
+                      <CardActionArea>
+                        <CardMedia
+                          component={Link}
+                          to={`/comercio/${b.slug}`}
+                          className={classes.media}
+                          image={b.media}
+                          title={b.name}
+                        />
+                      </CardActionArea>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid>
+            ) : (
+              <Grid
+                container
+                direction="row"
+                justify="center"
+                alignItems="center"
+              >
+                <Empty
+                  title={"Lo sentimos"}
+                  subtitle={"No hemos encontrado ningún comercio"}
+                />
+              </Grid>
+            )}
+          </Grid>
         )}
-      </CardActionArea>
-    </Card>
+      </Box>
+    </div>
   );
-};
-
-BussinesCard.propTypes = {
-  isOnlyImage: PropTypes.bool
 };
 
 export default BussinesCard;

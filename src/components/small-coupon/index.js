@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: "0 4px 18px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.22)",
     },
     backgroundColor: theme.palette.background.paper,
-    borderRadius: 0,
+    borderRadius: 3,
   },
   media: {
     height: 0,
@@ -85,7 +85,6 @@ const Coupon = (props) => {
       )
     );
     let options = {
-      weekday: "long",
       year: "numeric",
       month: "long",
       day: "numeric",

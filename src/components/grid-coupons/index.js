@@ -13,13 +13,17 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: "1",
   },
   containerCoupons: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(6),
     marginBottom: theme.spacing(3),
   },
   content: {
     padding: theme.spacing(2),
   },
+  cardContent: {
+    padding: theme.spacing(4),
+  },
   newCoupons: {
+    marginBottom: 40,
     [theme.breakpoints.down("sm")]: {
       fontSize: "1.5rem",
     },
@@ -30,21 +34,6 @@ const GridCoupons = (props) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      {!props.isCategory && (
-        <Box
-          className={classes.content}
-          display="flex"
-          justifyContent="space-between"
-        >
-          <Typography
-            color="textPrimary"
-            className={classes.newCoupons}
-            variant="h5"
-          >
-            {props.title}
-          </Typography>
-        </Box>
-      )}
       <Box className={classes.content}>
         {props.loadCoupons ? (
           <SkeletonComponent />
@@ -55,8 +44,17 @@ const GridCoupons = (props) => {
             mt={1}
             spacing={0}
           >
+            <Box display="flex" justifyContent="space-between">
+              <Typography
+                color="textPrimary"
+                className={classes.newCoupons}
+                variant="h5"
+              >
+                {props.title}
+              </Typography>
+            </Box>
             {props.coupons.length > 0 ? (
-              <Grid container spacing={2}>
+              <Grid container spacing={4}>
                 {props.coupons.map((coupon, i) => (
                   <Grid key={i} item sm={6} md={4} xs={12}>
                     <Coupon
@@ -66,8 +64,14 @@ const GridCoupons = (props) => {
                       slug={coupon.slug_nombre}
                       descripcion={coupon.descripcion}
                       media={coupon.ruta_foto_cupon_principal}
-                      slugEmpresa={coupon.empresa.slug_nombre ? coupon.empresa.slug_nombre : ''}
-                      empresa={coupon.empresa.nombre ? coupon.empresa.nombre : ''}
+                      slugEmpresa={
+                        coupon.empresa.slug_nombre
+                          ? coupon.empresa.slug_nombre
+                          : ""
+                      }
+                      empresa={
+                        coupon.empresa.nombre ? coupon.empresa.nombre : ""
+                      }
                       celular={coupon.empresa.n_celular}
                       logo={
                         coupon.empresa.ruta_logo
