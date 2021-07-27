@@ -7,7 +7,7 @@ import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles((theme) => ({
   iconsContainer: {
-    marginTop: 120,
+    marginTop: 60,
     marginBottom: 20,
   },
   icon: {

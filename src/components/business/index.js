@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
   containerCoupons: {
-    marginTop: 120,
+    marginTop: 60,
     marginBottom: theme.spacing(3),
   },
   media: {

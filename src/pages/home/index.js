@@ -53,15 +53,16 @@ const Home = (props) => {
         showChip={props.showChip}
         redirect="#contact"
       />
-      <ListIcons />
+      <Weather />
+      
       {/* Commerce Premium */}
       <BussinesCard
         business={props.business}
         isLoadBusiness={props.isLoadBusiness}
         title={'Comercios con nosotros'}
       />
+      <ListIcons />
       {/* End Commerce Premium */}
-      <Weather />
       {/* New coupons section */}
       <GridCoupons
         loadCoupons={props.loadCoupons}
