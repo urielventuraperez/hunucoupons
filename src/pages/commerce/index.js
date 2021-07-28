@@ -96,7 +96,7 @@ const Commerce = (props) => {
             </Typography>
           </Box>
           <Box>
-            <Grid container justify="space-around">
+            <Grid container justifyContent="space-around">
               <Grid item xs={12} md={3}>
                 <Paper elevation={0} className={classes.paper}>
                   <AccessTimeIcon className={classes.icon} />

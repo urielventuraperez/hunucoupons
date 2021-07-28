@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     marginTop: 80,
     padding: 30,
-    backgroundColor: "white",
+    backgroundColor: 'transparent',
     textAlign: "center",
   },
   paper: {
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     width: 151,
   },
   image: {
-    width: 520,
+    width: 420,
   },
   controls: {
     display: "flex",
@@ -61,7 +61,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Weather = () => {
   const classes = useStyles();
-  const theme = useTheme();
 
   const [weather, setWeather] = useState({
     name: "Hunucmá",
@@ -85,7 +84,7 @@ const Weather = () => {
           });
         });
     }
-    getWeather();
+    //getWeather();
   }, []);
 
   return (
@@ -113,7 +112,7 @@ const Weather = () => {
           {" "}
           Encuentra y corre por lo que tu cupón favorito ofrece.{" "}
         </Typography>
-        <img className={classes.image} src="/cuponesh_navigation.png" />
+        <img alt="Cuponesh" className={classes.image} src="/cuponesh_navigation.png" />
       </Grid>
     </Grid>
   );

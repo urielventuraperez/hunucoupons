@@ -69,7 +69,7 @@ const BussinesCard = ({title, isLoadBusiness, business}) => {
               <Grid
                 container
                 direction="row"
-                justify="center"
+                justifyContent="center"
                 alignItems="center"
               >
                 <Empty

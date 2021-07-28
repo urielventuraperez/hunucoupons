@@ -32,7 +32,7 @@ const Form = () => {
   const classes = useStyles();
   return (
     <Paper id="contact"  elevation={1} className={classes.container}>
-      <Grid container direction="row" justify="center" alignItems="stretch">
+      <Grid container direction="row" justifyContent="center" alignItems="stretch">
         <Box className={classes.box} flexGrow={2}>
           <Box
             display="flex"

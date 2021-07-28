@@ -43,7 +43,7 @@ const HeaderImage = (props) => {
       className={`${classes.image} ${classes.transparency} ${classes.height}`}
       container
       direction="column"
-      justify="center"
+      justifyContent="center"
       alignItems="center"
       style={{
         backgroundImage: `url(${props.image})`,

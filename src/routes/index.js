@@ -4,6 +4,7 @@ import Favorites from "../pages/favorites-coupons";
 import Profile from "../pages/profile";
 import BussinesFavorites from "../pages/favorites-bussines";
 import Home from "../pages/home";
+import Coupons from "../pages/coupons";
 import Login from "../pages/login";
 import PrivacyPolicy from '../pages/privacy-policy';
 import Category from "../pages/category";
@@ -25,12 +26,13 @@ const RenderRoutes = (
     <Route exact path="/aviso-de-privacidad" component={PrivacyPolicy} />
 
     {/* Rutas Protegidas */}
-    <ProtectedRoutes exact path="/favorites-coupons" component={Favorites} />
+    <ProtectedRoutes exact path="/cupones-favoritos" component={Favorites} />
     <ProtectedRoutes
       exact
       path="/favorites-bussines"
       component={BussinesFavorites}
     />
+    <ProtectedRoutes exact path="/cupones" component={Coupons} />
     <ProtectedRoutes
       exact
       path="/categoria/:slug"

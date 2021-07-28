@@ -67,9 +67,9 @@ const BottomNavigator = props => {
           />
           <BottomNavigationAction
             component={Link}
-            to="/favorites-coupons"
+            to="/cupones-favoritos"
             label="Favoritos"
-            value="/favorites-coupons"
+            value="/cupones-favoritos"
             icon={
               <Badge badgeContent={props.totalMyFav} color="primary" max={50}>
                 <FavoriteIcon />

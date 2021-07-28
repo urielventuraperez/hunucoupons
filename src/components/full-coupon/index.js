@@ -50,7 +50,7 @@ const FullCoupon = (props) => {
       className={`${classes.image} ${classes.transparency} ${classes.height}`}
       container
       direction="column"
-      justify="flex-end"
+      justifyContent="flex-end"
       alignItems="flex-start"
       style={{
         backgroundImage: props.image

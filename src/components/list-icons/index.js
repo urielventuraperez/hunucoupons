@@ -53,7 +53,7 @@ const ListIcons = () => {
   const classes = useStyles();
   return (
     <Box className={classes.iconsContainer}>
-      <Grid container justify="space-around">
+      <Grid container justifyContent="space-around">
         {icons.map((icon) => (
           <Grid key={icon.id} item xs={12} sm={3} md={3}>
             <Paper elevation={0} className={classes.paper}>

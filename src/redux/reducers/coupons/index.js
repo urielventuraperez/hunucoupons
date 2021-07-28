@@ -22,7 +22,7 @@ function reducer(state = initialState, action) {
     case VIEW_HOME_COUPONS:
       return Object.assign(
         { ...state, loadCoupons: false },
-        { homeCoupons: action.payload }
+        { homeCoupons: action.payload.slice(0,9) }
       );
     case VIEW_ALL_COUPONS:
       return Object.assign(
