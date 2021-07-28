@@ -11,9 +11,11 @@ import Contact from "../../components/contact";
 import { GetHomeCoupons } from "../../redux/actions/coupons";
 import { getPremiumBusiness } from "../../redux/actions/bussiness";
 import Weather from "../../components/weather";
+import Box from "@material-ui/core/Box";
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 const Home = (props) => {
-
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -54,12 +56,12 @@ const Home = (props) => {
         redirect="#contact"
       />
       <Weather />
-      
+
       {/* Commerce Premium */}
       <BussinesCard
         business={props.business}
         isLoadBusiness={props.isLoadBusiness}
-        title={'Comercios con nosotros'}
+        title={"Comercios con nosotros"}
       />
       <ListIcons />
       {/* End Commerce Premium */}
@@ -70,6 +72,11 @@ const Home = (props) => {
         auth={props.auth}
         title="Nuevos cupones"
       />
+      <Box display="flex" justifyContent="center" m={1} p={1}>
+        <Button component={Link} to="/cupones" color="secondary" variant="contained">
+          Ver todos los Cupones
+        </Button>
+      </Box>
       {/* End new coupons section */}
       <LoginDialog open={open} onClose={handleClose} />
       <Contact />
@@ -83,7 +90,7 @@ const mapStateToProps = (state) => {
     coupons: state.coupons.homeCoupons,
     auth: state.auth.hasToken,
     business: state.business.premiumBusiness,
-    isLoadBusiness: state.business.isLoadBusiness
+    isLoadBusiness: state.business.isLoadBusiness,
   };
 };
 
