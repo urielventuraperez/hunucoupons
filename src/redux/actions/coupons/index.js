@@ -1,4 +1,4 @@
-import { VIEW_ALL_COUPONS, LOAD_COUPONS, VIEW_COUPON, VIEW_HOME_COUPONS, BUSSINES_COUPON } from "../../actionTypes/coupons";
+import { VIEW_ALL_COUPONS, LOAD_COUPONS, VIEW_COUPON, VIEW_HOME_COUPONS, BUSSINES_COUPON, COUPONS_PAGES } from "../../actionTypes/coupons";
 import { URL_API, ACCESS_TOKEN } from "../../../environments";
 
 export function GetHomeCoupons() {
@@ -22,19 +22,23 @@ export function GetHomeCoupons() {
   };
 }
 
-export function GetCoupons() {
+export function GetCoupons(page) {
   return function(dispatch) {
     dispatch({ type: LOAD_COUPONS });
-    return fetch(`${URL_API}app/cupones/fechaReciente`, {
+    return fetch(`${URL_API}app/cupones/fecha?page=${page}`, {
       headers: {
-        Authentication: `Bearer ${window.localStorage.getItem('accessToken')}`
+        Authorization: `Bearer ${window.localStorage.getItem('accessToken')}`
       }
     })
       .then(response => response.json())
       .then(json => {
+        dispatch({
+          type: COUPONS_PAGES,
+          payload: json.data.totalPaginas
+        });
         return dispatch({
           type: VIEW_ALL_COUPONS,
-          payload: json.data
+          payload: json.data.content
         });
       })
       .catch(function(e) {

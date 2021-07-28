@@ -6,15 +6,19 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
       marginTop: theme.spacing(2),
+      display: 'flex',
+      justifyContent: 'center'
     },
   },
 }));
 
-export default function CouponsPagination() {
+const CouponsPagination = (props) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Pagination count={10} color="secondary" />
+      <Pagination onChange={props.handleChange} count={props.pages} color="secondary" />
     </div>
   );
 }
+
+export default CouponsPagination;

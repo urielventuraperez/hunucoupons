@@ -4,5 +4,6 @@ export const VIEW_COUPON = 'VIEW_COUPON';
 export const LIKE_BUSSINESS = 'LIKE_BUSSINESS';
 export const LOAD_COUPONS = 'IS_LOAD_COUPONS';
 export const VIEW_COUPONS = 'CATEGORY_COUPONS';
+export const COUPONS_PAGES = 'COUPON_PAGES';
 
 export const BUSSINES_COUPON = 'BUSSINES_COUPON';

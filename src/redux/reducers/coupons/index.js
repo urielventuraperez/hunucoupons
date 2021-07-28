@@ -5,6 +5,7 @@ import {
   VIEW_COUPON,
   VIEW_HOME_COUPONS,
   BUSSINES_COUPON,
+  COUPONS_PAGES
 } from "../../actionTypes/coupons";
 
 const initialState = {
@@ -13,12 +14,15 @@ const initialState = {
   homeCoupons: [],
   coupon: {},
   bussines: {},
+  pages: 0
 };
 
 function reducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_COUPONS:
       return { ...state, loadCoupons: !state.loadCoupons };
+    case COUPONS_PAGES:
+      return { ...state, pages: action.payload }
     case VIEW_HOME_COUPONS:
       return Object.assign(
         { ...state, loadCoupons: false },
