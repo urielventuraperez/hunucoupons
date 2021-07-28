@@ -1,4 +1,5 @@
 import { GET_USER, LOAD_USER } from "../../actionTypes/user";
+import { UNSET_TOKEN } from "../../actionTypes/auth";
 import { URL_API, ACCESS_TOKEN, ACCESS_USER } from "../../../environments";
 
 export function getUserProfile() {
@@ -10,8 +11,15 @@ export function getUserProfile() {
     })
       .then(response => response.json())
       .then(json => {
-        localStorage.setItem(ACCESS_USER, JSON.stringify(json.data));
-        return dispatch({ type: GET_USER, payload: json.data });
+        if(json.status === 'success') {
+          localStorage.setItem(ACCESS_USER, JSON.stringify(json.data));
+          return dispatch({ type: GET_USER, payload: json.data });
+        } else {
+          localStorage.clear()
+          return dispatch({
+            type: UNSET_TOKEN
+          })
+        }
       })
       .catch(function(error) {
         console.log(error);
