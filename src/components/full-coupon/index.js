@@ -2,8 +2,10 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
 import AddFavorite from "../add-favorite";
 import Button from "@material-ui/core/Button";
+import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { NavLink } from "react-router-dom";
 import CouponBackground from "../../assets/images/coupon_background.jpg";
@@ -39,7 +41,11 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     marginTop: theme.spacing(4),
-    margin: theme.spacing(3),
+    marginLeft: theme.spacing(1),
+    marginBottom: theme.spacing(5),
+    '& > *': {
+      margin: theme.spacing(1),
+    },
   },
 }));
 
@@ -71,16 +77,26 @@ const FullCoupon = (props) => {
       <Typography className={classes.subtitle} variant="caption">
         {"Valido del"} {props.fechaInicial} {"al"} {props.fechaFinal}
       </Typography>
+      <Box className={classes.button}>
+      <Button
+        variant="contained"
+        color="primary"
+        endIcon={<WhatsAppIcon />}
+        href={`https://wa.me/${props.celular}/?text=Hola ${props.comercio}, en CUPONESH observé el cupon ${props.title} y estoy interesado en saber más, gracias.`}
+        target="_blank"
+      >
+        Contacta por Whatsapp
+      </Button>
       <Button
         component={NavLink}
         to={`/comercio/${props.slugComercio}`}
         variant="contained"
-        color="secondary"
-        className={classes.button}
+        color="primary"
         endIcon={<ArrowForwardIosIcon />}
       >
         Visitar comercio
       </Button>
+      </Box>
       {props.showFavorite && <AddFavorite />}
     </Grid>
   );

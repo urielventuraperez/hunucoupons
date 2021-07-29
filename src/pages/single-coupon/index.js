@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import FullCoupon from "../../components/full-coupon";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -17,11 +17,13 @@ const useStyles = makeStyles((theme) => ({
 const SingleCoupon = (props) => {
   const classes = useStyles();
   const couponName = props.match.params.slug;
-  const { singleCoupon } = props;
+  const { singleCoupon, loadCoupon } = props;
+
+  // const [celular , setCelular] = useState('');
 
   useEffect(() => {
     singleCoupon(couponName);
-  }, [singleCoupon, couponName]);
+  }, [singleCoupon]);
 
   return (
     <div>
@@ -31,24 +33,27 @@ const SingleCoupon = (props) => {
         image={props.coupon.ruta_foto_cupon_principal}
         slug = {props.coupon.slug_nombre}
       />
-      {props.loadCoupon && (
+      {loadCoupon ? (
         <Backdrop className={classes.backdrop} open={true}>
           <CircularProgress color="inherit" />
         </Backdrop>
-      )}
-      <FullCoupon
+      ) : (
+        <FullCoupon
         image={props.coupon.ruta_foto_cupon_principal}
         title={props.coupon.nombre}
         slugComercio={props.bussines.slug_nombre}
+        comercio={props.bussines.nombre}
+        celular={props.bussines.n_celular}
         description={props.coupon.descripcion}
         fechaInicial={props.coupon.fecha_inicial}
         fechaFinal={props.coupon.fecha_final}
         descuento={props.coupon.descuento}
         height={"80vh"}
-        backgroundColor={"rgba(0, 0, 0, 0.35)"}
+        backgroundColor={"rgba(0, 0, 0, 0.45)"}
         showChip={props.showChip}
         showFavorite={props.showFavorite}
       />
+      )}
     </div>
   );
 };

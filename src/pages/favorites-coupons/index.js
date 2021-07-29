@@ -14,7 +14,7 @@ const Favorites = (props) => {
 
   return (
     <Box>
-      <Box my={2}>
+      <Box mt={2}>
         <HeaderImage
           isHome={"true"}
           image={Image}

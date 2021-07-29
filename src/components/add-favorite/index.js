@@ -19,7 +19,7 @@ const AddFavorite = () => {
   return (
     <CustomTooltip title="Seguir" aria-label="add">
       <Fab
-        variant={'round'}
+        variant={'circular'}
         size={"medium"}
         className={classes.icon}
         color={"secondary"}

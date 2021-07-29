@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Box from "@material-ui/core/Box";
-import Container from "@material-ui/core/Container";
 import GridCoupons from "../../components/grid-coupons";
 import CouponsPagination from "../../components/pagination";
 import { connect } from "react-redux";
@@ -19,7 +18,7 @@ const Coupons = (props) => {
   };
 
   return (
-    <Container>
+    <Box>
       <Box my={2}>
         {/* New coupons section */}
         <GridCoupons
@@ -35,7 +34,7 @@ const Coupons = (props) => {
         currentPage={currentPage}
         pages={props.pages}
       />
-    </Container>
+    </Box>
   );
 };
 

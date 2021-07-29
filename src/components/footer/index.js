@@ -29,6 +29,11 @@ function Copyright() {
       Cuponesh {new Date().getFullYear()}
     </Typography>
     <Typography variant="subtitle2" align="center">
+      <Link component={NavLink} to="contacto" color="inherit">
+        Contáctanos
+      </Link>
+    </Typography>
+    <Typography variant="subtitle2" align="center">
       <Link component={NavLink} to="aviso-de-privacidad" color="inherit">
         Aviso de privacidad
       </Link>
