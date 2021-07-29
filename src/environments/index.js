@@ -1,4 +1,4 @@
-const PRODUCTION = false;
+const PRODUCTION = true;
 
 export const APP_ROUTE = PRODUCTION
   ? "https://cuponesh.herokuapp.com/"

@@ -10,7 +10,7 @@ const Toast = props => {
       horizontal: 'right',
     }}
       open={props.openSnackbar}
-      autoHideDuration={3000}
+      autoHideDuration={3500}
       onClose={props.handleCloseSnackbar}
     >
       <Alert severity={ props.color ? 'success' : 'warning' }>{props.toastMessage}</Alert>
