@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     "&:hover, &:focus": {
       boxShadow: "0 4px 18px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.22)",
     },
+    height: "100%",
     backgroundColor: theme.palette.background.paper,
     borderRadius: 3,
   },
@@ -194,6 +195,7 @@ const Coupon = (props) => {
               openSnackbar={openSnackbar}
               handleCloseSnackbar={handleCloseSnackbar}
               toastMessage={toastMessage(props.titleName, fav)}
+              color={fav}
             />
           </CardActions>
         )}

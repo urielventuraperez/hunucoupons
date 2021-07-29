@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -51,11 +51,13 @@ const useStyles = makeStyles((theme) => ({
 const Profile = (props) => {
   const classes = useStyles();
 
-  const [user, setUser] = useState(
-    localStorage.getItem(ACCESS_USER)
-      ? JSON.parse(localStorage.getItem(ACCESS_USER))
-      : {}
-  );
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    setUser(localStorage.getItem(ACCESS_USER)
+    ? JSON.parse(localStorage.getItem(ACCESS_USER))
+    : {})
+  }, []);
 
   return (
     <Box

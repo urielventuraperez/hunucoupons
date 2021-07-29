@@ -9,10 +9,7 @@ import Image from "../../assets/images/cuponesh-favoritos.jpg";
 const Favorites = (props) => {
   const { getMyFavorites, myFavorites, loadFavorites, auth } = props;
   useEffect(() => {
-    if (myFavorites && myFavorites.length) {
-    } else {
       getMyFavorites();
-    }
   }, [getMyFavorites]);
 
   return (

@@ -1,5 +1,4 @@
 import React from "react";
-import Avatar from "@material-ui/core/Avatar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Link from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
@@ -49,7 +48,7 @@ const useStyles = makeStyles(theme => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: 'transparent',
     border: 0,
     width: theme.spacing(10),
     height: theme.spacing(10),
@@ -68,7 +67,7 @@ export default function SignInSide() {
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
-          <Avatar
+          <img
             className={classes.avatar}
             alt="Cuponesh"
             src={IconoCuponesh}

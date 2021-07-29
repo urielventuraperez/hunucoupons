@@ -1,5 +1,6 @@
 import React from "react";
 import Snackbar from "@material-ui/core/Snackbar";
+import Alert from '@material-ui/lab/Alert';
 
 const Toast = props => {
   return (
@@ -9,10 +10,11 @@ const Toast = props => {
       horizontal: 'right',
     }}
       open={props.openSnackbar}
-      autoHideDuration={1500}
+      autoHideDuration={3000}
       onClose={props.handleCloseSnackbar}
-      message={props.toastMessage}
-    />
+    >
+      <Alert severity={ props.color ? 'success' : 'warning' }>{props.toastMessage}</Alert>
+    </Snackbar>
   );
 };
 

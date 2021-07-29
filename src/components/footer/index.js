@@ -10,8 +10,8 @@ import { Link as NavLink } from "react-router-dom"
 const useStyles = makeStyles(theme => ({
   footer: {
     borderTop: `1px solid ${theme.palette.divider}`,
-    marginTop: theme.spacing(8),
-    marginBottom: theme.spacing(6),
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(8),
     paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(3),
     [theme.breakpoints.up("sm")]: {

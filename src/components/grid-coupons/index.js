@@ -11,6 +11,7 @@ import IconoCuponesh from "../../assets/images/icono-cuponesh.png";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: "1",
+    backgroundColor: theme.palette.secondary.light
   },
   containerCoupons: {
     marginTop: theme.spacing(6),

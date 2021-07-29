@@ -10,6 +10,7 @@ import {
   KEY_API_WEATHER,
   LAT_API_WEATHER,
   LON_API_WEATHER,
+  WIDGET_WEATHER
 } from "../../../src/environments";
 
 const useStyles = makeStyles((theme) => ({
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     width: 151,
   },
   image: {
-    width: 420,
+    width: '100%',
   },
   controls: {
     display: "flex",
@@ -84,7 +85,7 @@ const Weather = () => {
           });
         });
     }
-    //getWeather();
+    if(WIDGET_WEATHER) { getWeather() };
   }, []);
 
   return (
