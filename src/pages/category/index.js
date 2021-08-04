@@ -4,7 +4,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Box from "@material-ui/core/Box";
 import HeaderImage from "../../components/header-image";
 import categoria from "../../assets/images/categoria.jpg";
-// import GridCoupons from "../../components/grid-coupons";
 import GridBusiness from "../../components/grid-business";
 import { GetBusinessByCategory } from "../../redux/actions/categories";
 import { connect } from "react-redux";
@@ -70,7 +69,6 @@ const Category = (props) => {
         totalCoupons={props.totalCoupons}
         showChip={props.showChip}
       />
-      <Box mt={5} mb={5}>
         <GridBusiness
           loadCoupons={props.loadCoupons}
           coupons={props.coupons}
@@ -78,7 +76,6 @@ const Category = (props) => {
           slug={categorySlug}
           isCategory={props.isCategory}
         />
-      </Box>
     </div>
   );
 };

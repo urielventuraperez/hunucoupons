@@ -1,16 +1,17 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Business from "../business";
+import BussinesCard from "../../components/business";
 import SkeletonComponent from "../skeletonComponent";
 import Grid from "@material-ui/core/Grid";
-import { Typography } from "@material-ui/core";
 import Empty from "../empty";
 import Box from "@material-ui/core/Box";
-import IconoCuponesh from "../../assets/images/icono-cuponesh.png";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: "1",
+  },
+  container: {
+    width: '100%'
   },
   containerCoupons: {
     marginTop: theme.spacing(3),
@@ -30,49 +31,17 @@ const GridBusiness = (props) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      {props.isCategory && (
-        <Box
-          className={classes.content}
-          display="flex"
-          justifyContent="space-between"
-        >
-          <Typography
-            color="textPrimary"
-            className={classes.newCoupons}
-            variant="h5"
-          >
-            Nuevos comercios
-          </Typography>
-        </Box>
-      )}
-      <Box className={classes.content}>
+      <Grid className={classes.container}>
         {props.loadCoupons ? (
           <SkeletonComponent />
         ) : (
-          <Grid
-            className={classes.containerCoupons}
-            container
-            mt={1}
-            spacing={0}
-          >
+          <Box mt={1} spacing={0}>
             {props.coupons.length > 0 ? (
-              <Grid container spacing={2}>
-                {props.coupons.map((coupon, i) => (
-                  <Grid key={i} item sm={6} md={4} xs={12}>
-                    <Business
-                      fechaFinal={coupon.fecha_final}
-                      key={i}
-                      titleName={coupon.nombre}
-                      slug={coupon.slug_nombre}
-                      descripcion={coupon.descripcion}
-                      media={coupon.ruta_foto_cupon_principal}
-                      slugEmpresa={coupon.slug_nombre}
-                      logo={coupon.ruta_logo ? coupon.ruta_logo : IconoCuponesh}
-                      token={props.auth ? true : false}
-                    />
-                  </Grid>
-                ))}
-              </Grid>
+                <BussinesCard
+                  business={props.coupons}
+                  isLoadBusiness={props.loadCoupons}
+                  title={"Comercios con nosotros"}
+                />
             ) : (
               <Grid
                 container
@@ -82,13 +51,13 @@ const GridBusiness = (props) => {
               >
                 <Empty
                   title={"Lo sentimos"}
-                  subtitle={"No hemos encontrado ningún cupón"}
+                  subtitle={"No hemos encontrado ningún comercio en la categoría"}
                 />
               </Grid>
             )}
-          </Grid>
+          </Box>
         )}
-      </Box>
+      </Grid>
     </div>
   );
 };

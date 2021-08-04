@@ -9,7 +9,6 @@ const OAuth2Redirect = (props) => {
   const getUrlParameter = name => {
     name = name.replace(/[[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
-
     var results = regex.exec(props.location.search);
     return results === null
       ? ""
@@ -29,6 +28,8 @@ const OAuth2Redirect = (props) => {
     if (accessToken) {
       localStorage.setItem(ACCESS_TOKEN, accessToken);
       localStorage.setItem(DARK_MODE, false);
+    } else {
+      console.log('Imposible iniciar sesión');
     }
   }, [isLogged]);
 

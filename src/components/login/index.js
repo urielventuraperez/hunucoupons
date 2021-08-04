@@ -52,7 +52,7 @@ const LoginDialog = props => {
       open={open}
     >
       <div className={classes.paper}>
-      <Avatar
+      <img
             className={classes.avatar}
             alt="Cuponesh"
             src={IconoCuponesh}
