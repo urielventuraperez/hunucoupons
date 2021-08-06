@@ -6,13 +6,12 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import FacebookIcon from "@material-ui/icons/Facebook";
 import DraftsIcon from "@material-ui/icons/Drafts";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import IconoCuponesh from "../../assets/images/icono-cuponesh.png";
 import Hunucma1 from "../../assets/images/hunucma1.jpg";
-import { FACEBOOK_PROVIDER, GOOGLE_PROVIDER } from "../../environments";
+import { GOOGLE_PROVIDER } from "../../environments";
 
 function Copyright() {
   return (
@@ -86,14 +85,6 @@ export default function SignInSide() {
               color="primary"
               aria-label="text primary button group"
             >
-              <Button
-                variant="contained"
-                color="primary"
-                startIcon={<FacebookIcon />}
-                href={FACEBOOK_PROVIDER}
-              >
-                Facebook
-              </Button>
               <Button
                 variant="outlined"
                 color="primary"

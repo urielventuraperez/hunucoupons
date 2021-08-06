@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import Box from "@material-ui/core/Box";
 import HeaderImage from "../../components/header-image";
 import categoria from "../../assets/images/categoria.jpg";
 import GridBusiness from "../../components/grid-business";

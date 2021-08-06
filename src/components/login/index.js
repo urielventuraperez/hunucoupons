@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -9,12 +8,11 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DraftsIcon from "@material-ui/icons/Drafts";
-import FacebookIcon from "@material-ui/icons/Facebook";
 import { blue } from "@material-ui/core/colors";
 import { red } from "@material-ui/core/colors";
 import Button from "@material-ui/core/Button";
 import IconoCuponesh from "../../assets/images/icono-cuponesh.png";
-import { FACEBOOK_PROVIDER, GOOGLE_PROVIDER } from "../../environments";
+import { GOOGLE_PROVIDER } from "../../environments";
 
 const useStyles = makeStyles(theme => ({
   facebook: {
@@ -70,14 +68,6 @@ const LoginDialog = props => {
             <ButtonGroup
               variant="text"
             >
-              <Button
-                variant="contained"
-                color="primary"
-                startIcon={<FacebookIcon />}
-                href={FACEBOOK_PROVIDER}
-              >
-                Facebook
-              </Button>
               <Button
                 variant="outlined"
                 color="primary"
