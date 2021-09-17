@@ -41,7 +41,8 @@ const BottomNavigator = props => {
   const {myTotalFav} = props;
 
   useEffect(()=>{
-    myTotalFav();
+    if(props.hasToken)
+      myTotalFav();
   }, [myTotalFav])
   
   return (

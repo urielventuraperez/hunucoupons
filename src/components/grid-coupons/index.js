@@ -66,21 +66,21 @@ const GridCoupons = (props) => {
                       descripcion={coupon.descripcion}
                       media={coupon.ruta_foto_cupon_principal}
                       slugEmpresa={
-                        coupon.empresa.slug_nombre
+                        coupon?.empresa?.slug_nombre
                           ? coupon.empresa.slug_nombre
                           : ""
                       }
                       empresa={
-                        coupon.empresa.nombre ? coupon.empresa.nombre : ""
+                        coupon?.empresa?.nombre ? coupon.empresa.nombre : ""
                       }
-                      celular={coupon.empresa.n_celular}
+                      celular={coupon?.empresa?.n_celular}
                       logo={
-                        coupon.empresa.ruta_logo
+                        coupon?.empresa?.ruta_logo
                           ? coupon.empresa.ruta_logo
                           : IconoCuponesh
                       }
                       token={props.auth ? true : false}
-                      myFav={coupon.campoAdicional.favoritoActivo}
+                      myFav={coupon?.campoAdicional?.favoritoActivo}
                     />
                   </Grid>
                 ))}

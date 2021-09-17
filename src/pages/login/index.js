@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Link from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
@@ -12,22 +12,22 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import IconoCuponesh from "../../assets/images/icono-cuponesh.png";
 import Hunucma1 from "../../assets/images/hunucma1.jpg";
 import { GOOGLE_PROVIDER } from "../../environments";
+import LoginForm from "../../components/login-form";
+import RegisterForm from "../../components/register-form";
+import Fade from '@material-ui/core/Fade';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit">
-        Cuponesh
-      </Link>{" "}
-      {new Date().getFullYear()}
+      <Link color="inherit">Cuponesh</Link> {new Date().getFullYear()}
     </Typography>
   );
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    height: "100vh"
+    height: "100vh",
   },
   image: {
     backgroundImage: `url(${Hunucma1})`,
@@ -37,69 +37,109 @@ const useStyles = makeStyles(theme => ({
         ? theme.palette.grey[50]
         : theme.palette.grey[900],
     backgroundSize: "cover",
-    backgroundPosition: "center"
+    backgroundPosition: "center",
   },
   paper: {
     margin: theme.spacing(8, 4),
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     border: 0,
     width: theme.spacing(10),
     height: theme.spacing(10),
   },
   submit: {
-    margin: theme.spacing(3, 0, 2)
-  }
+    margin: theme.spacing(3, 0, 2),
+  },
 }));
 
 export default function SignInSide() {
   const classes = useStyles();
 
+  const [isRegister, setIsRegister] = useState(false);
+
+  
+  const [ effect, setEffect ] = useState(false);
+
+  React.useEffect(() => {
+    setEffect(true);
+  }, []);
+
   return (
-    <Grid container component="main" className={classes.root}>
-      <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <div className={classes.paper}>
-          <img
-            className={classes.avatar}
-            alt="Cuponesh"
-            src={IconoCuponesh}
-          />
-          <Typography component="h1" variant="h5">
-            {"¡Regístrate!"}
-          </Typography>
-          <Box mt={3} mb={3}>
-            <Typography variant="body1">
-              {"Elige tu red social favorita"}
-            </Typography>
-          </Box>
-          <Box mt={3} mb={3}>
-            <ButtonGroup
-              variant="text"
-              color="primary"
-              aria-label="text primary button group"
-            >
-              <Button
-                variant="outlined"
+    <Fade in={effect} timeout={1500}>
+      <Grid container component="main" className={classes.root}>
+        <CssBaseline />
+        <Grid item xs={false} sm={4} md={7} className={classes.image} />
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <div className={classes.paper}>
+            <img
+              className={classes.avatar}
+              alt="Cuponesh"
+              src={IconoCuponesh}
+            />
+            <Typography variant="h6">{"Bienvenido a Cuponesh"}</Typography>
+            {!isRegister ? <LoginForm /> : <RegisterForm />}
+            <Box display="flex" justifyContent="space-around">
+              {!isRegister ? (
+                <>
+                  <Button color="primary" size="small">
+                    ¿Olvidaste tú contraseña?
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      setIsRegister(true);
+                    }}
+                    color="primary"
+                    size="small"
+                  >
+                    ¿No tienes cuenta?, Regístrate
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button
+                    onClick={() => {
+                      setIsRegister(false);
+                    }}
+                    color="primary"
+                    size="small"
+                  >
+                    Iniciar sesión
+                  </Button>
+                </>
+              )}
+            </Box>
+            <Box mt={4} mb={1}>
+              <Typography variant="body1">
+                {"Inicia sesión con tu cuenta de Google"}
+              </Typography>
+            </Box>
+            <Box mt={1} mb={3}>
+              <ButtonGroup
+                variant="text"
                 color="primary"
-                startIcon={<DraftsIcon />}
-                href={GOOGLE_PROVIDER}
+                aria-label="text primary button group"
               >
-                Gmail
-              </Button>
-            </ButtonGroup>
-          </Box>
-          <Box mt={5}>
-            <Copyright />
-          </Box>
-        </div>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  startIcon={<DraftsIcon />}
+                  href={GOOGLE_PROVIDER}
+                >
+                  Gmail
+                </Button>
+              </ButtonGroup>
+            </Box>
+            <Box mt={5}>
+              <Copyright />
+            </Box>
+          </div>
+        </Grid>
       </Grid>
-    </Grid>
+    </Fade>
   );
 }
