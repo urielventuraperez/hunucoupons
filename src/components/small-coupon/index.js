@@ -19,6 +19,7 @@ import Zoom from "@material-ui/core/Zoom";
 import { connect } from "react-redux";
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import { updateMyTotalFav } from "../../redux/actions/favorites";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -67,6 +68,8 @@ const useStyles = makeStyles((theme) => ({
 const Coupon = (props) => {
   let isMyFav;
 
+  const history = useHistory();
+
   props.myFav === "true" ? (isMyFav = true) : (isMyFav = false);
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
   const [fav, setFavorite] = React.useState(isMyFav);
@@ -102,9 +105,13 @@ const Coupon = (props) => {
   }, [fav]);
 
   const addToFavorite = () => {
-    setOpenSnackbar(true);
-    props.updateTotalFav(props.slug);
-    setFavorite(!fav);
+    if ( props.token ) {
+      setOpenSnackbar(true);
+      props.updateTotalFav(props.slug);
+      setFavorite(!fav);
+    } else {
+      history.push("/login");
+    }
   };
 
   const handleCloseSnackbar = () => {
