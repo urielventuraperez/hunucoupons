@@ -26,15 +26,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function RegisterForm() {
+export default function RecoveryPasswordForm() {
   const classes = useStyles();
   const [values, setValues] = React.useState({
-    name: "",
     email: "",
-    password: "",
-    passwordConfirm: "",
-    showPasswordConfirm: false,
-    showPassword: false,
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -55,7 +50,7 @@ export default function RegisterForm() {
       },
       body: JSON.stringify(form),
     };
-    const response = await fetch(`${URL_API}auth/signup`, settings);
+    const response = await fetch(`${URL_API}/user/recoverPassword`, settings);
     const loginObject = await response.json();
     setIsLoading(false);
     if (loginObject.status === "error") {
@@ -84,18 +79,6 @@ export default function RegisterForm() {
     setValues({ ...values, [prop]: event.target.value });
   };
 
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-  };
-
-  /*const handleClickShowPasswordConfirm = () => {
-    setValues({ ...values, showPasswordConfirm: !values.showPasswordConfirm });
-  };*/
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
   const [effect, setEffect] = React.useState(false);
 
   useEffect(() => {
@@ -106,20 +89,6 @@ export default function RegisterForm() {
     <Box className={classes.root}>
       <Fade in={effect} timeout={1500}>
         <FormGroup>
-          <FormControl className={classes.margin}>
-            <InputLabel>Nombre</InputLabel>
-            <Input
-              required
-              type={"text"}
-              value={values.name}
-              name={"name"}
-              error={errors.name ? true : false}
-              inputRef={register({
-                required: true,
-              })}
-              onChange={handleChange("name")}
-            />
-          </FormControl>
           <FormControl className={classes.margin}>
             <InputLabel>Email</InputLabel>
             <Input
@@ -138,69 +107,13 @@ export default function RegisterForm() {
             />
           </FormControl>
           <FormControl className={classes.margin}>
-            <InputLabel htmlFor="standard-adornment-password">
-              Password
-            </InputLabel>
-            <Input
-              type={values.showPassword ? "text" : "password"}
-              value={values.password}
-              required
-              error={errors.password ? true : false}
-              name={"password"}
-              inputRef={register({ required: true })}
-              onChange={handleChange("password")}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-          </FormControl>
-          {/*
-          <FormControl className={classes.margin}>
-            <InputLabel htmlFor="standard-adornment-password">
-              Confirmar Password
-            </InputLabel>
-            <Input
-              type={values.showPasswordConfirm ? "text" : "password"}
-              value={values.passwordConfirm}
-              required
-              error={errors.passwordConfirm ? true : false}
-              name={"passwordConfirm"}
-              inputRef={register({ required: true })}
-              onChange={handleChange("passwordConfirm")}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPasswordConfirm}
-                    onMouseDown={handleMouseDownPassword}
-                  >
-                    {values.showPasswordConfirm ? (
-                      <Visibility />
-                    ) : (
-                      <VisibilityOff />
-                    )}
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-          </FormControl>
-          */}
-          <FormControl className={classes.margin}>
             <Button
               disabled={isLoading}
               onClick={handleSubmit(sendRegister)}
               color={"primary"}
               variant={"contained"}
             >
-              Registrar
+              Envíar
             </Button>
           </FormControl>
         </FormGroup>

@@ -14,6 +14,7 @@ import Hunucma1 from "../../assets/images/hunucma1.jpg";
 import { GOOGLE_PROVIDER } from "../../environments";
 import LoginForm from "../../components/login-form";
 import RegisterForm from "../../components/register-form";
+import RecoveryPasswordForm from "../../components/recovery-password";
 import Fade from '@material-ui/core/Fade';
 
 function Copyright() {
@@ -60,8 +61,15 @@ const useStyles = makeStyles((theme) => ({
 export default function SignInSide() {
   const classes = useStyles();
 
-  const [isRegister, setIsRegister] = useState(false);
+  const modes = {
+    login : 'LOGIN',
+    register : 'REGISTER',
+    recoveryPassword : 'RECOVERY'
+  }
 
+  const [loginPageModes, setLoginPageModes] = useState({
+    mode: modes.login
+  });
   
   const [ effect, setEffect ] = useState(false);
 
@@ -82,16 +90,24 @@ export default function SignInSide() {
               src={IconoCuponesh}
             />
             <Typography variant="h6">{"Bienvenido a Cuponesh"}</Typography>
-            {!isRegister ? <LoginForm /> : <RegisterForm />}
+            { loginPageModes.mode === modes.login && <LoginForm /> }
+            { loginPageModes.mode === modes.register && <RegisterForm /> }
+            { loginPageModes.mode === modes.recoveryPassword && <RecoveryPasswordForm /> }
             <Box display="flex" justifyContent="space-around">
-              {!isRegister ? (
+              { loginPageModes.mode === modes.login ? (
                 <>
-                  <Button color="primary" size="small">
+                  <Button 
+                    color="primary" 
+                    size="small"
+                    onClick={() => {
+                      setLoginPageModes({ mode: modes.recoveryPassword });
+                    }}
+                  >
                     ¿Olvidaste tú contraseña?
                   </Button>
                   <Button
                     onClick={() => {
-                      setIsRegister(true);
+                      setLoginPageModes({ mode: modes.register });
                     }}
                     color="primary"
                     size="small"
@@ -103,7 +119,7 @@ export default function SignInSide() {
                 <>
                   <Button
                     onClick={() => {
-                      setIsRegister(false);
+                      setLoginPageModes({ mode: modes.login });
                     }}
                     color="primary"
                     size="small"
