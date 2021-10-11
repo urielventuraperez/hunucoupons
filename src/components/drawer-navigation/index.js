@@ -85,7 +85,7 @@ const DrawerNavigation = (props) => {
       <List
       subheader={<ListSubheader>Categorías</ListSubheader>}
       >
-        {props.viewCategories.map((category) => (
+        { Array.isArray(props.viewCategories) && props.viewCategories.length && props.viewCategories.map((category) => (
           <Link
             component={NavLink}
             to={`/categoria/${category.slug_nombre}`}

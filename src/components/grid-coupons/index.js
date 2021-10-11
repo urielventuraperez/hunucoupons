@@ -54,7 +54,7 @@ const GridCoupons = (props) => {
                 {props.title}
               </Typography>
             </Box>
-            {props.coupons.length > 0 ? (
+            {Array.isArray(props.coupons) && props.coupons.length ? (
               <Grid container spacing={4}>
                 {props.coupons.map((coupon, i) => (
                   <Grid key={i} item sm={6} md={4} xs={12}>
