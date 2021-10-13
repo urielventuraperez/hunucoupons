@@ -25,7 +25,7 @@ const RenderRoutes = (
     />
     <Route exact path="/oauth2/redirect" component={OAuthRedirect} />
     <Route exact path="/login" component={Login} />
-    <Route exact path="/recovery-password/:token" component={RecoveryPassword} />
+    <Route exact path="/recuperar-contraseña/:token" component={RecoveryPassword} />
     <Route exact path="/contacto" component={Contact} />
     <Route exact path="/aviso-de-privacidad" component={PrivacyPolicy} />
 
