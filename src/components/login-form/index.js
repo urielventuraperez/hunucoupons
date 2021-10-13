@@ -14,6 +14,11 @@ import Box from "@material-ui/core/Box";
 import Fade from "@material-ui/core/Fade";
 import { URL_API } from "../../environments";
 import Toast from "../toast";
+import { ACCESS_TOKEN, DARK_MODE } from "../../environments";
+import { loginUser } from "../../redux/actions/auth";
+import { getUserProfile } from "../../redux/actions/user";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,13 +32,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function LoginForm() {
+const LoginForm = (props) => {
   const classes = useStyles();
+  const history = useHistory();
+
   const [values, setValues] = useState({
     email: "",
     password: "",
     showPassword: false,
   });
+
+  const [ isLogged, setIsLogged ] = useState(false);
 
   const [isLoadingLogin, setIsLoadingLogin] = useState(false);
   const [loginStatus, setLoginStatus] = useState({
@@ -62,21 +71,36 @@ export default function LoginForm() {
         message: loginObject.message,
         openToast: true,
       });
-    } else if (loginObject?.data?.accessToken !== null) {
+    } else if (loginObject.data === null) {
       setLoginStatus({
         status: false,
         message: loginObject.message,
         openToast: true,
       });
-    } else {
+    }  
+    else {
       setLoginStatus({
         status: true,
         message: loginObject.message,
         openToast: true,
       });
+
+      localStorage.setItem(ACCESS_TOKEN, `${loginObject.data.accessToken}`);
+      localStorage.setItem(DARK_MODE, false);
+      
+      setIsLogged(true);
+
     }
-    console.log(loginStatus);
   };
+
+  React.useEffect( () => {
+    if ( isLogged ) {
+      props.getUserProfile();
+      props.loginUser();
+      localStorage.setItem(DARK_MODE, false);
+      history.push('/');    
+    }
+  }, [isLogged])
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
@@ -161,3 +185,14 @@ export default function LoginForm() {
     </Box>
   );
 }
+
+const mapDispatchToProps = ( dispatch ) => {
+  return {
+    loginUser: () => { dispatch({ type: 'SET_TOKEN' }) },
+    getUserProfile: () => {
+      dispatch(getUserProfile())
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(LoginForm);

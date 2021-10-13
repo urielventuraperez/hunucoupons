@@ -12,6 +12,7 @@ import { useForm } from "react-hook-form";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import Fade from "@material-ui/core/Fade";
+import Toast from "../toast";
 import { URL_API } from "../../environments";
 
 const useStyles = makeStyles((theme) => ({
@@ -64,12 +65,6 @@ export default function RegisterForm() {
         message: loginObject.message,
         openToast: true,
       });
-    } else if (loginObject?.data?.accessToken !== null) {
-      setLoginStatus({
-        status: false,
-        message: loginObject.message,
-        openToast: true,
-      });
     } else {
       setLoginStatus({
         status: true,
@@ -77,7 +72,6 @@ export default function RegisterForm() {
         openToast: true,
       });
     }
-    console.log(loginStatus);
   };
 
   const handleChange = (prop) => (event) => {
@@ -205,6 +199,11 @@ export default function RegisterForm() {
           </FormControl>
         </FormGroup>
       </Fade>
+      <Toast
+        color={loginStatus.status}
+        toastMessage={loginStatus.message}
+        openSnackbar={loginStatus.openToast}
+      />
     </Box>
   );
 }
