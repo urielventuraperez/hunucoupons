@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import IconButton from "@material-ui/core/IconButton";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
-import InputAdornment from "@material-ui/core/InputAdornment";
 import FormControl from "@material-ui/core/FormControl";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import FormGroup from "@material-ui/core/FormGroup";
 import { useForm } from "react-hook-form";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import Fade from "@material-ui/core/Fade";
 import { URL_API } from "../../environments";
+import Toast from "../toast";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,7 +47,7 @@ export default function RecoveryPasswordForm() {
       },
       body: JSON.stringify(form),
     };
-    const response = await fetch(`${URL_API}/user/recoverPassword`, settings);
+    const response = await fetch(`${URL_API}user/recoverPassword`, settings);
     const loginObject = await response.json();
     setIsLoading(false);
     if (loginObject.status === "error") {
@@ -72,7 +69,6 @@ export default function RecoveryPasswordForm() {
         openToast: true,
       });
     }
-    console.log(loginStatus);
   };
 
   const handleChange = (prop) => (event) => {
@@ -118,6 +114,11 @@ export default function RecoveryPasswordForm() {
           </FormControl>
         </FormGroup>
       </Fade>
+      <Toast
+        color={loginStatus.status}
+        toastMessage={loginStatus.message}
+        openSnackbar={loginStatus.openToast}
+      />
     </Box>
   );
 }

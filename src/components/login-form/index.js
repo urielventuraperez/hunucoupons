@@ -15,7 +15,6 @@ import Fade from "@material-ui/core/Fade";
 import { URL_API } from "../../environments";
 import Toast from "../toast";
 import { ACCESS_TOKEN, DARK_MODE } from "../../environments";
-import { loginUser } from "../../redux/actions/auth";
 import { getUserProfile } from "../../redux/actions/user";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
