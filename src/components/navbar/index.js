@@ -101,7 +101,7 @@ const TopNavigator = props => {
 
   return (
     <React.Fragment>
-      {location.pathname !== "/login" && (
+      {location.pathname !== "/login" && !location.pathname.includes('/recovery-password') && (
         <div>
           <ElevationScroll {...props}>
             <AppBar

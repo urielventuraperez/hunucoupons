@@ -49,7 +49,7 @@ const Footer = () => {
 
   return (
     <React.Fragment>
-      {(location.pathname !== "/profile" && location.pathname !== '/login') && (
+      {(location.pathname !== "/profile" && location.pathname !== '/login' && !location.pathname.includes('/recovery-password')) && (
         <Container maxWidth="md" className={classes.footer}>
           {/*<Grid container spacing={4} justify="space-evenly">
             {DATAFOOTER.map(footer => (

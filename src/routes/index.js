@@ -13,6 +13,7 @@ import SingleCoupon from "../pages/single-coupon";
 import Commerce from "../pages/commerce";
 import NotFound from "../pages/not-found";
 import OAuthRedirect from "../components/oAuthRedirect";
+import RecoveryPassword from "../pages/recovery-password";
 import ProtectedRoutes from "./protected";
 
 const RenderRoutes = (
@@ -24,6 +25,7 @@ const RenderRoutes = (
     />
     <Route exact path="/oauth2/redirect" component={OAuthRedirect} />
     <Route exact path="/login" component={Login} />
+    <Route exact path="/recovery-password/:token" component={RecoveryPassword} />
     <Route exact path="/contacto" component={Contact} />
     <Route exact path="/aviso-de-privacidad" component={PrivacyPolicy} />
 
